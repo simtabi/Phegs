@@ -1,0 +1,732 @@
+<?php
+
+namespace Simtabi\Pheg\Facets\Helpers\Traits;
+
+use DateTimeZone;
+use Moment\Moment;
+use DateTime;
+
+trait DateTimeToolsTrait
+{
+
+    public static function getDateDifference($end, $start, $endTimeZone = 'Africa/Nairobi', $startTimeZone = 'Africa/Nairobi'){
+        $moment = new Moment($end, $endTimeZone);
+        return $moment->from($start, $startTimeZone);
+    }
+
+    public static function listTimezones($request = NULL, $defaultTimeZone = 'Africa/Nairobi', $formReady = true) {
+
+        $output = 'Nothing to show!';
+        static $allRegions = [
+            DateTimeZone::AFRICA,
+            DateTimeZone::AMERICA,
+            DateTimeZone::ANTARCTICA,
+            DateTimeZone::ASIA,
+            DateTimeZone::ATLANTIC,
+            DateTimeZone::AUSTRALIA,
+            DateTimeZone::EUROPE,
+            DateTimeZone::INDIAN,
+            DateTimeZone::PACIFIC,
+        ];
+
+        // Makes it easier to create option groups next
+        $list = ['AFRICA', 'AMERICA', 'ANTARCTICA', 'ASIA', 'ATLANTIC', 'AUSTRALIA', 'EUROPE', 'INDIAN', 'PACIFIC'];
+
+        // Make array holding the regions (continents), they are arrays w/ all their cities
+        $region = array();
+        foreach ($allRegions as $area){
+            array_push ($region, DateTimeZone::listIdentifiers( $area ));
+        }
+
+        $count = count ($region); $i = 0;
+
+        $default = NULL;
+        if( ($request == NULL) || (empty($request))){
+            $default = $defaultTimeZone;
+        }else{
+            $default = ucfirst($request);
+        }
+
+        // Go through each region one by one, sorting and formatting it's cities
+        while ($i < $count){
+            $chunk = $region[$i];
+
+            // Create the region (continents) option group
+            if ($formReady){
+                $output .= '<optgroup label="'.$list[$i].'">';
+            }else{
+                $output .= '<div class="clearifx timezones'.strtolower(str_replace(' ', '_', $list[$i])).'"> <ul class="timezones-list">';
+            }
+            $timezone_offsets = array();
+            foreach( $chunk as $timezone ){
+                $tz = new DateTimeZone($timezone);
+                $timezone_offsets[$timezone] = $tz->getOffset(new DateTime);
+            }
+            asort ($timezone_offsets);
+            $zoneList = array();
+            foreach ($timezone_offsets as $timezone => $offset){
+                $offset_prefix = $offset < 0 ? '-' : '+';
+                $offset_formatted = gmdate( 'H:i', abs($offset) );
+                $pretty_offset = "UTC ${offset_prefix}${offset_formatted}";
+                $zoneList[$timezone] = "$timezone - ( ${pretty_offset} )";
+            }
+
+            // All the formatting is done, finish and move on to next region
+            foreach ($zoneList as $key => $val){
+                if ($formReady){
+                    $selected = (($key === $default) ?  "selected=selected" : '');
+                    $output .= '<option '.$selected.' value="'.$key.'"> '.$val.' </option>'."\n";
+                }else{
+                    $selected = (($key === $default) ?  'class="selected"' : '');
+                    $output .= '<li '.$selected.' id="'.$key.'"> '.$val.' </li>'."\n";
+                }
+            }
+
+            if ($formReady){
+                $output .= '</optgroup>';
+            }else{
+                $output .= '</ul> </div>';
+            }
+            ++$i;
+        }
+
+        return $output;
+    }
+
+
+    public static function timeNow($timestamp = FALSE, $datetimeFormat = "Y-m-d H:i:s", $datetime = NULL, $timezone = "Africa/Nairobi") {
+
+        $objDateTime = new DateTime();
+        $objDateTime->setTimezone(new DateTimeZone($timezone));
+
+        if (!empty($datetime)) {
+            $floatUnixTime = (is_string($datetime)) ? strtotime($datetime) : $datetime;
+            if (method_exists($objDateTime, "setTimestamp")) {
+                $objDateTime->setTimestamp($floatUnixTime);
+            }
+            else {
+                $arrDate = getdate($floatUnixTime);
+                $objDateTime->setDate($arrDate['year'],  $arrDate['mon'],     $arrDate['day']);
+                $objDateTime->setTime($arrDate['hours'], $arrDate['minutes'], $arrDate['seconds']);
+            }
+        }
+
+        if(TRUE === $timestamp){
+            // if get timestamp
+            return strtotime($objDateTime->format($datetimeFormat));
+        }else{
+            return $objDateTime->format($datetimeFormat);
+        }
+    }
+
+
+    public static function formatToSeconds($seconds, $timeFormat = 'hour', $toTime = false){
+
+        $timeFormat = strtolower($timeFormat);
+        $str        = rtrim($timeFormat, "s");
+
+        // convert the given time based on the active/set time format
+        switch ($timeFormat) {
+
+            // let's calculate seconds, we might need them
+            case 'h'     :
+            case 'hour'  :
+            case 'hours' : $inSeconds = ($seconds * 3600);   break;
+
+            // let's calculate seconds, we might need them
+            case 'm'       :
+            case 'minute'  :
+            case 'minutes' : $inSeconds = ($seconds * 60);   break;
+
+            // let's calculate seconds, we might need them
+            case 's'       :
+            case 'second'  :
+            case 'seconds' : $inSeconds = $seconds;   break;
+
+            // nothing in the criteria? set a default value
+            default : $inSeconds = $seconds;            break;
+        }
+
+        // add plurality if given time is greater than 1
+        $l = "s";
+        if($inSeconds > 1){
+            $str = "$str".$l;
+        }
+
+        // get time format after pluralization
+        $str = ucwords(strtolower($str));
+
+        // if convert seconds to time
+        if($toTime){
+            $converted = self::secondsToTime($inSeconds)->data->string;
+        }else{
+            $converted = $inSeconds;
+        }
+
+        // return values as array
+        return [
+            'converted' => $converted,
+            'raw_time'  => $inSeconds,
+            'seconds'   => $inSeconds,
+            'format'    => $str,
+        ];
+
+    }
+
+    public static function formattedSeconds($seconds, $format = FALSE){
+
+        if($format){
+
+            // return formatted values from array
+            $data = self::formatToSeconds($seconds);
+            return $data['raw_time'] . $data['format'];
+
+        }else{
+            return $seconds;
+        }
+
+    }
+
+
+    public static function secondsToTime($seconds){
+
+        // output variables
+        $status = FALSE;
+        $errors = NULL;
+        $data   = NULL;
+        $str    = NULL;
+
+        try{
+
+            // validate time
+            if(TRUE !== Validators::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
+                throw new SnippetsException(self::_e('TIME_VALIDATION_INVALID_SECONDS'));
+            }
+
+            // calculate and set time variables
+            $then  = new DateTime(date('Y-m-d H:i:s', $seconds));
+            $now   = new DateTime(date('Y-m-d H:i:s', time()));
+            $diff  = $then->diff($now);
+            $data  = array(
+                'years'   => $diff->y,
+                'months'  => $diff->m,
+                'days'    => $diff->d,
+                'hours'   => $diff->h,
+                'minutes' => $diff->i,
+                'seconds' => $diff->s
+            );
+
+            // set data and status
+            $Y   = $data["years"];
+            $M   = $data["months"];
+            $d   = $data["days"];
+            $h   = $data["hours"];
+            $m   = $data["minutes"];
+            $s   = $data["seconds"];
+            $str = "$Y:$M:$d:$h:$m:$s";
+
+        }catch(SnippetsException $e){
+            $errors = $e->getMessage();
+        }
+
+        return TypeConverter::toObject(array(
+            'status' => $status,
+            'errors' => Arrays::filterArray($errors),
+            'data'   => array(
+                'string' => $str,
+                'array'  => $data,
+            ),
+        ));
+
+    }
+
+    public static function addToTime($time, $format = 'minute', $default_time = NULL, $date_format = 'Y-m-d H:i:s'){
+
+        // output variables
+        $status = FALSE;
+        $errors = NULL;
+        $data   = NULL;
+
+        try{
+
+            if($format === ('hour' || 'hours')){
+                $formatted_time = $time * 3600; //1hr = 3600 seconds
+            }elseif($format === ('minute' || 'minutes')){
+                $formatted_time = $time * 60;   // 1min = 60 seconds
+            }else{
+                $formatted_time = $time * 60;   // 1min = 60 seconds
+            }
+
+            if(empty($default_time)){
+                $current_time = self::timeNow();
+            }else{
+                $current_time = $default_time;
+            }
+
+            if($time > 0){
+                $new_date = (strtotime($current_time) + $formatted_time);
+                $status   = TRUE;
+                $data     = date ( $date_format , $new_date );
+            }else{
+                throw new SnippetsException(self::_e('time_addition_error'));
+            }
+
+        }catch(SnippetsException $e){
+            $errors = $e->getMessage();
+        }
+
+        return TypeConverter::toObject(array(
+            'status' => $status,
+            'errors' => Arrays::filterArray($errors),
+            'data'   => $data,
+        ));
+
+    }
+
+
+    public static function simpleTime($dateTime, $outputFormat = 'M j, Y g:i a', $defaultFormat = 'Y-m-d H:i:s', $timezone = "Africa/Nairobi"){
+
+        // set default fallback format
+        $defaultFormat = empty($defaultFormat) ? 'Y-m-d H:i:s' : $defaultFormat;
+
+        // init date object
+        $dateObj = new DateTime();
+        $dateObj->setTimezone(new DateTimeZone($timezone));
+        $date = null;
+
+        // if is timestamp
+        if (Validators::isTimestamp($dateTime)){
+            $date = $dateObj->setTimestamp($dateTime)->format($defaultFormat);
+        }else{
+            if (Validators::isDate($dateTime, $defaultFormat) OR Validators::isDateTime($dateTime, $defaultFormat)){
+                $date = $dateTime;
+            }
+        }
+
+        // get date format
+        if (!empty($date)){
+            $fromFormat = DateTime::createFromFormat($defaultFormat, $date);
+            if($fromFormat && $fromFormat->format($defaultFormat) == $date){
+                $initDate = new DateTime($date);
+                return $initDate->format($outputFormat);
+            }
+        }
+
+        return false;
+    }
+
+    public static function humanizeSeconds($seconds, $getIn = array(), $char = 's', $conjunction = 'and') {
+
+        // set variables
+        $secondsInYear 	 = 31536000;//365 days
+        $secondsInMonth  = 2592000;//30 days
+        $secondsInWeek 	 = 604800;//7 days
+        $secondsInDay 	 = 86400;//24 hours
+        $secondsInHour   = 3600;//60 minutes
+        $secondsInMinute = 60;//60 seconds
+        $secondsInSecond = 1;//1 second
+
+        if(!is_array($getIn) || empty($getIn)){
+            // Will auto load this array if getIn is empty
+            $getIn = array('year','month','week','day','hour','minute','second');
+        }
+
+        // validate char
+        if (empty($char) || (!is_string($char))){
+            $char = 's';
+        }
+
+        // data variables
+        $lastInArray = end($getIn);
+        $error = false;
+        $secs  = 0;
+        $data  = array();
+        $text  = "";
+        $out   = array();
+
+        // do the magic
+        foreach ($getIn as $type) {
+
+            $type = strtolower($type);
+            switch ($type) {
+                case 'year'  : $secs = $secondsInYear;   break;
+                case 'month' : $secs = $secondsInMonth;  break;
+                case 'week'  : $secs = $secondsInWeek;   break;
+                case 'day'   : $secs = $secondsInDay;    break;
+                case 'hour'  : $secs = $secondsInHour;   break;
+                case 'minute': $secs = $secondsInMinute; break;
+                case 'second': $secs = $secondsInSecond; break;
+                default      : $error = true;            break;
+            }
+
+            // if something went wrong
+            if (false === $error)
+            {
+                //This is really the core of the code, the rest is just handling
+                $data[$type] = floor($seconds/$secs);
+                $seconds       = $seconds - ($data[$type]*$secs);
+
+                // assign values
+                $int = number_format($data[$type]);
+                $str = $int.' '.$type.($int >= 2 ? $char : ($int == 0 ? $char : ''));
+
+                // push to array
+                $out['set'][$type]['int'] = $int;
+                $out['set'][$type]['str'] = $str;
+
+                // generate long string
+                $text .= $str;
+
+                if(($type != $lastInArray) && ($seconds != 0)){
+                    $text .= '.';
+                }
+
+            }
+
+        }
+
+        // construct textual format and append a conjunction before the last item
+        $out['text'] = Helpers::naturalLanguageJoin(explode('.',$text), $conjunction);
+
+        return TypeConverter::toObject($out);
+    }
+
+    public static function dateTimeDifference($endTime, $startTime, $twoView = false){
+        $fmt = 'Y-m-d H:i:s';
+        $str = self::simpleTime($startTime, $fmt);
+        $now = new DateTime($str);
+        $end = self::simpleTime($endTime, $fmt);
+        $ref = new DateTime($end);
+        $diff = $now->diff($ref);
+
+        // build formats
+        if ($twoView){
+            $_y  = $diff->format("%Y");
+            $y_s = $diff->format("%Y years");
+
+            $_mn  = $diff->format("%a");
+            $mn_s = $diff->format("%a months");
+
+            $_d  = $diff->format("%D");
+            $d_s = $diff->format("%D days");
+
+            $_h  = $diff->format("%H");
+            $h_s = $diff->format("%H hours");
+
+            $_m  = $diff->format("%I");
+            $m_s = $diff->format("%I minutes");
+
+            $_s  = $diff->format("%S");
+            $s_s = $diff->format("%S seconds");
+
+
+            $string = $diff->format("%Y years %a months %D days %H hours %I minutes %S seconds");
+        }
+        else{
+            $_y  = $diff->format("%y");
+            $y_s = $diff->format("%y years");
+
+            $_mn  = $diff->format("%a");
+            $mn_s = $diff->format("%a months");
+
+            $_d  = $diff->format("%y");
+            $d_s = $diff->format("%y days");
+
+            $_h  = $diff->format("%i");
+            $h_s = $diff->format("%i hours");
+
+            $_m  = $diff->format("%i");
+            $m_s = $diff->format("%i minutes");
+
+            $_s  = $diff->format("%s");
+            $s_s = $diff->format("%s seconds");
+
+            $string = $diff->format("%y years %a months %d days %h hours %i minutes %s seconds");
+        }
+
+
+        return TypeConverter::toObject(array(
+            'years' => array(
+                'digits' => $_y,
+                'string' => $y_s,
+            ),
+            'months' => array(
+                'digits' => $_mn,
+                'string' => $mn_s,
+            ),
+            'days' => array(
+                'digits' => $_d,
+                'string' => $d_s,
+            ),
+            'hours' => array(
+                'digits' => $_h,
+                'string' => $h_s,
+            ),
+            'minutes' => array(
+                'digits' => $_m,
+                'string' => $m_s,
+            ),
+            'seconds' => array(
+                'digits' => $_s,
+                'string' => $s_s,
+            ),
+
+            'string' => $string,
+        ));
+    }
+
+
+    public static function yearsToSeconds($value = '1'){
+        return ceil($value * 31536000);
+    }
+
+    public static function monthsToSeconds($value = '1'){
+        return ceil($value * 2592000);
+    }
+
+    public static function weeksToSeconds($value = '1'){
+        return ceil($value * 604800);
+    }
+
+    public static function daysToSeconds($value = '1'){
+        return $value * (24*(60*60));
+    }
+
+    public static function hoursToSeconds($value){
+        return $value * (60*60);
+    }
+
+    public static function minutesToSeconds($value){
+        return $value *60;
+    }
+
+
+
+
+
+    public static function yearsInRangeByOrder($startYear = 1900, $endYear = NULL, $sort = false){
+
+        if(empty($endYear)){
+            $currentYear = date('Y');
+        }else{
+            $currentYear = $endYear;
+        }
+
+        // range of years
+        $years = range($startYear, $currentYear);
+
+        // if sort
+        if($sort){
+            natsort($years);
+            $years = array_reverse($years, true);
+        }
+        return $years;
+    }
+
+    public static function yearsInRange($endYear = '', $startYear = 1900, $sort = true){
+
+        // Year to start available options at
+        if(empty($startYear)){
+            $startYear = 1900;
+        }
+        if(TRUE !== Validators::isYear($startYear)){
+            $startYear = 1900;
+        }
+
+        // Set your latest year you want in the range, in this case we use PHP to
+        # just set it to the current year.
+        if(empty($endYear)){
+            $endYear = date('Y');
+        }
+        if(TRUE !== Validators::isYear($endYear)){
+            $endYear = date('Y');
+        }
+
+        // build year ranges
+        $years = range( $endYear, $startYear );
+        $out = array();
+        for($i = 0; $i < count($years); $i++){
+            $out[$years[$i]] = $years[$i];
+        }
+
+        // if sort
+        if($sort){
+            natsort($out);
+            $out = array_reverse($out, true);
+        }
+        return $out;
+    }
+
+
+    public static function timeBasedGreetings($timezone = 'Africa/Nairobi'){
+
+        // output variables
+        $status      = FALSE;
+        $errors      = NULL;
+        $currentTime = NULL;
+        $greetings   = NULL;
+        $format      = '24H';
+
+        try{
+
+            // validate timezone
+            if(empty($timezone)){
+                throw new SnippetsException(self::_e('TIMEZONE_IS_REQUIRED'));
+            }else{
+                $validateTimezone = Validators::isTimezone($timezone);
+                if(TRUE !== $validateTimezone){
+                    throw new SnippetsException($validateTimezone);
+                }
+            }
+
+            // get current time in 24hrs
+            $objDateTime = new DateTime();
+            $objDateTime->setTimezone(new DateTimeZone($timezone));
+            $currentTime = $objDateTime->format('G');
+
+            // filter greeting
+            switch ($currentTime){
+                case ($currentTime >= 0 && $currentTime <= 11) :
+                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
+                case ($currentTime >= 12 && $currentTime <=17 ) :
+                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
+                case ($currentTime >= 18 && $currentTime <=23) :
+                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
+                default : $greetings = self::_e('TIME_WELCOME_GREETING'); break;
+            }
+
+            // set status
+            $status = TRUE;
+
+        }catch (SnippetsException $e){
+            $errors = $e->getMessage();
+        }
+
+        $errors = Arrays::filterArray($errors);
+        return    TypeConverter::toObject(array(
+            'status' => $status,
+            'errors' => $errors,
+            'data'   => array(
+                'debug'     => array(
+                    'timezone' => empty($timezone) ? NULL : $timezone,
+                    'format'   => $format,
+                    'time'     => $currentTime,
+                ),
+                'greetings' => $greetings,
+            ),
+        ));
+    }
+
+
+    public static function dateOrdinalSuffix(){
+        echo date('M j<\s\up>S</\s\up> Y'); // < PHP 5.2.2
+        echo date('M j<\s\up>S</\s\up> Y'); // >= PHP 5.2.2
+    }
+
+
+    public static function isDateGreater($date, $defaultDate = ''){
+
+        $date = strtotime($date);
+        if(empty($defaultDate)){
+            $default = strtotime(self::timeNow());
+        }else{
+            $default = strtotime($defaultDate);
+        }
+
+        if($date > $default) {
+            echo '<span class="status expired">Expired</span>';
+            return TRUE;
+        }
+
+        return false;
+    }
+
+    public static function evaluateCertainTime($dateTimeStr, $operand = '>', $datetimeFormat = "Y-m-d H:i:s")
+    {
+        $timeNow = new DateTime(self::timeNow($timestamp = FALSE, $datetimeFormat));
+        $timeAgo = new DateTime($dateTimeStr);
+
+        switch (strtolower($operand))
+        {
+            case '>'   : $status = ($timeAgo > $timeNow)  ?  TRUE : FALSE; break;
+            case '>='  : $status = ($timeAgo >= $timeNow) ?  TRUE : FALSE; break;
+            case '<'   : $status = ($timeAgo < $timeNow)  ?  TRUE : FALSE; break;
+            case '<='  : $status = ($timeAgo <= $timeNow) ?  TRUE : FALSE; break;
+            default :
+                $status          = self::_e('operand not set or is invalid');
+        }
+        return $status;
+    }
+
+    public static function timeAgo($time, $fromTimestamp = false, $tense = "ago"){
+        if(empty($time)) return "n/a";
+        $time       = true === $fromTimestamp ? $time : strtotime($time);
+        $periods    = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+        $lengths    = array("60","60","24","7","4.35","12","10");
+        $now        = time();
+        $difference = $now - $time;
+        for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+            $difference /= $lengths[$j];
+        }
+        $difference = round($difference);
+        if($difference != 1) {
+            $periods[$j].= "s";
+        }
+        return "$difference $periods[$j] $tense ";
+    }
+
+
+    function formatTime(Carbon $timestamp, $format = 'j M Y H:i'){
+        $first = Carbon::create(0000, 0, 0, 00, 00, 00);
+        if ($timestamp->lte($first)) {
+            return '';
+        }
+
+        return $timestamp->format($format);
+    }
+
+    function dateFromDatabase($time, $format = 'Y-m-d'){
+        if (empty($time)) {
+            return $time;
+        }
+
+        return format_time(Carbon::parse($time), $format);
+    }
+
+    function getFormattedTime($baseTime = null, $format = 'M jS, Y H:i T', $timezone = 'America/New_York'){
+        try {
+
+            // if we are given a timestamp
+            if ($this->isValidTimeStamp($baseTime)){
+                $timeNow  = new \DateTime();
+                $timeNow->setTimestamp($baseTime);
+            }else{
+                $timeNow  = new \DateTime($baseTime);
+            }
+
+            // set timezone
+            $timezone = new \DateTimeZone($timezone);
+            $timeNow->setTimezone($timezone);
+
+            if ($this->isValidTimeStamp($baseTime)){
+                $timeNow->setTimestamp($baseTime);
+            }
+
+            return $timeNow->format($format);
+        }catch (Exception $exception){
+            echo "Something is wrong with your time" . $exception->getMessage();
+        }
+        return false;
+    }
+
+
+    function isValidTimeStamp($timestamp)
+    {
+
+        if(strtotime(date('d-m-Y H:i:s',$timestamp)) === (int)$timestamp) {
+            return true;
+        } else return false;
+
+    }
+
+}
