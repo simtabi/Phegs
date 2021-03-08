@@ -1,10 +1,10 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Libraries\Colors;
 
 /**
  * Class X11Colors
- * @package Simtabi\Pheg\Phegs\Helpers\Libraries\Colors
+ * @package Simtabi\Pheg\Phegs\Libraries\Colors
  */
 class X11Colors
 {

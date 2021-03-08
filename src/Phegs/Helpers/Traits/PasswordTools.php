@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use PHLAK\StrGen\Generator;
 use PHLAK\StrGen\CharSet;

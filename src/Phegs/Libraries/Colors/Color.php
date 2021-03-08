@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Pheg\Phegs\Helpers\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Libraries\Colors;
 
 /**
  * Class Color
- * @package Simtabi\Pheg\Phegs\Helpers\Libraries\Colors
+ * @package Simtabi\Pheg\Phegs\Libraries\Colors
  */
 class Color implements \JsonSerializable
 {

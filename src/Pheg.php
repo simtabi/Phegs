@@ -16,12 +16,12 @@ use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\SlugToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\SQLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\StringToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Factories\URLToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\ArrayToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\ColorToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\DateTimeToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\DirectoryToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\FileToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\HumanizeTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\ArrayToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\ColorToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\DateTimeToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 
 class Pheg
 {
