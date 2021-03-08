@@ -2,6 +2,7 @@
 
 namespace Simtabi\Pheg;
 
+use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\GravatarToolsTrait;
@@ -15,13 +16,13 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\ServerToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\SlugToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\SQLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\StringToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Factories\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\ArrayToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\ColorToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\DateTimeToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 
 class Pheg
 {
@@ -47,7 +48,9 @@ class Pheg
         SQLToolsTrait,
         StringToolsTrait,
         URLToolsTrait
-    ;
+        ;
+
+    private $dataLoader;
 
     /**
      * Create class instance
@@ -60,12 +63,18 @@ class Pheg
         if (isset(self::$instance)) {
             return self::$instance;
         } else {
-            self::$instance = new static();
+            self::$instance = new self();
             return self::$instance;
         }
     }
 
-    private function __construct() {}
+    private function __construct() {
+        $this->dataLoader = new Loader();
+    }
     private function __clone() {}
 
+    public function getSupportData(){
+        $this->dataLoader->setFileNames(['support_data'])->run();
+        return $this->dataLoader->getData(['support_data']);
+    }
 }

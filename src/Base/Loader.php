@@ -23,11 +23,13 @@ class Loader
     }
 
     /**
+     * @param null $fileName
      * @return array|mixed
      */
-    public function getData(): array
+    public function getData($fileName = null): array
     {
-      return $this->data;
+        $fileName = trim($fileName);
+      return isset($this->data[$fileName]) && !empty($fileName) ? $this->data[$fileName] : $this->data;
     }
 
     /**
@@ -77,7 +79,7 @@ class Loader
     }
 
     private function reset(){
-        $this->data     = [];
+        $this->data      = [];
         $this->fileNames = null;
     }
 
