@@ -29,18 +29,18 @@ class Loader
      */
     public function getData($fileNames = null): array
     {
-        dd($this->data);
+
         $data = [];
         if (is_array($fileNames)){
             foreach ($fileNames as $fileName){
                 $fileName = trim($fileName);
                 if (isset($this->data[$fileName])) {
-                    $data[][$fileName] = $this->data[$fileName];
+                    $data[$fileName] = $this->data[$fileName];
                 }
             }
         }else{
             $fileNames = trim($fileNames);
-            $data[][$fileNames] = isset($this->data[$fileNames]) && !empty($fileNames) ? $this->data[$fileNames] : $this->data;
+            $data[$fileNames] = isset($this->data[$fileNames]) && !empty($fileNames) ? $this->data[$fileNames] : $this->data;
         }
 
         return $data;
