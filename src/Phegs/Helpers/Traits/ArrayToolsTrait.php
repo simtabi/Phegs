@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 trait ArrayToolsTrait
 {

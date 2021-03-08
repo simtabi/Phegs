@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 trait FormToolsTrait
 {
@@ -13,7 +13,7 @@ trait FormToolsTrait
         if (!isset($_REQUEST[$var])){
             $request = null;
         }else{
-            if (Validate::isEmpty($var)){
+            if (Ensue::isEmpty($var)){
                 $request = null;
             }else{
                 $request = $_REQUEST[$var];
@@ -23,11 +23,11 @@ trait FormToolsTrait
         // if return key
         if(true === $getKey)
         {
-            return !Validate::isEmpty($var) ? $var : null;
+            return !Ensue::isEmpty($var) ? $var : null;
         }
 
         // return default value if empty request
-        return !Validate::isEmpty($request) ? $request : $default;
+        return !Ensue::isEmpty($request) ? $request : $default;
     }
 
 

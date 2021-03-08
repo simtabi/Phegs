@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 trait MathToolsTrait
 {
@@ -85,8 +85,8 @@ trait MathToolsTrait
 
         try{
 
-            if(!Validate::isInteger($number)){
-                throw new CatchThis(Validate::getError());
+            if(!Ensue::isInteger($number)){
+                throw new CatchThis(Ensue::getError());
             }else{
                 if (!in_array(($number % 100), array(11,12,13))){
                     switch ($number % 10) {

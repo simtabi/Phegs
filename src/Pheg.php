@@ -24,7 +24,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 class Pheg
 {
@@ -62,12 +62,12 @@ class Pheg
         return isset($data->support_data) ? $data->support_data : false;
     }
 
-    public function copyright(){
+    public static function copyright(){
         return new Copyright();
     }
 
-    public function validate(){
-        return new Validate();
+    public static function validate(){
+        return new Ensue();
     }
 
 }

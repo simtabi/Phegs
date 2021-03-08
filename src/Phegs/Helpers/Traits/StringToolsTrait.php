@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 use Html2Text\Html2Text;
 use NumberFormatter;
 
@@ -465,7 +465,7 @@ trait StringToolsTrait
         try{
 
 
-            $isString = Validate::isString($str);
+            $isString = Ensue::isString($str);
             if(true !== $isString){
                 throw new CatchThis($isString);
             }

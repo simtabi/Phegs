@@ -3,7 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use JsonException;
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 trait JSONToolsTrait
 {
@@ -12,7 +12,7 @@ trait JSONToolsTrait
 
         if($raw_array){
             $json = json_encode($data, $config);
-        }elseif($raw_array == false && (Validate::isJSON($data))){
+        }elseif($raw_array == false && (Ensue::isJSON($data))){
             $json = $data;
         }else{
             return false;

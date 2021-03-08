@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Validation\Traits;
+namespace Simtabi\Pheg\Phegs\Ensue\Traits;
 
 trait StringValidatorsTrait
 {

@@ -3,7 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\Html2Text;
-use Simtabi\Pheg\Phegs\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Ensue;
 
 trait HTMLToolsTrait
 {
@@ -15,7 +15,7 @@ trait HTMLToolsTrait
     public static function parseHTMLTags($tags, $enclose = true, $trim = false) {
 
         // if empty
-        if (Validate::isEmpty($tags)){
+        if (Ensue::isEmpty($tags)){
             return '';
         }
 
