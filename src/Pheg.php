@@ -47,34 +47,17 @@ class Pheg
         SlugToolsTrait,
         SQLToolsTrait,
         StringToolsTrait,
-        URLToolsTrait
-        ;
+        URLToolsTrait;
 
     private $dataLoader;
 
-    /**
-     * Create class instance
-     *
-     * @version      1.0
-     * @since        1.0
-     */
-    private static $instance;
-    public static function getInstance() {
-        if (isset(self::$instance)) {
-            return self::$instance;
-        } else {
-            self::$instance = new self();
-            return self::$instance;
-        }
-    }
-
-    private function __construct() {
+    public function __construct() {
         $this->dataLoader = new Loader();
     }
-    private function __clone() {}
 
     public function getSupportData(){
         $this->dataLoader->setFileNames(['support_data'])->run();
         return $this->dataLoader->getData(['support_data']);
     }
+
 }
