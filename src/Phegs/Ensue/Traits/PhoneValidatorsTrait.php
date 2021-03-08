@@ -9,8 +9,8 @@ use libphonenumber\PhoneNumberToCarrierMapper;
 use libphonenumber\PhoneNumberToTimeZonesMapper;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
-use Simtabi\Pheg\Phegs\Helpers\Base\Services\BaseFactoryTools;
-use Simtabi\Pheg\Phegs\Helpers\Base\Services\Translator;
+use Simtabi\Pheg\Base\Services\BaseFactoryTools;
+use Simtabi\Pheg\Base\Services\Translator;
 
 trait PhoneValidatorsTrait
 {
