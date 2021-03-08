@@ -3,7 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use JsonException;
-use Simtabi\Pheg\Phegs\Validation\Ensue;
+use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait JSONToolsTrait
 {

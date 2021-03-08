@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
-use Simtabi\Pheg\Phegs\Validation\Ensue;
+use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait FormToolsTrait
 {

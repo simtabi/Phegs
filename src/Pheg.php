@@ -24,7 +24,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
-use Simtabi\Pheg\Phegs\Validation\Ensue;
+use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 class Pheg
 {

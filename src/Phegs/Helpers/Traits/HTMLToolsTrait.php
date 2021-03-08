@@ -3,7 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\Html2Text;
-use Simtabi\Pheg\Phegs\Validation\Ensue;
+use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait HTMLToolsTrait
 {
