@@ -23,7 +23,7 @@ use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Helpers\Traits\HumanizeTrait;
 
-class Phegs
+class Pheg
 {
 
     use
