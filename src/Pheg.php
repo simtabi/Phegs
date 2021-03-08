@@ -3,6 +3,7 @@
 namespace Simtabi\Pheg;
 
 use Simtabi\Pheg\Base\Loader;
+use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\GravatarToolsTrait;
@@ -57,6 +58,10 @@ class Pheg
 
     public function getSupportData(){
         return $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
+    }
+
+    public function copyright(){
+        return new Copyright();
     }
 
 }
