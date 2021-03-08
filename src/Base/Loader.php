@@ -5,8 +5,9 @@ namespace Simtabi\Pheg\Base;
 class Loader
 {
 
-    public array $data = [];
-    public $fileNames  = null;
+    public array $data         = [];
+    public $fileNames          = null;
+    public ?string $folderName = null;
 
     public function __construct(){
         $this->reset();
@@ -23,13 +24,26 @@ class Loader
     }
 
     /**
-     * @param null $fileName
+     * @param null $fileNames
      * @return array|mixed
      */
-    public function getData($fileName = null): array
+    public function getData($fileNames = null): array
     {
-        $fileName = trim($fileName);
-      return isset($this->data[$fileName]) && !empty($fileName) ? $this->data[$fileName] : $this->data;
+
+        $data = [];
+        if (is_array($fileNames)){
+            foreach ($fileNames as $fileName){
+                $fileName = trim($fileName);
+                if (isset($this->data[$fileName])) {
+                    $data[][$fileName] = $this->data[$fileName];
+                }
+            }
+        }else{
+            $fileNames = trim($fileNames);
+            $data[][$fileNames] = isset($this->data[$fileNames]) && !empty($fileNames) ? $this->data[$fileNames] : $this->data;
+        }
+
+        return $data;
     }
 
     /**
@@ -53,24 +67,46 @@ class Loader
         return $this->fileNames;
     }
 
-    public function path($folder = ''): ?string
+    /**
+     * @return null
+     */
+    public function getFolderName()
     {
-        return __DIR__ . '../../' . (!empty($folder) ? $folder . '/' : '');
+        return $this->folderNames;
+    }
+
+    /**
+     * @param null $folderName
+     * @return Loader
+     */
+    public function setFolderName($folderName)
+    {
+        $this->folderName = $folderName;
+        return $this;
+    }
+
+    private function path($fileName, $folderName): ?string
+    {
+        $folderName = trim($folderName);
+        $folderName = (!empty($folderName) ? $folderName . '/' : '');
+        $fileName   = trim($fileName);
+        return __DIR__ . '/../../' . $folderName . $fileName;
     }
 
     public function run(){
-        $files = $this->fileNames;
-        if (!is_array($files)) {
-            $files = [$files];
+        $folderName = $this->folderName;
+        $fileNames  = $this->fileNames;
+        if (!is_array($fileNames)) {
+            $fileNames = [$fileNames];
         }
-        return $this->loadFileData($files);
+        return $this->loadFileData($fileNames, $folderName);
     }
 
-    private function loadFileData(array $files){
+    private function loadFileData(array $files, string $folderName){
         if (!is_array($files)) { return false; }
 
         foreach ( $files as $file){
-            $file = $this->path($file) . '.php';
+            $file = $this->path($file, $folderName) . '.php';
             if (file_exists($file) && is_readable($file)) {
                 $this->data[$file] = require_once($file);
             }

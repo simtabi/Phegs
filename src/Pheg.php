@@ -56,7 +56,7 @@ class Pheg
     }
 
     public function getSupportData(){
-        $this->dataLoader->setFileNames(['support_data'])->run();
+        $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->run();
         return $this->dataLoader->getData(['support_data']);
     }
 
