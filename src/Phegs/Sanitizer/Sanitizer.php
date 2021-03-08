@@ -86,12 +86,15 @@ class Sanitizer
             $def->addElement('aside',   'Block', 'Flow', 'Common');
             $def->addElement('header',  'Block', 'Flow', 'Common');
             $def->addElement('footer',  'Block', 'Flow', 'Common');
+
             // Content model actually excludes several tags, not modelled here
             $def->addElement('address', 'Block', 'Flow', 'Common');
             $def->addElement('hgroup', 'Block', 'Required: h1 | h2 | h3 | h4 | h5 | h6', 'Common');
             // http://developers.whatwg.org/grouping-content.html
+
             $def->addElement('figure', 'Block', 'Optional: (figcaption, Flow) | (Flow, figcaption) | Flow', 'Common');
             $def->addElement('figcaption', 'Inline', 'Flow', 'Common');
+
             // http://developers.whatwg.org/the-video-element.html#the-video-element
             $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
                 'src' => 'URI',
@@ -106,6 +109,7 @@ class Sanitizer
                 'src' => 'URI',
                 'type' => 'Text',
             ));
+
             // http://developers.whatwg.org/text-level-semantics.html
             $def->addElement('s',    'Inline', 'Inline', 'Common');
             $def->addElement('var',  'Inline', 'Inline', 'Common');
@@ -113,9 +117,11 @@ class Sanitizer
             $def->addElement('sup',  'Inline', 'Inline', 'Common');
             $def->addElement('mark', 'Inline', 'Inline', 'Common');
             $def->addElement('wbr',  'Inline', 'Empty', 'Core');
+
             // http://developers.whatwg.org/edits.html
             $def->addElement('ins', 'Block', 'Flow', 'Common', array('cite' => 'URI', 'datetime' => 'CDATA'));
             $def->addElement('del', 'Block', 'Flow', 'Common', array('cite' => 'URI', 'datetime' => 'CDATA'));
+
             // TinyMCE
             $def->addAttribute('img', 'data-mce-src', 'Text');
             $def->addAttribute('img', 'data-mce-json', 'Text');

@@ -2,7 +2,7 @@
     "name"              : "simtabi/pheg",
     "license"           : "MIT",
     "description"       : "A collection of useful functions and helper methods for the everyday PHP developer",
-    "type"              : "library",
+    "type"              : "package",
     "keywords": [
         "helpers",
         "functions"
@@ -41,7 +41,8 @@
         "html2text/html2text": "^4.2",
         "phlak/strgen": "^3.0",
         "gpslab/base64uid": "dev-master",
-        "annexare/countries-list": "^2.6.1"
+        "annexare/countries-list": "^2.6.1",
+        "ezyang/htmlpurifier": "^v4.13.0"
     },
     "require-dev": {
 
