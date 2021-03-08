@@ -550,61 +550,6 @@ trait StringToolsTrait
     }
 
 
-
-    /**
-     * Generates a random string of given $length.
-     *
-     * @param Integer $length The string length.
-     * @return String The randomly generated string.
-     */
-    public static function randomString( $length )
-    {
-        $seed = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijqlmnopqrtsuvwxyz0123456789';
-        $max  = strlen( $seed ) - 1;
-        $string = '';
-        for ( $i = 0; $i < $length; ++$i )
-            $string .= $seed{intval( mt_rand( 0.0, $max ) )};
-        return $string;
-    }
-
-
-    public static function generateString($length = '12', $power = null, $addSpecialCharacters = false){
-
-        $characters = "#$%^&*()+=-[]';,./{}|:<>?~";
-        $pattern    = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".(true === $addSpecialCharacters ? $characters : '');
-        $pattern    = trim($pattern);
-        $output     = null;
-
-        if(!empty($power)){
-            srand((double)microtime()*1000000*$power);
-        }
-        else{
-            srand((double)microtime()*1000000);
-        }
-
-        for($i = 0; $i <$length; $i++) {
-            $output.= $pattern[rand()%strlen($pattern)];
-        }
-        return $output;
-    }
-
-    /**
-     * Generates a random string of given $length.
-     *
-     * @param Integer $length The string length.
-     * @return String The randomly generated string.
-     */
-    public static function generateRandomizedString($length )
-    {
-        $seed = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijqlmnopqrtsuvwxyz0123456789';
-        $max  = strlen( $seed ) - 1;
-        $string = '';
-        for ( $i = 0; $i < $length; ++$i )
-            $string .= $seed{intval( mt_rand( 0.0, $max ) )};
-        return $string;
-    }
-
-
     public static function generateReadableString($length = 8) {
 
         // output variable
