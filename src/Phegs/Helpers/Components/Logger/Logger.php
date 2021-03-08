@@ -1,9 +1,10 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools;
+namespace Simtabi\Pheg\Phegs\Helpers\Components\Logger;
 
+use Simtabi\Pheg\Base\Exception\LoggerException;
 use ReflectionClass as Reflection;
-use Simtabi\Pheg\Phegs\Helpers\Base\Exception\LoggerException;
+use Exception;
 
 /**
  * An Autolog Class
