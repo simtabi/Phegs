@@ -5,7 +5,7 @@ namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 use PHLAK\StrGen\Generator;
 use PHLAK\StrGen\CharSet;
 
-class PasswordTools
+trait PasswordTools
 {
     public function generatePassword($length = 10)
     {
