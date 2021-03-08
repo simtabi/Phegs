@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Helpers\Libraries\Colors;
 
 class Validator
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace Simtabi\Pheg\Facets\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Helpers\Libraries\Colors;
 
 /**
  * Class PaletteGenerator
- * @package Simtabi\Pheg\Facets\Libraries\Colors
+ * @package Simtabi\Pheg\Phegs\Helpers\Libraries\Colors
  */
 class PaletteGenerator
 {

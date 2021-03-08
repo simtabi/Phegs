@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Validation\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Validation\Traits;
 
 
 trait JSONToolsValidatorsTrait

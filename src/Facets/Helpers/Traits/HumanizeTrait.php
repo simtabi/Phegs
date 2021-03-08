@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Traits;
 
 use gugglegum\MemorySize\Exception;
 use gugglegum\MemorySize\Formatter;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Generators\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Generators\Traits;
 
 trait GeneratorTraits
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Generators\Factories;
+namespace Simtabi\Pheg\Phegs\Helpers\Generators\Factories;
 
 
 class ShortIdFactory

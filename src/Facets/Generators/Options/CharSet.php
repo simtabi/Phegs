@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Generators\Options;
+namespace Simtabi\Pheg\Phegs\Helpers\Generators\Options;
 
 class CharSet
 {

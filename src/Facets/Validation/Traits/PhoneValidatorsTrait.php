@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Validation\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Validation\Traits;
 
 use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use libphonenumber\NumberParseException;
@@ -9,8 +9,8 @@ use libphonenumber\PhoneNumberToCarrierMapper;
 use libphonenumber\PhoneNumberToTimeZonesMapper;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
-use Simtabi\Pheg\Facets\Base\Services\BaseFactoryTools;
-use Simtabi\Pheg\Facets\Base\Services\Translator;
+use Simtabi\Pheg\Phegs\Helpers\Base\Services\BaseFactoryTools;
+use Simtabi\Pheg\Phegs\Helpers\Base\Services\Translator;
 
 trait PhoneValidatorsTrait
 {

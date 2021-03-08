@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
 use JsonException;
-use Simtabi\Pheg\Facets\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
 
 trait JSONToolsTrait
 {

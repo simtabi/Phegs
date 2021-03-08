@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Multimedia\Multimedia;
+namespace Simtabi\Pheg\Phegs\Helpers\Multimedia\Multimedia;
 
 class Media
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Components\Avatar;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Avatar;
 
 use Intervention\Image\Gd\Font;
 use Intervention\Image\Gd\Shapes\CircleShape;

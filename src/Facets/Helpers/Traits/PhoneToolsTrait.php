@@ -1,9 +1,9 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
-use Simtabi\Pheg\Facets\Base\Services\BaseFactoryTools;
-use Simtabi\Pheg\Facets\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Base\Services\BaseFactoryTools;
+use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
 use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberFormat;

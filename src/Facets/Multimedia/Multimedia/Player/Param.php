@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Multimedia\Multimedia\Player;
+namespace Simtabi\Pheg\Phegs\Helpers\Multimedia\Multimedia\Player;
 
 /**
  *	A set of generic parameters.

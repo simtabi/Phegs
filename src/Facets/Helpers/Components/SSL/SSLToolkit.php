@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Pheg\Facets\Helpers\Components\SSL;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\SSL;
 
 use DateTime;
 use DateTimeZone;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Components\Console;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Console;
 
 class LoadTime
 {

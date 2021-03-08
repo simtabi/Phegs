@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Generators\Notification;
+namespace Simtabi\Pheg\Phegs\Helpers\Generators\Notification;
 
 class Notify
 {

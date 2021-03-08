@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
-use Simtabi\Pheg\Facets\Helpers\Components\HtmlTools\Html2Text;
-use Simtabi\Pheg\Facets\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Helpers\Components\HtmlTools\Html2Text;
+use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
 
 trait HTMLToolsTrait
 {

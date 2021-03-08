@@ -1,9 +1,9 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\File\Helpers\Stream;
+namespace Simtabi\Pheg\Phegs\Helpers\File\Helpers\Stream;
 
-use Simtabi\Pheg\Facets\File\Exception\StreamBufferTooSmallException;
-use Simtabi\Pheg\Facets\File\Helpers\Stream\Interfaces\StreamableInterface;
+use Simtabi\Pheg\Phegs\Helpers\File\Exception\StreamBufferTooSmallException;
+use Simtabi\Pheg\Phegs\Helpers\File\Helpers\Stream\Interfaces\StreamableInterface;
 
 class Stream implements StreamableInterface
 {

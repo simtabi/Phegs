@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Color\Components;
+namespace Simtabi\Pheg\Phegs\Helpers\Color\Components;
 
 use InvalidArgumentException;
 use IteratorAggregate;

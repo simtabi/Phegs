@@ -1,10 +1,10 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Helpers\Libraries\Colors;
 
 /**
  * Class CssGenerator
- * @package Simtabi\Pheg\Facets\Libraries\Colors
+ * @package Simtabi\Pheg\Phegs\Helpers\Libraries\Colors
  */
 class CssGenerator
 {

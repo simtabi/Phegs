@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Helpers\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Traits;
 
 
 trait BooleanTools

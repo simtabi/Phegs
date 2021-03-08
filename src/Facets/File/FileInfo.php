@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\File;
+namespace Simtabi\Pheg\Phegs\Helpers\File;
 
 use finfo;
 

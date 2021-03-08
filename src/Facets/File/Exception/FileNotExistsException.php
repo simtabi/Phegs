@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\File\Exception;
+namespace Simtabi\Pheg\Phegs\Helpers\File\Exception;
 
 class FileNotExistsException extends BaseException
 {

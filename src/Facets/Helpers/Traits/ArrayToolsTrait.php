@@ -1,8 +1,8 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Traits;
 
-use Simtabi\Pheg\Facets\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
 
 trait ArrayToolsTrait
 {

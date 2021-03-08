@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
 trait Base64ToolsTrait

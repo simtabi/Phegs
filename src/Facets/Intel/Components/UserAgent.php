@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Intel\Components;
+namespace Simtabi\Pheg\Phegs\Helpers\Intel\Components;
 
 use DeviceDetector\DeviceDetector;
 use UserAgentParser\Exception\PackageNotLoadedException;

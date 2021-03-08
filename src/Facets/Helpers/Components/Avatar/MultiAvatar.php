@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Components\Avatar;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Avatar;
 
 // https://github.com/multiavatar/multiavatar-php
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\DataTools;
+namespace Simtabi\Pheg\Phegs\Helpers\DataTools;
 
 /**
  * A class that handles the detection and conversion of certain resource formats / content types into other formats.

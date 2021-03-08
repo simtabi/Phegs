@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Helpers\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Traits;
 
 use GpsLab\Component\Base64UID\Generator\RandomCharGenerator;
 use GpsLab\Component\Base64UID\Base64UID;

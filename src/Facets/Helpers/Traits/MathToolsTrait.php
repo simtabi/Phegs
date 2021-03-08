@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Simtabi\Pheg\Facets\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
-use Simtabi\Pheg\Facets\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
 
 trait MathToolsTrait
 {

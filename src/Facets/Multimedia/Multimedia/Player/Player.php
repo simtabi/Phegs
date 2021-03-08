@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Facets\Multimedia\Multimedia\Player;
+namespace Simtabi\Pheg\Phegs\Helpers\Multimedia\Multimedia\Player;
 
 /**
  *	Builds HTML embed codes for videos.
