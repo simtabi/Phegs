@@ -57,7 +57,8 @@ class Pheg
     }
 
     public function getSupportData(){
-        return $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
+        $data = $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
+        return isset($data->support_data) ? $data->support_data : false;
     }
 
     public function copyright(){
