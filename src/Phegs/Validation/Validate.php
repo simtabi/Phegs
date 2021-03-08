@@ -58,27 +58,9 @@ class Validate
     /** @var Respect */
     private $respect;
 
-    /**
-     * Create class instance
-     *
-     * @version      1.0
-     * @since        1.0
-     */
-    private static $instance;
-    public static function getInstance() {
-        if (isset(self::$instance)) {
-            return self::$instance;
-        } else {
-            self::$instance = new static();
-            return self::$instance;
-        }
-    }
-
-    private function __construct() {
+    public function __construct() {
         $this->respect = new Respect();
     }
-
-    private function __clone() {}
 
     public function respect(): Respect
     {

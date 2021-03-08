@@ -24,6 +24,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 
 class Pheg
 {
@@ -63,6 +64,10 @@ class Pheg
 
     public function copyright(){
         return new Copyright();
+    }
+
+    public function validate(){
+        return new Validate();
     }
 
 }

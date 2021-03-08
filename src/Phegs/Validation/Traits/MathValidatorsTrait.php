@@ -5,7 +5,7 @@ namespace Simtabi\Pheg\Phegs\Validation\Traits;
 trait MathValidatorsTrait
 {
 
-    public static function isOddNumber($number){
+    public function isOddNumber($number){
         if ($number == 0){
             return false;
         }

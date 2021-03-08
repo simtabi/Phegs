@@ -15,11 +15,11 @@ use Simtabi\Pheg\Phegs\Helpers\Base\Services\Translator;
 trait PhoneValidatorsTrait
 {
 
-    public static function isValidCallingCode($value){
+    public function isValidCallingCode($value){
         return !Countries::getCountryNameByCallingCode($value) ? false : true;
     }
 
-    public static function isValidPhoneNumber($value, $defaultRegion = BaseFactoryTools::DEFAULT_REGION){
+    public function isValidPhoneNumber($value, $defaultRegion = BaseFactoryTools::DEFAULT_REGION){
 
         // output variables
         $status = false;
@@ -65,7 +65,7 @@ trait PhoneValidatorsTrait
 
 
     public function isPhoneNumber($value, $defaultRegion = "KE"){
-        if (self::isValidPhoneNumber($value, $defaultRegion)->status)
+        if ($this->isValidPhoneNumber($value, $defaultRegion)->status)
             return true;
         return false;
     }

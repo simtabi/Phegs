@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Simtabi\Pheg\Phegs\Validation\Traits;
-
 
 trait JSONToolsValidatorsTrait
 {
 
-    public static function isJSON($value, $alt = false){
+    public function isJSON($value, $alt = false){
 
         if(!$alt){
             return is_string($value) && is_object(json_decode($value)) ? true : false;

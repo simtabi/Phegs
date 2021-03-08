@@ -99,7 +99,7 @@ trait ArrayValidatorsTrait
      * @param $obj
      * @return bool|object
      */
-    public static function objIsEmpty($obj): bool
+    public function objIsEmpty($obj): bool
     {
         if (! ((array)$obj)) {
             return true;
