@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Components\DataTools;
+namespace Simtabi\Pheg\Phegs\Libraries\DataTools;
 
 /**
  * A class that handles the detection and conversion of certain resource formats / content types into other formats.
@@ -12,7 +12,7 @@ namespace Simtabi\Pheg\Phegs\Helpers\Components\DataTools;
 
 use SimpleXMLElement;
 
-class DataTypeConverter {
+class TypeConverter {
 
     /**
      * Disregard XML attributes and only return the value.

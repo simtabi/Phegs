@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Base;
 
-use Simtabi\Pheg\Phegs\Helpers\Components\DataTools\DataTypeConverter;
+use Simtabi\Pheg\Phegs\Helpers\Components\DataTools\TypeConverter;
 
 class Loader
 {
@@ -128,7 +128,7 @@ class Loader
     }
 
     public function toObject(){
-        return DataTypeConverter::fromAnyToObject($this->run()->getData($this->fileNames));
+        return TypeConverter::fromAnyToObject($this->run()->getData($this->fileNames));
     }
 
 }
