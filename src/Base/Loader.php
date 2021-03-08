@@ -29,7 +29,7 @@ class Loader
      */
     public function getData($fileNames = null): array
     {
-
+        dd($this->data);
         $data = [];
         if (is_array($fileNames)){
             foreach ($fileNames as $fileName){
@@ -106,9 +106,9 @@ class Loader
         if (!is_array($files)) { return false; }
 
         foreach ( $files as $file){
-            $file = $this->path($file, $folderName) . '.php';
-            if (file_exists($file) && is_readable($file)) {
-                $this->data[$file] = require_once($file);
+            $filePath = $this->path($file, $folderName) . '.php';
+            if (file_exists($filePath) && is_readable($filePath)) {
+                $this->data[$file] = require_once($filePath);
             }
         }
         return  $this;
