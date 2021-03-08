@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Generators;
+namespace Simtabi\Pheg\Phegs\Generators;
 
 use InvalidArgumentException;
 

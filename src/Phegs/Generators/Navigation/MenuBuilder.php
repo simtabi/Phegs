@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Generators\Navigation;
+namespace Simtabi\Pheg\Phegs\Generators\Navigation;
 
 class MenuBuilder
 {
