@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
-use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 use Html2Text\Html2Text;
 use NumberFormatter;
 

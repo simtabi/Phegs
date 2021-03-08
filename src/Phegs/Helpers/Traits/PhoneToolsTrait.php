@@ -3,7 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 use Simtabi\Pheg\Phegs\Helpers\Base\Services\BaseFactoryTools;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberFormat;

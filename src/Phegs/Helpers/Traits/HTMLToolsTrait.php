@@ -4,8 +4,8 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
-use Simtabi\Pheg\Phegs\Helpers\Helpers\Components\HtmlTools\Html2Text;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
+use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\Html2Text;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 
 trait HTMLToolsTrait
 {

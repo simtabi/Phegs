@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Console;
+namespace Simtabi\Pheg\Phegs\Helpers\Components\Console;
 
 // https://github.com/sebastianbergmann/php-timer
 

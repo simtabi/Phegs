@@ -5,7 +5,7 @@ namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
 use JsonException;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 
 trait JSONToolsTrait
 {

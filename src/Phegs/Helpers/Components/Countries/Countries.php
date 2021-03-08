@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Countries;
+namespace Simtabi\Pheg\Phegs\Helpers\Components\Countries;
 
 use JsonException;
 use function file_get_contents;

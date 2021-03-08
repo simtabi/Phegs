@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Multimedia\Player;
+namespace Simtabi\Pheg\Phegs\Multimedia\Player;
 
 use Marcelklehr\LinkPreview\Client;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Intel\Traits;
+namespace Simtabi\Pheg\Phegs\Intel\Traits;
 
 trait IntelTrait
 {

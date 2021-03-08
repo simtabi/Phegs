@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Intel\Components;
+namespace Simtabi\Pheg\Phegs\Intel\Components;
 
 use VincoWeb\FileInfo\FileInfo as F;
 

@@ -4,7 +4,7 @@
 namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
 
 
-use Simtabi\Pheg\Phegs\Helpers\Validation\Validate;
+use Simtabi\Pheg\Phegs\Validation\Validate;
 
 trait FormToolsTrait
 {

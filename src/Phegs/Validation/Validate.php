@@ -1,31 +1,31 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Validation;
+namespace Simtabi\Pheg\Phegs\Validation;
 
 use Respect\Validation\Validator as Respect;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\AgeValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\ArrayValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\ColorValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\CountryValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\CurrencyValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\DataTypeValidatorTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\DateTimeValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\DirectoryValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\EmailValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\FileValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\IPToolsValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\JSONToolsValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\LocaleValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\MathValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\PasswordValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\PhoneValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\PostalCodeValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\RespectValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\SlugValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\StringValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\URLValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\UsernameValidatorsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Validation\Traits\VersionNumberValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\AgeValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\ArrayValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\ColorValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\CountryValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\CurrencyValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\DataTypeValidatorTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\DateTimeValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\DirectoryValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\EmailValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\FileValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\IPToolsValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\JSONToolsValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\LocaleValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\MathValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\PasswordValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\PhoneValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\PostalCodeValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\RespectValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\SlugValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\StringValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\URLValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\UsernameValidatorsTrait;
+use Simtabi\Pheg\Phegs\Validation\Traits\VersionNumberValidatorsTrait;
 
 class Validate
 {

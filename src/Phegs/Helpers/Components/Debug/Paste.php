@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\Debug;
+namespace Simtabi\Pheg\Phegs\Helpers\Components\Debug;
 
 class Paste
 {

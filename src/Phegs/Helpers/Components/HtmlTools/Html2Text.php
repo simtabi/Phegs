@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Helpers\Components\HtmlTools;
+namespace Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools;
 
 // https://github.com/notcod/html2text
 // https://github.com/voku/html2text use this as it has more options

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Intel;
+namespace Simtabi\Pheg\Phegs\Intel;
 
 class Intel
 {

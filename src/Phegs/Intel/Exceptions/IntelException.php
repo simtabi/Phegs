@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Intel\Exceptions;
+namespace Simtabi\Pheg\Phegs\Intel\Exceptions;
 
 use Exception;
 
