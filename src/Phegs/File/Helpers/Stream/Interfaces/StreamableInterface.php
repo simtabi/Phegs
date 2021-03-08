@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\File\Helpers\Stream\Interfaces;
+namespace Simtabi\Pheg\Phegs\File\Helpers\Stream\Interfaces;
 
 interface StreamableInterface {
     /**

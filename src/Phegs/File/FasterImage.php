@@ -1,9 +1,9 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\File;
+namespace Simtabi\Pheg\Phegs\File;
 
-use Simtabi\Pheg\Phegs\Helpers\File\Exception\InvalidImageException;
-use Simtabi\Pheg\Phegs\Helpers\File\Exception\StreamBufferTooSmallException;
+use Simtabi\Pheg\Phegs\File\Exception\InvalidImageException;
+use Simtabi\Pheg\Phegs\File\Exception\StreamBufferTooSmallException;
 
 /**
  * FasterImage - Because sometimes you just want the size, and you want them in

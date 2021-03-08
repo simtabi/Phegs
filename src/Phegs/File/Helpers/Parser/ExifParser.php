@@ -2,8 +2,8 @@
 
 namespace Simtabi\Snippets\File\Helpers\Parser;
 
-use Simtabi\Pheg\Phegs\Helpers\File\Exception\InvalidImageException;
-use Simtabi\Pheg\Phegs\Helpers\File\Helpers\Stream\Interfaces\StreamableInterface;
+use Simtabi\Pheg\Phegs\File\Exception\InvalidImageException;
+use Simtabi\Pheg\Phegs\File\Helpers\Stream\Interfaces\StreamableInterface;
 
 class ExifParser
 {

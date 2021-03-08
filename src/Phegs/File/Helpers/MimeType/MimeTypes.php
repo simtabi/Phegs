@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\File\Helpers\MimeType;
+namespace Simtabi\Pheg\Phegs\File\Helpers\MimeType;
 
 class MimeTypes
 {

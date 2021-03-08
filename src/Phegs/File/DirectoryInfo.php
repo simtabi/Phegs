@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\File;
+namespace Simtabi\Pheg\Phegs\File;
 
 class DirectoryInfo
 {
