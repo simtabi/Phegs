@@ -2,6 +2,8 @@
 
 namespace Simtabi\Pheg\Base;
 
+use Simtabi\Pheg\Phegs\Helpers\Components\DataTools\DataTypeConverter;
+
 class Loader
 {
 
@@ -93,13 +95,14 @@ class Loader
         return __DIR__ . '/../../' . $folderName . $fileName;
     }
 
-    public function run(){
+    private function run(){
         $folderName = $this->folderName;
         $fileNames  = $this->fileNames;
         if (!is_array($fileNames)) {
             $fileNames = [$fileNames];
         }
-        return $this->loadFileData($fileNames, $folderName);
+        $this->loadFileData($fileNames, $folderName);
+        return $this;
     }
 
     private function loadFileData(array $files, string $folderName){
@@ -117,6 +120,15 @@ class Loader
     private function reset(){
         $this->data      = [];
         $this->fileNames = null;
+    }
+
+
+    public function toArray(){
+        return $this->run()->getData($this->fileNames);
+    }
+
+    public function toObject(){
+        return DataTypeConverter::fromAnyToObject($this->run()->getData($this->fileNames));
     }
 
 }
