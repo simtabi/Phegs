@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Base;
 
-use Simtabi\Pheg\Phegs\Helpers\Components\DataTools\TypeConverter;
+use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 
 class Loader
 {
