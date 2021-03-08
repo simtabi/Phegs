@@ -338,13 +338,13 @@ class Copyright
     }
 
     public function buildCopyrightYear(){
-        return $this->build();
+        return $this->build()->build;
     }
 
     public function buildCopyrightText(){
 
         // get copyright year
-        $copyrightYear = $this->copyrightYear();
+        $copyrightYear = $this->build()->build;
         $companyName   = $this->companyName;
         $declaration   = $this->copyrightDeclarationText;
 
