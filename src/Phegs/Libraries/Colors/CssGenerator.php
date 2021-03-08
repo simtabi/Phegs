@@ -2,6 +2,8 @@
 
 namespace Simtabi\Pheg\Phegs\Libraries\Colors;
 
+use Simtabi\Pheg\Phegs\Libraries\Colors\Exceptions\InvalidColorException;
+
 /**
  * Class CssGenerator
  * @package Simtabi\Pheg\Phegs\Libraries\Colors

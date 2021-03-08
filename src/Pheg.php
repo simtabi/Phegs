@@ -2,19 +2,19 @@
 
 namespace Simtabi\Pheg;
 
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\Base64ToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\FormToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\GravatarToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\HTMLToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\JSONToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\MathToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\MoneyToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\PhoneToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\SecurityToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\ServerToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\SlugToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\SQLToolsTrait;
-use Simtabi\Pheg\Phegs\Helpers\Chips\Traits\StringToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\GravatarToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\HTMLToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\JSONToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\MathToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\MoneyToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\PhoneToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\SecurityToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\ServerToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\SlugToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\SQLToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\StringToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Factories\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\ArrayToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\ColorToolsTrait;

@@ -2,7 +2,6 @@
 
 namespace Simtabi\Pheg\Phegs\Validation;
 
-use Respect\Validation\Validator as Respect;
 use Simtabi\Pheg\Phegs\Validation\Traits\AgeValidatorsTrait;
 use Simtabi\Pheg\Phegs\Validation\Traits\ArrayValidatorsTrait;
 use Simtabi\Pheg\Phegs\Validation\Traits\ColorValidatorsTrait;
@@ -26,6 +25,7 @@ use Simtabi\Pheg\Phegs\Validation\Traits\StringValidatorsTrait;
 use Simtabi\Pheg\Phegs\Validation\Traits\URLValidatorsTrait;
 use Simtabi\Pheg\Phegs\Validation\Traits\UsernameValidatorsTrait;
 use Simtabi\Pheg\Phegs\Validation\Traits\VersionNumberValidatorsTrait;
+use Respect\Validation\Validator as Respect;
 
 class Validate
 {

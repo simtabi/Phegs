@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\SocialMedia;
+namespace Simtabi\Pheg\Phegs\SocialMedia;
 
 class SocialMedia
 {

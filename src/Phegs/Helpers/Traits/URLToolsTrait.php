@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Factories;
+namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use Spatie\Url\Url;
 

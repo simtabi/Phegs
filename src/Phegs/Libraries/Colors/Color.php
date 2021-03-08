@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Simtabi\Pheg\Phegs\Libraries\Colors;
 
+use Simtabi\Pheg\Phegs\Libraries\Colors\Exceptions\InvalidColorException;
+
 /**
  * Class Color
  * @package Simtabi\Pheg\Phegs\Libraries\Colors

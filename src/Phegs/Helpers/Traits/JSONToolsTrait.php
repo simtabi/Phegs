@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
-
+namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use JsonException;
 use Simtabi\Pheg\Phegs\Validation\Validate;

@@ -2,6 +2,9 @@
 
 namespace Simtabi\Pheg\Phegs\Libraries\Colors;
 
+use Simtabi\Pheg\Phegs\Libraries\Colors\Exceptions\InvalidColorException;
+use Simtabi\Pheg\Phegs\Libraries\Colors\Exceptions\ColorException;
+
 /**
  * Class X11Colors
  * @package Simtabi\Pheg\Phegs\Libraries\Colors

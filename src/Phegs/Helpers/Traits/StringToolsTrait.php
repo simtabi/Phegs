@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Chips\Traits;
+namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use Simtabi\Pheg\Phegs\Validation\Validate;
 use Html2Text\Html2Text;

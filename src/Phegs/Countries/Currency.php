@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Helpers\Countries;
+namespace Simtabi\Pheg\Phegs\Countries;
 
 class Currency
 {

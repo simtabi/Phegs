@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Phegs\Libraries\Colors;
+namespace Simtabi\Pheg\Phegs\Libraries\Colors\Exceptions;
 
 class InvalidColorException extends ColorException
 {
