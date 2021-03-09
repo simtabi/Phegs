@@ -5,12 +5,14 @@ namespace Simtabi\Pheg;
 use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\GravatarToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HTMLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\JSONToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\MathToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\MoneyToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\PasswordTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\PhoneToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\SecurityToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\ServerToolsTrait;
@@ -23,6 +25,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\DateTimeToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\UIDTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
@@ -32,6 +35,7 @@ class Pheg
     use
         ArrayToolsTrait,
         Base64ToolsTrait,
+        BooleanTools,
         ColorToolsTrait,
         DateTimeToolsTrait,
         DirectoryToolsTrait,
@@ -43,12 +47,14 @@ class Pheg
         JSONToolsTrait,
         MathToolsTrait,
         MoneyToolsTrait,
+        PasswordTools,
         PhoneToolsTrait,
         SecurityToolsTrait,
         ServerToolsTrait,
         SlugToolsTrait,
         SQLToolsTrait,
         StringToolsTrait,
+        UIDTools,
         URLToolsTrait;
 
     private $dataLoader;
