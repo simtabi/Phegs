@@ -13,7 +13,7 @@ trait UIDTools
      * @param string $charset
      * @return mixed
      */
-    function base64Uid($length = 12, $charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'){
+    public static function base64Uid($length = 12, $charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'){
         return (new RandomCharGenerator($length, $charset))->generate();
     }
 

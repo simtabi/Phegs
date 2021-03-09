@@ -16,5 +16,4 @@ trait MoneyToolsTrait
         return $fmt->formatCurrency($amount, $currency) . PHP_EOL;
     }
 
-
 }

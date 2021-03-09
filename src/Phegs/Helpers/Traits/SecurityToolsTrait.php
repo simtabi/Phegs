@@ -36,10 +36,9 @@ trait SecurityToolsTrait
      * method masks the username of an email address
      *
      * @param string $email the email address to mask
-     * @param string $char the character to use to mask with
      * @param int $level the percent of the username to mask
-     * @return $result
-     *
+     * @param string $char the character to use to mask with
+     * @return false|string $result
      */
     public static function maskEmail($email, $level = 50, $char = '*' ){
 

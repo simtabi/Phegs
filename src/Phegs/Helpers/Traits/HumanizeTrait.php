@@ -13,9 +13,6 @@ trait HumanizeTrait
     private static $fileSizeParser;
     private static $errors = [];
 
-    private function __construct() {}
-
-
     public static function getParsedFileSize($number){
         try{
             $sp = new Parser();
@@ -106,7 +103,7 @@ trait HumanizeTrait
      * @param int $precision
      * @return string
      */
-    function getHumanFileSize(int $bytes, $precision = 2): string
+   public static function getHumanFileSize(int $bytes, $precision = 2): string
     {
         $units = ['B', 'kB', 'MB', 'GB', 'TB'];
 
@@ -119,7 +116,7 @@ trait HumanizeTrait
         return number_format($bytes, $precision, ',', '.') . ' ' . $units[$pow];
     }
 
-    function fileSize2bytes($humanFileSize)
+    public static function fileSize2bytes($humanFileSize)
     {
         $bytes = 0;
 

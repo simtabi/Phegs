@@ -52,7 +52,7 @@ trait HTMLToolsTrait
         return !empty($out) ? $out : '';
     }
 
-    function nl2br($string)
+    public static function nl2br($string)
     {
         return str_replace("\n", '<br />', $string);
     }

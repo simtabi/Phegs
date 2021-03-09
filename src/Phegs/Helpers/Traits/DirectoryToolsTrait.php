@@ -12,7 +12,7 @@ trait DirectoryToolsTrait
      *
      * @return string
      */
-    function formatDirectory(string $dir)
+   public static function formatDirectory(string $dir)
     {
         $replacements = [
             '{Y}' => date('Y'),

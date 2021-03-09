@@ -41,7 +41,7 @@ trait MathToolsTrait
             );
         }
 
-        return TypeConverter::toObject($data);
+        return $data;
     }
 
 
@@ -136,7 +136,7 @@ trait MathToolsTrait
             );
         }
 
-        return TypeConverter::toObject($data);
+        return $data;
     }
 
     function numberFormat($number, $decimals = 0){

@@ -7,7 +7,7 @@ use VincoWeb\FileInfo\FileInfo as F;
 trait FileToolsTrait
 {
 
-    public function getRemoteFileInfo($link){
+    public static function getRemoteFileInfo($link){
         $finfo = new F();
         return $finfo->get($link);
     }

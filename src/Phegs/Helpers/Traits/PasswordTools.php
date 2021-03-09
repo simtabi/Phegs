@@ -7,7 +7,7 @@ use PHLAK\StrGen\CharSet;
 
 trait PasswordTools
 {
-    public function generatePassword($length = 10)
+    public static function generatePassword($length = 10)
     {
         $generator = new Generator();
         return $generator->charset([CharSet::MIXED_ALPHA, CharSet::NUMERIC])->length($length)->generate();

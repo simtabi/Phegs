@@ -23,7 +23,7 @@ trait PhoneToolsTrait
     }
 
 
-    public  function getPhoneNumberByCountryInfo($number, $countryISOCode = BaseFactoryTools::DEFAULT_REGION){
+    public static function getPhoneNumberByCountryInfo($number, $countryISOCode = BaseFactoryTools::DEFAULT_REGION){
 
         // output variables
         $status = false;

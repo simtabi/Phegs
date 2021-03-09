@@ -8,7 +8,7 @@ trait URLToolsTrait
 {
 
 
-    function baseUrl(){
+    public static function baseUrl(){
 
         // First we need to get the protocol the website is using
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] === 443) ? "https://" : "http://";
@@ -236,8 +236,5 @@ trait URLToolsTrait
         }
         return false;
     }
-
-
-
 
 }
