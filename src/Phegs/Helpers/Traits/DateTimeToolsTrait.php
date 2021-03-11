@@ -6,6 +6,10 @@ use DateTimeZone;
 use Moment\Moment;
 use DateTime;
 use Carbon\Carbon;
+use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\Exception\PhegException;
+use Simtabi\Pheg\Pheg;
+use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait DateTimeToolsTrait
@@ -201,13 +205,13 @@ trait DateTimeToolsTrait
         try{
 
             // validate time
-            if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
-                throw new SnippetsException(self::_e('TIME_VALIDATION_INVALID_SECONDS'));
+            if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Ensue::isNumeric($seconds)){
+                throw new PhegException(BaseTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
             }
 
             // validate time
-            if(TRUE !== Validator::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
-                throw new SnippetsException(self::_e('TIME_VALIDATION_INVALID_SECONDS'));
+            if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Ensue::isNumeric($seconds)){
+                throw new PhegException(BaseTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
             }
 
             // calculate and set time variables
@@ -232,17 +236,17 @@ trait DateTimeToolsTrait
             $s   = $data["seconds"];
             $str = "$Y:$M:$d:$h:$m:$s";
 
-        }catch(SnippetsException $e){
+        }catch(PhegException $e){
             $errors = $e->getMessage();
         }
 
         return TypeConverter::toObject(array(
             'status' => $status,
-            'errors' => Arrays::filterArray($errors),
-            'data'   => array(
+            'errors' => Pheg::filterArray($errors),
+            'data'   => [
                 'string' => $str,
                 'array'  => $data,
-            ),
+            ],
         ));
 
     }
@@ -275,16 +279,16 @@ trait DateTimeToolsTrait
                 $status   = TRUE;
                 $data     = date ( $date_format , $new_date );
             }else{
-                throw new SnippetsException(self::_e('time_addition_error'));
+                throw new PhegException(BaseTools::_e('time_addition_error'));
             }
 
-        }catch(SnippetsException $e){
+        }catch(PhegException $e){
             $errors = $e->getMessage();
         }
 
         return TypeConverter::toObject(array(
             'status' => $status,
-            'errors' => Arrays::filterArray($errors),
+            'errors' => Pheg::filterArray($errors),
             'data'   => $data,
         ));
 
@@ -568,21 +572,21 @@ trait DateTimeToolsTrait
     public static function timeBasedGreetings($timezone = 'Africa/Nairobi'){
 
         // output variables
-        $status      = FALSE;
-        $errors      = NULL;
-        $currentTime = NULL;
-        $greetings   = NULL;
+        $status      = false;
+        $errors      = null;
+        $currentTime = null;
+        $greetings   = null;
         $format      = '24H';
 
         try{
 
             // validate timezone
             if(empty($timezone)){
-                throw new SnippetsException(self::_e('TIMEZONE_IS_REQUIRED'));
+                throw new PhegException(BaseTools::_e('TIMEZONE_IS_REQUIRED'));
             }else{
-                $validateTimezone = Validators::isTimezone($timezone);
+                $validateTimezone = Ensue::isTimezone($timezone);
                 if(TRUE !== $validateTimezone){
-                    throw new SnippetsException($validateTimezone);
+                    throw new PhegException($validateTimezone);
                 }
             }
 
@@ -594,22 +598,22 @@ trait DateTimeToolsTrait
             // filter greeting
             switch ($currentTime){
                 case ($currentTime >= 0 && $currentTime <= 11) :
-                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
+                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
                 case ($currentTime >= 12 && $currentTime <=17 ) :
-                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
+                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
                 case ($currentTime >= 18 && $currentTime <=23) :
-                    $greetings = self::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
-                default : $greetings = self::_e('TIME_WELCOME_GREETING'); break;
+                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
+                default : $greetings = BaseTools::_e('TIME_WELCOME_GREETING'); break;
             }
 
             // set status
             $status = TRUE;
 
-        }catch (SnippetsException $e){
+        }catch (PhegException $e){
             $errors = $e->getMessage();
         }
 
-        $errors = Arrays::filterArray($errors);
+        $errors = Pheg::filterArray($errors);
         return    TypeConverter::toObject(array(
             'status' => $status,
             'errors' => $errors,
@@ -660,7 +664,7 @@ trait DateTimeToolsTrait
             case '<'   : $status = ($timeAgo < $timeNow)  ?  TRUE : FALSE; break;
             case '<='  : $status = ($timeAgo <= $timeNow) ?  TRUE : FALSE; break;
             default :
-                $status          = self::_e('operand not set or is invalid');
+                $status          = BaseTools::_e('operand not set or is invalid');
         }
         return $status;
     }
@@ -683,7 +687,7 @@ trait DateTimeToolsTrait
     }
 
 
-    function formatTime(Carbon $timestamp, $format = 'j M Y H:i'){
+    public static function formatTime(Carbon $timestamp, $format = 'j M Y H:i'){
         $first = Carbon::create(0000, 0, 0, 00, 00, 00);
         if ($timestamp->lte($first)) {
             return '';
@@ -692,12 +696,12 @@ trait DateTimeToolsTrait
         return $timestamp->format($format);
     }
 
-    function dateFromDatabase($time, $format = 'Y-m-d'){
+    public static function dateFromDatabase($time, $format = 'Y-m-d'){
         if (empty($time)) {
             return $time;
         }
 
-        return format_time(Carbon::parse($time), $format);
+        return self::formatTime(Carbon::parse($time), $format);
     }
 
     function getFormattedTime($baseTime = null, $format = 'M jS, Y H:i T', $timezone = 'America/New_York'){
@@ -705,14 +709,14 @@ trait DateTimeToolsTrait
 
             // if we are given a timestamp
             if ($this->isValidTimeStamp($baseTime)){
-                $timeNow  = new \DateTime();
+                $timeNow  = new DateTime();
                 $timeNow->setTimestamp($baseTime);
             }else{
-                $timeNow  = new \DateTime($baseTime);
+                $timeNow  = new DateTime($baseTime);
             }
 
             // set timezone
-            $timezone = new \DateTimeZone($timezone);
+            $timezone = new DateTimeZone($timezone);
             $timeNow->setTimezone($timezone);
 
             if ($this->isValidTimeStamp($baseTime)){
@@ -720,20 +724,10 @@ trait DateTimeToolsTrait
             }
 
             return $timeNow->format($format);
-        }catch (Exception $exception){
+        }catch (PhegException $exception){
             echo "Something is wrong with your time" . $exception->getMessage();
         }
         return false;
-    }
-
-
-    function isValidTimeStamp($timestamp)
-    {
-
-        if(strtotime(date('d-m-Y H:i:s',$timestamp)) === (int)$timestamp) {
-            return true;
-        } else return false;
-
     }
 
 }

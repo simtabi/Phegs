@@ -218,11 +218,19 @@ trait DateTimeValidatorsTrait
         return false;
     }
 
-    public function isTimezone($value) {
+    public static function isTimezone($value) {
         if(true === in_array($value, timezone_identifiers_list())){
             return true;
         }
         return false;
     }
 
+    public static function isValidTimeStamp($timestamp)
+    {
+
+        if(strtotime(date('d-m-Y H:i:s', $timestamp)) === (int)$timestamp) {
+            return true;
+        } else return false;
+
+    }
 }

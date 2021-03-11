@@ -2,6 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
+use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait ArrayToolsTrait
@@ -23,7 +24,7 @@ trait ArrayToolsTrait
         foreach ($ArrayData as $modelDatum){
             $data[] = $modelDatum;
         }
-        return TypeConverter::toObject($data);
+        return $data;
     }
 
     public static function generateRandomElementFromArray($array)
@@ -69,7 +70,7 @@ trait ArrayToolsTrait
      * @return array|null|mixed
      */
     public static function getFromArray($key, $data){
-        if (Validators::isEmpty($key)){
+        if (Ensue::isEmpty($key)){
             return $data;
         }
         else{

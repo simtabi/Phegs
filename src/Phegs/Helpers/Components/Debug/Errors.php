@@ -61,7 +61,7 @@ class Errors
     public function setErrors($errors)
     {
         if (empty($this->name)){
-            throw new SnippetsException('Error Name/Path can not be empty');
+            throw new PhegException('Error Name/Path can not be empty');
         }
 
         if (!is_array($this->errors)){
