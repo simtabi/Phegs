@@ -687,20 +687,18 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function formatTime(Carbon $timestamp, $format = 'j M Y H:i'){
+    public static function formatTime(Carbon $timestamp, $format = 'j M Y H:i'): ?string
+    {
         $first = Carbon::create(0000, 0, 0, 00, 00, 00);
         if ($timestamp->lte($first)) {
-            return '';
+            return null;
         }
 
         return $timestamp->format($format);
     }
 
-    public static function dateFromDatabase($time, $format = 'Y-m-d'){
-        if (empty($time)) {
-            return $time;
-        }
-
+    public static function parseDateFromDatabase($time, $format = 'Y-m-d'): ?string
+    {
         return self::formatTime(Carbon::parse($time), $format);
     }
 
