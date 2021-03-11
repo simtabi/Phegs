@@ -728,4 +728,8 @@ trait DateTimeToolsTrait
         return false;
     }
 
+    public static function createCarbonDateTimeObj($dateTimeString): Carbon
+    {
+      return Carbon::parse($dateTimeString);
+    }
 }
