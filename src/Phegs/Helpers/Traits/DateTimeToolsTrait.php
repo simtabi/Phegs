@@ -5,6 +5,8 @@ namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 use DateTimeZone;
 use Moment\Moment;
 use DateTime;
+use Carbon\Carbon;
+use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
 trait DateTimeToolsTrait
 {
@@ -199,7 +201,12 @@ trait DateTimeToolsTrait
         try{
 
             // validate time
-            if(TRUE !== Validators::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
+            if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
+                throw new SnippetsException(self::_e('TIME_VALIDATION_INVALID_SECONDS'));
+            }
+
+            // validate time
+            if(TRUE !== Validator::isInteger($seconds) && TRUE !== Validators::isNumeric($seconds)){
                 throw new SnippetsException(self::_e('TIME_VALIDATION_INVALID_SECONDS'));
             }
 

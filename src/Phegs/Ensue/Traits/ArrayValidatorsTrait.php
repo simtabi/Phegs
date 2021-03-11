@@ -2,6 +2,8 @@
 
 namespace Simtabi\Pheg\Phegs\Ensue\Traits;
 
+use Simtabi\Pheg\Pheg;
+
 trait ArrayValidatorsTrait
 {
 
@@ -62,7 +64,7 @@ trait ArrayValidatorsTrait
         }
 
         // remove empty values
-        $value = true === $filter ? Helpers::filterArray($value) : $value;
+        $value = true === $filter ? Pheg::filterArray($value) : $value;
 
         // if array is not empty
         if ($this->respect->arrayVal()->notEmpty()->validate($value)){
