@@ -80,7 +80,7 @@ class Pheg
         return new Ensue();
     }
 
-    public static function keyGenerator(): KeyGenerator
+    public static function keygen(): KeyGenerator
     {
         return new KeyGenerator();
     }
