@@ -728,8 +728,15 @@ trait DateTimeToolsTrait
         return false;
     }
 
-    public static function createCarbonDateTimeObj($dateTimeString): Carbon
+    public static function createCarbonDateTimeObj(string $dateTimeString): Carbon
     {
       return Carbon::parse($dateTimeString);
     }
+
+    public static function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
+    {
+      return self::createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
+;
+    }
+
 }
