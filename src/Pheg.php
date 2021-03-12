@@ -4,6 +4,7 @@ namespace Simtabi\Pheg;
 
 use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
+use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
@@ -63,17 +64,25 @@ class Pheg
         $this->dataLoader = new Loader();
     }
 
-    public function getSupportData(){
+    public function getSupportData()
+    {
         $data = $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
         return isset($data->support_data) ? $data->support_data : false;
     }
 
-    public static function copyright(){
+    public static function copyright(): Copyright
+    {
         return new Copyright();
     }
 
-    public static function validate(){
+    public static function validate(): Ensue
+    {
         return new Ensue();
+    }
+
+    public static function keyGenerator(): KeyGenerator
+    {
+        return new KeyGenerator();
     }
 
 }
