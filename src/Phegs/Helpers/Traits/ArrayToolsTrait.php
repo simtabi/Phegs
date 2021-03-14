@@ -8,11 +8,6 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait ArrayToolsTrait
 {
 
-    // @todo finish this method
-    public static function getRandomArrayEntries($ModelData, $limit = 1, $getObject = false){
-        return self::generateRandomElementFromArray(self::getPurifiedArray($ModelData));
-    }
-
     public static function getPurifiedArray($ArrayData){
         if (is_object($ArrayData) || is_array($ArrayData)){
             if (count((array)$ArrayData) == 0){
@@ -25,21 +20,6 @@ trait ArrayToolsTrait
             $data[] = $modelDatum;
         }
         return $data;
-    }
-
-    public static function generateRandomElementFromArray($array)
-    {
-        if (is_object($array) || is_array($array)){
-            if (count((array)$array) == 0){
-                return false;
-            }
-        }
-        $array = (array) $array;
-        $data  = [];
-        foreach ($array as $item){
-            $data[] = $item;
-        }
-        return TypeConverter::toObject($data[array_rand($data)]);
     }
 
     public static function getSizableArray($array, $size = 0, $offset = 0){
@@ -296,33 +276,46 @@ trait ArrayToolsTrait
         return $data;
     }
 
-
-
-    /**
-     * @param $array
-     * @return bool|object
-     */
-    public static function getRandomArrayElement($array)
+    public static function getRandomArrayElements($array, int $number = 1)
     {
-        if (is_object($array) || is_array($array)){
-            if (count((array)$array) == 0){
-                return false;
-            }
+        // https://www.schmengler-se.de/en/2015/09/efficiently-draw-random-elements-from-large-php-array/
+        $array       = TypeConverter::fromAnyToArray($array);
+        $totalValues = count($array);
+        $number      = min($number, $totalValues);
+        $picked      = array_fill(0, $number, 0);
+        $backup      = array_fill(0, $number, 0);
+        // partially shuffle the array, and generate unbiased selection simultaneously
+        // this is a variation on fisher-yates-knuth shuffle
+        for ($i = 0; $i < $number; $i++) // O(n) times
+        {
+            $selected              = mt_rand( 0, --$totalValues ); // unbiased sampling N * N-1 * N-2 * .. * N-n+1
+            $value                 = $array[ $selected ];
+            $array[ $selected ]    = $array[ $totalValues ];
+            $array[ $totalValues ] = $value;
+            $backup[ $i ]          = $selected;
+            $picked[ $i ]          = $value;
         }
-        $array = (array) $array;
-        $data  = [];
-        foreach ($array as $item){
-            $data[] = $item;
+        // restore partially shuffled input array from backup
+        // optional step, if needed it can be ignored, e.g $a is passed by value, hence copied
+        for ($i = $number - 1; $i >= 0; $i--) // O(n) times
+        {
+            $selected              = $backup[ $i ];
+            $value                 = $array[ $totalValues ];
+            $array[ $totalValues ] = $array[ $selected ];
+            $array[ $selected ]    = $value;
+            $totalValues++;
         }
-        return $data[array_rand($data)];
+        return $picked;
     }
+
 
     /**
      * @param $ModelData
+     * @param int $number
      * @return bool|object
      */
-    public static function getOneRandomModelEntry($ModelData){
-        return self::getRandomArrayElement(get_clean_model_array($ModelData));
+    public static function getOneRandomModelEntry($ModelData, int $number = 1){
+        return self::getRandomArrayElements(get_clean_model_array($ModelData), $number);
     }
 
     /**
