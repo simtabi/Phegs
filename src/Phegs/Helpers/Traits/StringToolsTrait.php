@@ -398,11 +398,14 @@ trait StringToolsTrait
     /**
      * Generate initials from a name
      *
-     * @param string $string
-     * @return string
+     * @param string|null $string $string
+     * @return bool|string
      */
-    public static function buildStringInitials(string $string) : string
+    public static function buildStringInitials(?string $string): bool|string
     {
+        if (empty($string)) {
+            return false;
+        }
         $words = explode(' ', $string);
         if (count($words) >= 2) {
             return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
