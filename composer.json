@@ -54,7 +54,7 @@
         },
         "files": [
             "helpers/constants.php",
-            "helpers/constants.php"
+            "helpers/form_helpers.php"
         ]
     },
     "extra": {
