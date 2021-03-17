@@ -20,12 +20,13 @@ trait DateTimeToolsTrait
         return $moment->from($start, $startTimeZone);
     }
 
-    public static function getTimezones()
+    public static function getTimezones(): array
     {
 
         $lastRegion = null;
         $timezones  = \DateTimeZone::listIdentifiers();
         $grouped    = [];
+        $formed     = [];
         $flat       = [];
 
         $formatName = function ($name) {
@@ -56,7 +57,8 @@ trait DateTimeToolsTrait
                             'am_pm'    => $currentTime->format('H') > 12 ? $currentTime->format('g:i a') : null,
                         ],
                     ];
-                    $flat[$formatName($timezone)] = $timezone ." (". $getOffset . ")";
+                    $formed[$lastRegion][$formatName($timezone)] = $timezone ." (". $getOffset . ")";
+                    $flat[$formatName($timezone)]   = $timezone ." (". $getOffset . ")";
                     unset($getOffset);
                 }
                 unset($dateTimeZone, $expTimezone);
@@ -66,10 +68,11 @@ trait DateTimeToolsTrait
 
         unset($lastRegion, $timezones);
 
-        return TypeConverter::fromAnyToObject([
+        return [
             'grouped' => $grouped,
+            'formed'  => $formed,
             'flat'    => $flat,
-        ]);
+        ];
     }
 
     public static function formatDisplayOffset($offset, $showUTC = true): ?string
@@ -711,13 +714,12 @@ trait DateTimeToolsTrait
 
     public static function createCarbonDateTimeObj(string $dateTimeString): Carbon
     {
-      return Carbon::parse($dateTimeString);
+        return Carbon::parse($dateTimeString);
     }
 
     public static function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
     {
-      return self::createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
-;
+        return self::createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
     }
 
 }

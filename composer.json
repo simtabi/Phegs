@@ -53,6 +53,7 @@
             "Simtabi\\Pheg\\": "src/"
         },
         "files": [
+            "helpers/constants.php",
             "helpers/constants.php"
         ]
     },
