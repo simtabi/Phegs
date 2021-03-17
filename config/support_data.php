@@ -176,64 +176,64 @@ return [
     'datetime_formats' => [
         'datetime' => [
             'short' => [
-                1 => [
+                'm_d_Y' => [
                     'human' => '03-20-2014 (MM-DD-YYYY)',
                     'blog'  => 'm-d-Y',
                     'sql'   => '%m-%d-%Y',
                 ],
-                2 => [
+                'e_m_Y' => [
                     'human' => '20-03-2014 (D-MM-YYYY)',
                     'blog'  => 'e-m-Y',
                     'sql'   => '%e-%m-%Y',
                 ],
-                3 => [
+                'm_e_y' => [
                     'human' => '20-20-09 (MM-D-YY)',
                     'blog'  => 'm-e-y',
                     'sql'   => '%m-%e-%y',
                 ],
-                4 => [
+                'e_m_y' => [
                     'human' => '20-03-09 (D-MM-YY)',
                     'blog'  => 'e-m-y',
                     'sql'   => '%e-%m-%y',
                 ],
-                5 => [
+                'b_d_Y' => [
                     'human' => 'Mar 20 2014',
                     'blog'  => 'b d Y',
                     'sql'   => '%b %d %Y',
                 ],
             ],
             'long'  => [
-                1 => [
+                'A_d_B_Y_H_M' => [
                     'human' => 'Monday 20 March 2014 07:00',
                     'blog'  => 'A d B, Y H:M',
                     'sql'   => '%A %d %B, %Y %H:%M',
                 ],
-                2 => [
+                'B_d_Y_I_M_p' => [
                     'human' => 'March 20, 2014 10:00 am',
                     'blog'  => 'B d, Y I:M p',
                     'sql'   => '%B %d, %Y %I:%M %p',
                 ],
-                3 => [
+                'd_B_Y_H_M' => [
                     'human' => '20 March 2014 05:00',
                     'blog'  => 'd B Y H:M',
                     'sql'   => '%d %B %Y %H:%M',
                 ],
-                4 => [
+                'A_d_B_Y' => [
                     'human' => 'Tuesday 20 March, 2014',
                     'blog'  => 'A d B, Y',
                     'sql'   => '%A %d %B, %Y',
                 ],
-                5 => [
+                'B_d_Y' => [
                     'human' => 'March 20, 2014',
                     'blog'  => 'B d, Y',
                     'sql'   => '%B %d, %Y',
                 ],
-                6 => [
+                'a_d_B' => [
                     'human' => 'Tue. 20, March',
                     'blog'  => 'a d, B',
                     'sql'   => '%a %d, %B',
                 ],
-                7 => [
+                'Y_m_d_H_i' => [
                     'human' => 'Tue. 20, March',
                     'blog'  => 'Y-m-d H:i',
                     'sql'   => '%Y-%m-%d %H:%i:%s',
@@ -242,59 +242,59 @@ return [
         ],
         'date'     => [
             'short' => [
-                1 => [
+                'm_d_Y' => [
                     'human' => '03-20-2014 (MM-DD-YYYY)',
                     'blog'  => 'm-d-Y',
                     'sql'   => '%m-%d-%Y',
                 ],
-                2 => [
+                'e_m_Y' => [
                     'human' => '20-03-2014 (D-MM-YYYY)',
                     'blog'  => 'e-m-Y',
                     'sql'   => '%e-%m-%Y',
                 ],
-                3 => [
+                'm_e_y' => [
                     'human' => '20-20-09 (MM-D-YY)',
                     'blog'  => 'm-e-y',
                     'sql'   => '%m-%e-%y',
                 ],
-                4 => [
+                'e_m_y' => [
                     'human' => '20-03-09 (D-MM-YY)',
                     'blog'  => 'e-m-y',
                     'sql'   => '%e-%m-%y',
                 ],
-                5 => [
+                'b_d_Y' => [
                     'human' => 'Mar 20 2014',
                     'blog'  => 'b d Y',
                     'sql'   => '%b %d %Y',
                 ],
             ],
             'long'  => [
-                1 => [
+                'A_d_B_Y_H_M' => [
                     'human' => 'Monday 20 March 2014 07:00',
                     'blog'  => 'A d B, Y H:M',
                     'sql'   => '%A %d %B, %Y %H:%M',
                 ],
-                2 => [
+                'B_d_Y_I_M_p' => [
                     'human' => 'March 20, 2014 10:00 am',
                     'blog'  => 'B d, Y I:M p',
                     'sql'   => '%B %d, %Y %I:%M %p',
                 ],
-                3 => [
+                'd_B_Y_H_M' => [
                     'human' => '20 March 2014 05:00',
                     'blog'  => 'd B Y H:M',
                     'sql'   => '%d %B %Y %H:%M',
                 ],
-                4 => [
+                'A_d_B_Y' => [
                     'human' => 'Tuesday 20 March, 2014',
                     'blog'  => 'A d B, Y',
                     'sql'   => '%A %d %B, %Y',
                 ],
-                5 => [
+                'B_d_Y' => [
                     'human' => 'March 20, 2014',
                     'blog'  => 'B d, Y',
                     'sql'   => '%B %d, %Y',
                 ],
-                6 => [
+                'a_d_B' => [
                     'human' => 'Tue. 20, March',
                     'blog'  => 'a d, B',
                     'sql'   => '%a %d, %B',
@@ -303,59 +303,59 @@ return [
         ],
         'time'     => [
             'short' => [
-                1 => [
+                'm_d_Y' => [
                     'human' => '03-20-2014 (MM-DD-YYYY)',
                     'blog'  => 'm-d-Y',
                     'sql'   => '%m-%d-%Y',
                 ],
-                2 => [
+                'e_m_Y' => [
                     'human' => '20-03-2014 (D-MM-YYYY)',
                     'blog'  => 'e-m-Y',
                     'sql'   => '%e-%m-%Y',
                 ],
-                3 => [
+                'm_e_y' => [
                     'human' => '20-20-09 (MM-D-YY)',
                     'blog'  => 'm-e-y',
                     'sql'   => '%m-%e-%y',
                 ],
-                4 => [
+                'e_m_y' => [
                     'human' => '20-03-09 (D-MM-YY)',
                     'blog'  => 'e-m-y',
                     'sql'   => '%e-%m-%y',
                 ],
-                5 => [
+                'b_d_Y' => [
                     'human' => 'Mar 20 2014',
                     'blog'  => 'b d Y',
                     'sql'   => '%b %d %Y',
                 ],
             ],
             'long'  => [
-                1 => [
+                'A_d_B_Y_H_M' => [
                     'human' => 'Monday 20 March 2014 07:00',
                     'blog'  => 'A d B, Y H:M',
                     'sql'   => '%A %d %B, %Y %H:%M',
                 ],
-                2 => [
+                'B_d_Y_I_M_p' => [
                     'human' => 'March 20, 2014 10:00 am',
                     'blog'  => 'B d, Y I:M p',
                     'sql'   => '%B %d, %Y %I:%M %p',
                 ],
-                3 => [
+                'd_B_Y_H_M' => [
                     'human' => '20 March 2014 05:00',
                     'blog'  => 'd B Y H:M',
                     'sql'   => '%d %B %Y %H:%M',
                 ],
-                4 => [
+                'A_d_B_Y' => [
                     'human' => 'Tuesday 20 March, 2014',
                     'blog'  => 'A d B, Y',
                     'sql'   => '%A %d %B, %Y',
                 ],
-                5 => [
+                'B_d_Y' => [
                     'human' => 'March 20, 2014',
                     'blog'  => 'B d, Y',
                     'sql'   => '%B %d, %Y',
                 ],
-                6 => [
+                'a_d_B' => [
                     'human' => 'Tue. 20, March',
                     'blog'  => 'a d, B',
                     'sql'   => '%a %d, %B',
@@ -364,15 +364,16 @@ return [
         ],
         'js'       => [
             'datetime' => [
-                'YYYY-MM-DD HH:mm',
-                'yyyy-mm-dd H:i:s',
+                'YYYY_MM_DD_HH_mm' => 'YYYY-MM-DD HH:mm',
+                'yyyy_mm_dd_H_i_s' => 'yyyy-mm-dd H:i:s',
             ],
             'date'     => [
-                'YYYY-MM-DD',
-                'yyyy-mm-dd',
+                'YYYY_MM_DD' => 'YYYY-MM-DD',
+                'yyyy_mm_dd' => 'yyyy-mm-dd',
             ],
         ],
     ],
+
 
     /**
      * #######################################################################
