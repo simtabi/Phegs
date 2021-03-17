@@ -18,7 +18,6 @@
     "require": {
         "ext-gd": "*",
         "jasny/dotkey": "dev-master",
-        "dflydev/dot-access-data": "^v3.0.0",
         "ichtrojan/laravel-otp": "dev-master",
         "dyrynda/laravel-model-uuid": "^6.4.0",
         "ramsey/uuid": "^4.1.1",

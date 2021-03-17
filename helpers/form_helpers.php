@@ -69,4 +69,3 @@ if (!function_exists('get_form_spd_js_formats')) {
         return $out;
     }
 }
-

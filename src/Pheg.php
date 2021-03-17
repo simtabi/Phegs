@@ -2,6 +2,7 @@
 
 namespace Simtabi\Pheg;
 
+use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
@@ -29,7 +30,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\UIDTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
-use Dflydev\DotAccessData\Data;
+use Jasny\DotKey\DotKey;
 
 
 class Pheg
@@ -61,19 +62,27 @@ class Pheg
         URLToolsTrait;
 
     private Loader $dataLoader;
-    private $supportData;
 
     public function __construct() {
-        $this->dataLoader = new Loader();
-        $this->loadedData = new Data($this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject());
+        $this->dataLoader  = new Loader();
     }
 
     public static function getSupportData($request = null, $subRequest = null)
     {
-        $subRequest = trim($subRequest);
-        $request    = trim($request);
-        $request    = !empty($subRequest) ? $request .'.'. $subRequest : $request;
-        return (new self())->supportData->get($request);
+        $subRequest  = trim($subRequest);
+        $request     = trim($request);
+        $supportData = (new self())->dataLoader
+            ->setFolderName('config')
+            ->setFileNames(['support_data'])
+            ->toObject()->support_data;
+        if (DotKey::on($supportData)->exists($request)) {
+            $subRequest = !empty($subRequest) ? $request .'.'. $subRequest : $request;
+            if (DotKey::on($supportData)->exists($subRequest)) {
+                return DotKey::on($supportData)->get($subRequest);
+            }
+            return DotKey::on($supportData)->get($request);
+        }
+        return $supportData;
     }
 
     public static function copyright(): Copyright
