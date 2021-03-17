@@ -175,33 +175,6 @@ return [
      */
     'datetime_formats' => [
         'datetime' => [
-            'short' => [
-                'm_d_Y' => [
-                    'human' => '03-20-2014 (MM-DD-YYYY)',
-                    'blog'  => 'm-d-Y',
-                    'sql'   => '%m-%d-%Y',
-                ],
-                'e_m_Y' => [
-                    'human' => '20-03-2014 (D-MM-YYYY)',
-                    'blog'  => 'e-m-Y',
-                    'sql'   => '%e-%m-%Y',
-                ],
-                'm_e_y' => [
-                    'human' => '20-20-09 (MM-D-YY)',
-                    'blog'  => 'm-e-y',
-                    'sql'   => '%m-%e-%y',
-                ],
-                'e_m_y' => [
-                    'human' => '20-03-09 (D-MM-YY)',
-                    'blog'  => 'e-m-y',
-                    'sql'   => '%e-%m-%y',
-                ],
-                'b_d_Y' => [
-                    'human' => 'Mar 20 2014',
-                    'blog'  => 'b d Y',
-                    'sql'   => '%b %d %Y',
-                ],
-            ],
             'long'  => [
                 'A_d_B_Y_H_M' => [
                     'human' => 'Monday 20 March 2014 07:00',
@@ -239,8 +212,6 @@ return [
                     'sql'   => '%Y-%m-%d %H:%i:%s',
                 ],
             ],
-        ],
-        'date'     => [
             'short' => [
                 'm_d_Y' => [
                     'human' => '03-20-2014 (MM-DD-YYYY)',
@@ -268,6 +239,8 @@ return [
                     'sql'   => '%b %d %Y',
                 ],
             ],
+        ],
+        'date'     => [
             'long'  => [
                 'A_d_B_Y_H_M' => [
                     'human' => 'Monday 20 March 2014 07:00',
@@ -298,67 +271,64 @@ return [
                     'human' => 'Tue. 20, March',
                     'blog'  => 'a d, B',
                     'sql'   => '%a %d, %B',
+                ],
+            ],
+            'short' => [
+                'm_d_Y' => [
+                    'human' => '03-20-2014 (MM-DD-YYYY)',
+                    'blog'  => 'm-d-Y',
+                    'sql'   => '%m-%d-%Y',
+                ],
+                'e_m_Y' => [
+                    'human' => '20-03-2014 (D-MM-YYYY)',
+                    'blog'  => 'e-m-Y',
+                    'sql'   => '%e-%m-%Y',
+                ],
+                'm_e_y' => [
+                    'human' => '20-20-09 (MM-D-YY)',
+                    'blog'  => 'm-e-y',
+                    'sql'   => '%m-%e-%y',
+                ],
+                'e_m_y' => [
+                    'human' => '20-03-09 (D-MM-YY)',
+                    'blog'  => 'e-m-y',
+                    'sql'   => '%e-%m-%y',
+                ],
+                'b_d_Y' => [
+                    'human' => 'Mar 20 2014',
+                    'blog'  => 'b d Y',
+                    'sql'   => '%b %d %Y',
                 ],
             ],
         ],
         'time'     => [
-            'short' => [
-                'm_d_Y' => [
-                    'human' => '03-20-2014 (MM-DD-YYYY)',
-                    'blog'  => 'm-d-Y',
-                    'sql'   => '%m-%d-%Y',
+            'long'  => [
+                'G_i_s' => [
+                    'human' => '23:03:09 (G:is)',
+                    'blog'  => 'G:i s',
+                    'sql'   => '%G:%i%s',
                 ],
-                'e_m_Y' => [
-                    'human' => '20-03-2014 (D-MM-YYYY)',
-                    'blog'  => 'e-m-Y',
-                    'sql'   => '%e-%m-%Y',
+                'H_i_s_P' => [
+                    'human' => '23:03:09 -04:00 (H:i:s P) + Timezone Offset',
+                    'blog'  => 'H:i:s P',
+                    'sql'   => '%H:%i:%s %P',
                 ],
-                'm_e_y' => [
-                    'human' => '20-20-09 (MM-D-YY)',
-                    'blog'  => 'm-e-y',
-                    'sql'   => '%m-%e-%y',
+                'G_i_s_u' => [
+                    'human' => '23:03:09.705055 (G:i:s.u) + Microseconds',
+                    'blog'  => 'G:i:s.u',
+                    'sql'   => '%G:%i%s.%u',
                 ],
-                'e_m_y' => [
-                    'human' => '20-03-09 (D-MM-YY)',
-                    'blog'  => 'e-m-y',
-                    'sql'   => '%e-%m-%y',
-                ],
-                'b_d_Y' => [
-                    'human' => 'Mar 20 2014',
-                    'blog'  => 'b d Y',
-                    'sql'   => '%b %d %Y',
+                'U' => [
+                    'human' => '1615950189 (U) Unix Epoch',
+                    'blog'  => 'U',
+                    'sql'   => '%U',
                 ],
             ],
-            'long'  => [
-                'A_d_B_Y_H_M' => [
-                    'human' => 'Monday 20 March 2014 07:00',
-                    'blog'  => 'A d B, Y H:M',
-                    'sql'   => '%A %d %B, %Y %H:%M',
-                ],
-                'B_d_Y_I_M_p' => [
-                    'human' => 'March 20, 2014 10:00 am',
-                    'blog'  => 'B d, Y I:M p',
-                    'sql'   => '%B %d, %Y %I:%M %p',
-                ],
-                'd_B_Y_H_M' => [
-                    'human' => '20 March 2014 05:00',
-                    'blog'  => 'd B Y H:M',
-                    'sql'   => '%d %B %Y %H:%M',
-                ],
-                'A_d_B_Y' => [
-                    'human' => 'Tuesday 20 March, 2014',
-                    'blog'  => 'A d B, Y',
-                    'sql'   => '%A %d %B, %Y',
-                ],
-                'B_d_Y' => [
-                    'human' => 'March 20, 2014',
-                    'blog'  => 'B d, Y',
-                    'sql'   => '%B %d, %Y',
-                ],
-                'a_d_B' => [
-                    'human' => 'Tue. 20, March',
-                    'blog'  => 'a d, B',
-                    'sql'   => '%a %d, %B',
+            'short' => [
+                'g_i_a' => [
+                    'human' => '11:03 pm (g:i a)',
+                    'blog'  => 'g:i a',
+                    'sql'   => '%g:%i %a',
                 ],
             ],
         ],
