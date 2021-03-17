@@ -58,15 +58,15 @@ class Pheg
         UIDTools,
         URLToolsTrait;
 
-    private static Loader $dataLoader;
+    private Loader $dataLoader;
 
     public function __construct() {
-        self::$dataLoader = new Loader();
+        $this->dataLoader = new Loader();
     }
 
     public static function getSupportData($request = null, $subRequest = null)
     {
-        $data = self::$dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
+        $data = (new self())->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
         if (!empty($request) && isset($data->support_data->$request)) {
             if (!empty($subRequest) && isset($data->support_data->$request->$subRequest)) {
                 return $data->support_data->$request->$subRequest;

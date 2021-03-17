@@ -174,23 +174,6 @@ return [
      *
      */
     'datetime_formats' => [
-        'long' => [
-            '%A %d %B, %Y %H:%M' => 'Monday 20 March 2014 07:00',
-            '%B %d, %Y %I:%M %p' => 'March 20, 2014 10:00 am',
-            '%d %B %Y %H:%M'     => '20 March 2014 05:00',
-            '%A %d %B, %Y'       => 'Tuesday 20 March, 2014',
-            '%B %d, %Y'          => 'March 20, 2014',
-            '%a %d, %B'          => 'Tue. 20, March'
-        ],
-        'short' => [
-            '%m-%d-%Y' => '03-20-2014 (MM-DD-YYYY)',
-            '%e-%m-%Y' => '20-03-2014 (D-MM-YYYY)',
-            '%m-%e-%y' => '20-20-09 (MM-D-YY)',
-            '%e-%m-%y' => '20-03-09 (D-MM-YY)',
-            '%b %d %Y' => 'Mar 20 2014'
-        ],
-    ],
-    'formats' => [
         'time' => [
             'short' => [
                 1 => [
