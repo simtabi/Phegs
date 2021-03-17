@@ -7,6 +7,18 @@ use Respect\Validation\Validator as Respect;
 class BaseTools
 {
 
+    public const
+        TIMEZONE_AFRICA     = 'africa',
+        TIMEZONE_AMERICA    = 'america',
+        TIMEZONE_ANTARCTICA = 'antarctica',
+        TIMEZONE_ASIA       = 'asia',
+        TIMEZONE_ATLANTIC   = 'atlantic',
+        TIMEZONE_AUSTRALIA  = 'australia',
+        TIMEZONE_EUROPE     = 'europe',
+        TIMEZONE_INDIAN     = 'indian',
+        TIMEZONE_PACIFIC    = 'pacific',
+        TIMEZONE_UTC        = 'utc';
+
     /**
      * Default region for telephone utilities
      */
@@ -15,7 +27,7 @@ class BaseTools
     /**
      * Default language
      */
-   public const DEFAULT_LOCALE = 'en';
+    public const DEFAULT_LOCALE = 'en';
 
 
     /**

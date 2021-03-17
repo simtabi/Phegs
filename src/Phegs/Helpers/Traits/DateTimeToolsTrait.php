@@ -15,12 +15,68 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait DateTimeToolsTrait
 {
 
+
+   public static function getTimezones(): array
+   {
+
+       $lastRegion = null;
+       $timezones  = \DateTimeZone::listIdentifiers();
+       $options    = [];
+
+       $formatName = function ($name) {
+           $name = str_replace('/', '_', $name);
+           $name = str_replace('-', '_', $name);
+           return strtolower(trim($name));
+       };
+
+       if (is_array($timezones)) {
+           foreach ($timezones as $key => $timezone) {
+
+               $dateTimeZone = new DateTimeZone($timezone);
+               $expTimezone  = explode('/', $timezone);
+
+               // Lets sample the time there right now
+               $currentTime  = new DateTime(null, $dateTimeZone);
+               if (isset($expTimezone[0])) {
+                   if ($expTimezone[0] !== $lastRegion) {
+                       $lastRegion = $expTimezone[0];
+                   }
+                   $options[$formatName($lastRegion)][$formatName($timezone)] = [
+                       'timezone' => $timezone,
+                       'offset'   => self::formatDisplayOffset($dateTimeZone->getOffset(new \DateTime())),
+                       'time'     => [
+                           'military' => $currentTime->format('H:i'),
+                           // Americans can't handle 24hrs, so we give them am pm time
+                           'am_pm'    => $currentTime->format('H') > 12 ? $currentTime->format('g:i a') : null,
+                       ],
+                   ];
+               }
+               unset($dateTimeZone, $expTimezone);
+           }
+           unset($key, $timezone);
+       }
+
+       unset($lastRegion, $timezones);
+
+       return $options;
+   }
+
+    private static function formatDisplayOffset($offset): ?string
+    {
+        $initial = new DateTime();
+        $initial->setTimestamp(abs($offset));
+        $hoursFormatted = $initial->format('H:i');
+
+        return "UTC " . ($offset >= 0 ? '+':'-') . $hoursFormatted;
+    }
+
+
     public static function getDateDifference($end, $start, $endTimeZone = 'Africa/Nairobi', $startTimeZone = 'Africa/Nairobi'){
         $moment = new Moment($end, $endTimeZone);
         return $moment->from($start, $startTimeZone);
     }
 
-    public static function listTimezones($request = NULL, $defaultTimeZone = 'Africa/Nairobi', $formReady = true) {
+    public static function listTimezones($request = null, $defaultTimeZone = 'Africa/Nairobi', $formReady = true) {
 
         $output = 'Nothing to show!';
         static $allRegions = [
