@@ -17,6 +17,7 @@
     ],
     "require": {
         "ext-gd": "*",
+        "adbario/php-dot-notation": "^2.2",
         "jasny/dotkey": "dev-master",
         "ichtrojan/laravel-otp": "dev-master",
         "dyrynda/laravel-model-uuid": "^6.4.0",
@@ -53,6 +54,7 @@
             "Simtabi\\Pheg\\": "src/"
         },
         "files": [
+            "helpers/classes.php",
             "helpers/constants.php",
             "helpers/form_helpers.php",
             "helpers/support_data.php"

@@ -2,6 +2,7 @@
 
 namespace Simtabi\Pheg;
 
+use Adbar\Dot;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
@@ -31,6 +32,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\UIDTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Jasny\DotKey\DotKey;
+use Pharaonic\DotArray\DotArray;
 
 
 class Pheg
@@ -62,27 +64,47 @@ class Pheg
         URLToolsTrait;
 
     private Loader $dataLoader;
+    private $supportData;
 
-    public function __construct() {
-        $this->dataLoader  = new Loader();
+    /**
+     * Create class instance
+     *
+     * @version      1.0
+     * @since        1.0
+     */
+    private static $instance;
+
+    public static function getInstance() {
+        if (isset(self::$instance)) {
+            return self::$instance;
+        } else {
+            self::$instance = new static();
+            self::$instance->dataLoader  = new Loader();
+            self::$instance->supportData = new Dot(TypeConverter::fromAnyToArray(self::$instance->dataLoader
+                ->setFolderName('config')
+                ->setFileNames(['support_data'])
+                ->toObject()->support_data));
+            return self::$instance;
+        }
     }
+
+    private function __construct() {}
+    private function __clone() {}
 
     public static function getSupportData($request = null, $subRequest = null)
     {
-        $subRequest  = trim($subRequest);
-        $request     = trim($request);
-        $supportData = (new self())->dataLoader
-            ->setFolderName('config')
-            ->setFileNames(['support_data'])
-            ->toObject()->support_data;
-        if (DotKey::on($supportData)->exists($request)) {
-            $subRequest = !empty($subRequest) ? $request .'.'. $subRequest : $request;
-            if (DotKey::on($supportData)->exists($subRequest)) {
-                return DotKey::on($supportData)->get($subRequest);
+        $request    = trim($request);
+        $subRequest = trim($subRequest);
+        $subRequest = empty($subRequest) ? $request : $request .'.'. $subRequest;
+        $subject    = self::getInstance()->supportData;
+
+        if ($subject->has($request)) {
+            if ($subject->has($subRequest)) {
+                return $subject->get($subRequest);
             }
-            return DotKey::on($supportData)->get($request);
+            return $subject->get($request);
         }
-        return $supportData;
+        return $subject->all();
     }
 
     public static function copyright(): Copyright

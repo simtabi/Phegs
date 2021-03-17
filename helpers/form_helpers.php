@@ -17,7 +17,7 @@ if (!function_exists('get_form_spd_date_formats')) {
         $out  = [];
         if (!empty($data)) {
             foreach ($data as $k => $datum){
-                $out[$k] = $datum->human;
+                $out[$k] = $datum['human'];
             }
             return $out;
         }
@@ -26,13 +26,13 @@ if (!function_exists('get_form_spd_date_formats')) {
 }
 
 if (!function_exists('get_form_spd_datetime_formats')) {
-    function get_form_spd_datetime_formats($request = 'short')
+    function get_form_spd_datetime_formats($request = 'long')
     {
         $data = get_spd_datetime_formats("datetime.$request");
         $out  = [];
         if (!empty($data)) {
             foreach ($data as $k => $datum){
-                $out[$k] = $datum->human;
+                $out[$k] = $datum['human'];
             }
             return $out;
         }
@@ -47,7 +47,7 @@ if (!function_exists('get_form_spd_time_formats')) {
         $out  = [];
         if (!empty($data)) {
             foreach ($data as $k => $datum){
-                $out[$k] = $datum->human;
+                $out[$k] = $datum['human'];
             }
             return $out;
         }
@@ -62,10 +62,11 @@ if (!function_exists('get_form_spd_js_formats')) {
         $out  = [];
         if (!empty($data)) {
             foreach ($data as $k => $datum){
-                $out[$k] = $datum->human;
+                $out[$k] = $datum['human'];
             }
             return $out;
         }
         return $out;
     }
 }
+
