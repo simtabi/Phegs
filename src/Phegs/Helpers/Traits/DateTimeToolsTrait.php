@@ -15,146 +15,71 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait DateTimeToolsTrait
 {
 
-
-   public static function getTimezones(): array
-   {
-
-       $lastRegion = null;
-       $timezones  = \DateTimeZone::listIdentifiers();
-       $options    = [];
-
-       $formatName = function ($name) {
-           $name = str_replace('/', '_', $name);
-           $name = str_replace('-', '_', $name);
-           return strtolower(trim($name));
-       };
-
-       if (is_array($timezones)) {
-           foreach ($timezones as $key => $timezone) {
-
-               $dateTimeZone = new DateTimeZone($timezone);
-               $expTimezone  = explode('/', $timezone);
-
-               // Lets sample the time there right now
-               $currentTime  = new DateTime(null, $dateTimeZone);
-               if (isset($expTimezone[0])) {
-                   if ($expTimezone[0] !== $lastRegion) {
-                       $lastRegion = $expTimezone[0];
-                   }
-                   $options[$formatName($lastRegion)][$formatName($timezone)] = [
-                       'timezone' => $timezone,
-                       'offset'   => self::formatDisplayOffset($dateTimeZone->getOffset(new \DateTime())),
-                       'time'     => [
-                           'military' => $currentTime->format('H:i'),
-                           // Americans can't handle 24hrs, so we give them am pm time
-                           'am_pm'    => $currentTime->format('H') > 12 ? $currentTime->format('g:i a') : null,
-                       ],
-                   ];
-               }
-               unset($dateTimeZone, $expTimezone);
-           }
-           unset($key, $timezone);
-       }
-
-       unset($lastRegion, $timezones);
-
-       return $options;
-   }
-
-    private static function formatDisplayOffset($offset): ?string
-    {
-        $initial = new DateTime();
-        $initial->setTimestamp(abs($offset));
-        $hoursFormatted = $initial->format('H:i');
-
-        return "UTC " . ($offset >= 0 ? '+':'-') . $hoursFormatted;
-    }
-
-
     public static function getDateDifference($end, $start, $endTimeZone = 'Africa/Nairobi', $startTimeZone = 'Africa/Nairobi'){
         $moment = new Moment($end, $endTimeZone);
         return $moment->from($start, $startTimeZone);
     }
 
-    public static function listTimezones($request = null, $defaultTimeZone = 'Africa/Nairobi', $formReady = true) {
+    public static function getTimezones()
+    {
 
-        $output = 'Nothing to show!';
-        static $allRegions = [
-            DateTimeZone::AFRICA,
-            DateTimeZone::AMERICA,
-            DateTimeZone::ANTARCTICA,
-            DateTimeZone::ASIA,
-            DateTimeZone::ATLANTIC,
-            DateTimeZone::AUSTRALIA,
-            DateTimeZone::EUROPE,
-            DateTimeZone::INDIAN,
-            DateTimeZone::PACIFIC,
-        ];
+        $lastRegion = null;
+        $timezones  = \DateTimeZone::listIdentifiers();
+        $grouped    = [];
+        $flat       = [];
 
-        // Makes it easier to create option groups next
-        $list = ['AFRICA', 'AMERICA', 'ANTARCTICA', 'ASIA', 'ATLANTIC', 'AUSTRALIA', 'EUROPE', 'INDIAN', 'PACIFIC'];
+        $formatName = function ($name) {
+            $name = str_replace('/', '_', $name);
+            $name = str_replace('-', '_', $name);
+            return strtolower(trim($name));
+        };
 
-        // Make array holding the regions (continents), they are arrays w/ all their cities
-        $region = array();
-        foreach ($allRegions as $area){
-            array_push ($region, DateTimeZone::listIdentifiers( $area ));
-        }
+        if (is_array($timezones)) {
+            foreach ($timezones as $key => $timezone) {
 
-        $count = count ($region); $i = 0;
+                $dateTimeZone = new DateTimeZone($timezone);
+                $expTimezone  = explode('/', $timezone);
 
-        $default = NULL;
-        if( ($request == NULL) || (empty($request))){
-            $default = $defaultTimeZone;
-        }else{
-            $default = ucfirst($request);
-        }
-
-        // Go through each region one by one, sorting and formatting it's cities
-        while ($i < $count){
-            $chunk = $region[$i];
-
-            // Create the region (continents) option group
-            if ($formReady){
-                $output .= '<optgroup label="'.$list[$i].'">';
-            }else{
-                $output .= '<div class="clearifx timezones'.strtolower(str_replace(' ', '_', $list[$i])).'"> <ul class="timezones-list">';
-            }
-            $timezone_offsets = array();
-            foreach( $chunk as $timezone ){
-                $tz = new DateTimeZone($timezone);
-                $timezone_offsets[$timezone] = $tz->getOffset(new DateTime);
-            }
-            asort ($timezone_offsets);
-            $zoneList = array();
-            foreach ($timezone_offsets as $timezone => $offset){
-                $offset_prefix = $offset < 0 ? '-' : '+';
-                $offset_formatted = gmdate( 'H:i', abs($offset) );
-                $pretty_offset = "UTC ${offset_prefix}${offset_formatted}";
-                $zoneList[$timezone] = "$timezone - ( ${pretty_offset} )";
-            }
-
-            // All the formatting is done, finish and move on to next region
-            foreach ($zoneList as $key => $val){
-                if ($formReady){
-                    $selected = (($key === $default) ?  "selected=selected" : '');
-                    $output .= '<option '.$selected.' value="'.$key.'"> '.$val.' </option>'."\n";
-                }else{
-                    $selected = (($key === $default) ?  'class="selected"' : '');
-                    $output .= '<li '.$selected.' id="'.$key.'"> '.$val.' </li>'."\n";
+                // Lets sample the time there right now
+                $currentTime  = new DateTime(null, $dateTimeZone);
+                if (isset($expTimezone[0])) {
+                    if ($expTimezone[0] !== $lastRegion) {
+                        $lastRegion = $expTimezone[0];
+                    }
+                    $getOffset = self::formatDisplayOffset($dateTimeZone->getOffset(new \DateTime()));
+                    $grouped[$formatName($lastRegion)][$formatName($timezone)] = [
+                        'timezone' => $timezone,
+                        'offset'   => $getOffset,
+                        'time'     => [
+                            'military' => $currentTime->format('H:i'),
+                            // Americans can't handle 24hrs, so we give them am pm time
+                            'am_pm'    => $currentTime->format('H') > 12 ? $currentTime->format('g:i a') : null,
+                        ],
+                    ];
+                    $flat[$formatName($timezone)] = $timezone ." (". $getOffset . ")";
+                    unset($getOffset);
                 }
+                unset($dateTimeZone, $expTimezone);
             }
-
-            if ($formReady){
-                $output .= '</optgroup>';
-            }else{
-                $output .= '</ul> </div>';
-            }
-            ++$i;
+            unset($key, $timezone);
         }
 
-        return $output;
+        unset($lastRegion, $timezones);
+
+        return TypeConverter::fromAnyToObject([
+            'grouped' => $grouped,
+            'flat'    => $flat,
+        ]);
     }
 
+    public static function formatDisplayOffset($offset, $showUTC = true): ?string
+    {
+        $initial = new DateTime();
+        $initial->setTimestamp(abs($offset));
+        $hoursFormatted = $initial->format('H:i');
+
+        return ($showUTC === true ? "UTC " : null) . ($offset >= 0 ? '+':'-') . $hoursFormatted;
+    }
 
     public static function timeNow($timestamp = FALSE, $datetimeFormat = "Y-m-d H:i:s", $datetime = NULL, $timezone = "Africa/Nairobi") {
 
