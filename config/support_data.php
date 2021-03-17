@@ -119,7 +119,7 @@ return [
      * #######################################################################
      *
      */
-    'time' => [
+    'time_options' => [
         'clock' => [
             12 => '12 Hour',
             24 => '24 Hour',
@@ -139,7 +139,7 @@ return [
      * #######################################################################
      *
      */
-    'calendar' => [
+    'calendar_options' => [
         'week' => [
             'sunday'    => 'Sunday',
             'monday'    => 'Monday',
@@ -399,7 +399,7 @@ return [
      * #######################################################################
      *
      */
-    'language' => [
+    'language_options' => [
         'default' => 'en_US',
         'direction' => [
             'ltr' => 'Left to Right',
@@ -415,14 +415,15 @@ return [
      * #######################################################################
      *
      */
-    'link_target' => [
-        '_blank'  =>   'Blank',
-        '_parent' =>   'Parent',
-        '_self'   =>   'Self',
-        '_top' =>   'Top',
+    'link_target_options' => [
+        '_blank'  => 'Blank',
+        '_parent' => 'Parent',
+        '_self'   => 'Self',
+        '_top'    => 'Top',
     ],
 
-    'priority' => [
+    'priority_types' => [
+        'critical'    => 'Critical',
         'very_urgent' => 'Very Urgent',
         'medium'      => 'Medium',
         'normal'      => 'Normal',
@@ -431,14 +432,14 @@ return [
         'low'         => 'Low',
     ],
 
-    'content_status' => [
+    'content_statuses' => [
         'published' => 'Published',
         'archived'  => 'Archived',
-        'review' => 'Review',
+        'review'    => 'Review',
         'draft'     => 'Draft',
     ],
 
-    'progress_status' => [
+    'progress_status_types' => [
         'long_overdue' => 'Long overdue',
         'completed'    => 'Completed',
         'starting'     => 'Starting',
@@ -451,7 +452,7 @@ return [
 
     // Common industry media aspect ratios
     // http:// www.rtings.com/info/what-is-the-aspect-ratio-4-3-16-9-21-9
-    'aspect_ratio' => [
+    'aspect_ratios' => [
         '4:3'  => '4:3  - Standard Definition',
         '16:9' => '16:9 - High Definition',
         '21:9' => '21:9 - Most Movies',
@@ -462,31 +463,31 @@ return [
         'gravatar' => 'Gravatar',
     ],
 
-    'upload_method' => [
+    'upload_methods' => [
         'file' => 'File',
         'link' => 'Link',
     ],
 
-    'gender' => [
+    'genders' => [
         'male'   => 'Male',
         'female' => 'Female',
         'other'  => 'Other',
     ],
 
-    'availability' => [
+    'availability_types' => [
         'not_available' => 'Not Available',
         'available'     => 'Available',
         'maybe'         => 'Maybe',
     ],
 
-    'work_status'              => [
+    'employment_status_types'  => [
         'freelancer' => 'Freelancer',
         'employed'   => 'Employed',
-        'student' => 'Student',
+        'student'    => 'Student',
         'other'      => 'Other',
     ],
 
-    'socialmedia'             => [
+    'socialmedia_providers'             => [
         'twitter'    => 'https://wwww.twitter.com/',
         'facebook'   => 'https://wwww.facebook.com/',
         'linkedin'   => 'https://wwww.linkedin.com/',
@@ -545,6 +546,7 @@ return [
     'media_types' => [
         'video'  =>  'Video',
         'image'  =>  'Image',
+        'audio'  =>  'Audio',
     ],
 
     'article_formats' => [
@@ -553,70 +555,74 @@ return [
         'mixed'   => 'Mixed Content',
         'video'   => 'Video',
         'audio'   => 'Audio',
-        'link' => 'Link',
-        'code' => 'Code',
-        'text' => 'Text',
+        'link'    => 'Link',
+        'code'    => 'Code',
+        'text'    => 'Text',
     ],
 
     'article_types' => [
         'case_study' => "Case Study",
-        'project' => "Project",
-        'article' => "Article",
-        'journal' => "Journal",
-        'gallery' => "Gallery",
-        'company' => "Company",
-        'blog'    => "Blog",
-        'news'    => "News",
-        'vlog'    => "Video Blog (Vlog)",
-        'faq'     => "FAQ",
+        'project'    => "Project",
+        'article'    => "Article",
+        'journal'    => "Journal",
+        'gallery'    => "Gallery",
+        'company'    => "Company",
+        'blog'       => "Blog",
+        'news'       => "News",
+        'vlog'       => "Video Blog (Vlog)",
+        'faq'        => "FAQ",
         'add_custom' => 'Add Custom', // this allows us to create custom types
     ],
 
-    'mailing_protocol' => [
+    'mailing_protocols' => [
         'smtp' => 'SMTP',
         'mail' => 'Mail',
     ],
 
-    'signout' => [
-        'term' =>  'exit',
-        'reasons' => [
-            'session_error' => 'Session Error',
-            'user_request'  => 'User Request',
-            'signin_error'  => 'Signin Error',
-            'session_idle'  => 'Session Idle',
+    'auth_options' => [
+        'signout' => [
+            'term' =>  'exit',
+            'reasons' => [
+                'session_error' => 'Session Error',
+                'user_request'  => 'User Request',
+                'signin_error'  => 'Signin Error',
+                'session_idle'  => 'Session Idle',
+            ],
+        ],
+        'security' =>  [
+            'captcha' => [
+                'key'  => 'captcha',
+                'name' => 'Captcha'
+            ],
+            'flagged' => [
+                'key'  => 'flagged',
+                'name' => 'Flagged'
+            ],
+            'banned' => [
+                'key'  => 'banned',
+                'name' => 'Banned'
+            ],
+            'blocked' => [
+                'key'  => 'blocked',
+                'name' => 'Blocked'
+            ],
+            'throttle' => [
+                'key'  => 'throttle',
+                'name' => 'Throttle'
+            ],
+            'attempt' => [
+                'key'  => 'attempt',
+                'name' => 'Attempt'
+            ],
+            'session_idle' => [
+                'key'  => 'session_idle',
+                'name' => 'Session Idle'
+            ],
+
         ],
     ],
 
-    'security' =>  [
-        'lockdown' =>  [
-            1 => [
-                'type' => 'captcha', // status type
-                'message' => 'security_breach_captcha', // status message
-            ],
-            2 => [
-                'type' => 'flagged', // status type
-                'message' => 'security_breach_flagged', // status message
-            ],
-            3 => [
-                'type' => 'banned', // status type
-                'message' => 'security_breach_banned', // status message
-            ],
-            4 => [
-                'type' => 'blocked', // status type
-                'message' => 'security_breach_blocked', // status message
-            ],
-            5 => [
-                'type' => 'wait', // status type
-                'message' => 'security_breach_waiting', // status message
-            ],
-            6 => [
-                'type' => 'attempt', // status type
-                'message' => 'security_breach_attempt', // status message
-            ],
-        ],
-    ],
-
-    'professions' => [
+    'professions_types' => [
         'public_service' => 'Public Service',
         'transport'      => 'Transport',
         'academia'       => 'Academia',
@@ -628,7 +634,7 @@ return [
         'none'           => 'None',
     ],
 
-    'company_reg_types' => [
+    'company_registration_types' => [
         'LLC' => 'Limited liability company',
         'LLP' => 'Limited Liability Partnership',
         'PMC' => 'Property management company',
@@ -727,7 +733,7 @@ return [
         'none'                                  => 'None',
     ],
 
-    'careers' => [
+    'career_types' => [
         'accountant'                        =>  'Accountant',
         'actuarie'                          =>  'Actuarie',
         'advocate'                          =>  'Advocate',
@@ -796,27 +802,12 @@ return [
         'zoologist'                         =>  'Zoologist',
     ],
 
-    'copyrights' => [
+    'copyrights_texts' => [
         'declaration' => "All brands, logos and trademarks are products and &copy; to their respective owners.",
         'made_in'     => "Made in Nairobi, Kenya",
         'rights'      => "All Rights Reserved",
         'pride'       => "Carefully, Beautifully handcrafted with lot's of LOVE & PRIDE in Nairobi, KENYA",
-    ],
-
-    /**
-     * #######################################################################
-     *
-     * TEMPLATE SETTINGS
-     *
-     * #######################################################################
-     *
-     */
-    'template_zones' => [
-        'frontend',
-        'backend',
-        'generic',
-        'email',
-        'auth',
+        'year'        => date('Y'),
     ],
 
     /**
@@ -845,8 +836,8 @@ return [
 
     // anchor types
     'anchor_types' => [
-        'parent' => 'Parent Link',
-        'article'=> 'Article Link',
+        'parent'  => 'Parent Link',
+        'article' => 'Article Link',
     ],
 
     // possible link to types
@@ -866,41 +857,12 @@ return [
     /**
      * #######################################################################
      *
-     * DEFAULT FILE ASSETS
-     *
-     * #######################################################################
-     *
-     */
-
-    'default_assets' => [
-        'users' => [
-            'avatar' => 'avatar.png',
-            'cover'  => 'profile_cover.png',
-        ],
-        'companies' => [
-            'cover' => 'profile_cover.png',
-            'logo'  => 'logo.png',
-        ],
-        'templates' => [
-            'preview' => 'template_preview.png',
-        ],
-        'content' => [
-            'mugshot' => 'mugshot.png',
-        ],
-        'general' => [
-
-        ],
-    ],
-
-    /**
-     * #######################################################################
-     *
      * SEARCH
      *
      * #######################################################################
      *
      */
-    'search' => [
+    'search_options' => [
         'term' => 'Search',
         'key'  => 'q',
     ],
@@ -913,7 +875,7 @@ return [
      * #######################################################################
      *
      */
-    'ticketing' => [
+    'support_options' => [
         'departments' => [
             'billing'   => 'Billing',
             'sales'     => 'Sales',
