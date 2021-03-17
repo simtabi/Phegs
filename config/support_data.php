@@ -174,128 +174,6 @@ return [
      *
      */
     'datetime_formats' => [
-        'time' => [
-            'short' => [
-                1 => [
-                    'human' => '03-20-2014 (MM-DD-YYYY)',
-                    'blog'  => 'm-d-Y',
-                    'sql'   => '%m-%d-%Y',
-                ],
-                2 => [
-                    'human' => '20-03-2014 (D-MM-YYYY)',
-                    'blog'  => 'e-m-Y',
-                    'sql'   => '%e-%m-%Y',
-                ],
-                3 => [
-                    'human' => '20-20-09 (MM-D-YY)',
-                    'blog'  => 'm-e-y',
-                    'sql'   => '%m-%e-%y',
-                ],
-                4 => [
-                    'human' => '20-03-09 (D-MM-YY)',
-                    'blog'  => 'e-m-y',
-                    'sql'   => '%e-%m-%y',
-                ],
-                5 => [
-                    'human' => 'Mar 20 2014',
-                    'blog'  => 'b d Y',
-                    'sql'   => '%b %d %Y',
-                ],
-            ],
-            'long'  => [
-                1 => [
-                    'human' => 'Monday 20 March 2014 07:00',
-                    'blog'  => 'A d B, Y H:M',
-                    'sql'   => '%A %d %B, %Y %H:%M',
-                ],
-                2 => [
-                    'human' => 'March 20, 2014 10:00 am',
-                    'blog'  => 'B d, Y I:M p',
-                    'sql'   => '%B %d, %Y %I:%M %p',
-                ],
-                3 => [
-                    'human' => '20 March 2014 05:00',
-                    'blog'  => 'd B Y H:M',
-                    'sql'   => '%d %B %Y %H:%M',
-                ],
-                4 => [
-                    'human' => 'Tuesday 20 March, 2014',
-                    'blog'  => 'A d B, Y',
-                    'sql'   => '%A %d %B, %Y',
-                ],
-                5 => [
-                    'human' => 'March 20, 2014',
-                    'blog'  => 'B d, Y',
-                    'sql'   => '%B %d, %Y',
-                ],
-                6 => [
-                    'human' => 'Tue. 20, March',
-                    'blog'  => 'a d, B',
-                    'sql'   => '%a %d, %B',
-                ],
-            ],
-        ],
-        'date' => [
-            'short' => [
-                1 => [
-                    'human' => '03-20-2014 (MM-DD-YYYY)',
-                    'blog'  => 'm-d-Y',
-                    'sql'   => '%m-%d-%Y',
-                ],
-                2 => [
-                    'human' => '20-03-2014 (D-MM-YYYY)',
-                    'blog'  => 'e-m-Y',
-                    'sql'   => '%e-%m-%Y',
-                ],
-                3 => [
-                    'human' => '20-20-09 (MM-D-YY)',
-                    'blog'  => 'm-e-y',
-                    'sql'   => '%m-%e-%y',
-                ],
-                4 => [
-                    'human' => '20-03-09 (D-MM-YY)',
-                    'blog'  => 'e-m-y',
-                    'sql'   => '%e-%m-%y',
-                ],
-                5 => [
-                    'human' => 'Mar 20 2014',
-                    'blog'  => 'b d Y',
-                    'sql'   => '%b %d %Y',
-                ],
-            ],
-            'long'  => [
-                1 => [
-                    'human' => 'Monday 20 March 2014 07:00',
-                    'blog'  => 'A d B, Y H:M',
-                    'sql'   => '%A %d %B, %Y %H:%M',
-                ],
-                2 => [
-                    'human' => 'March 20, 2014 10:00 am',
-                    'blog'  => 'B d, Y I:M p',
-                    'sql'   => '%B %d, %Y %I:%M %p',
-                ],
-                3 => [
-                    'human' => '20 March 2014 05:00',
-                    'blog'  => 'd B Y H:M',
-                    'sql'   => '%d %B %Y %H:%M',
-                ],
-                4 => [
-                    'human' => 'Tuesday 20 March, 2014',
-                    'blog'  => 'A d B, Y',
-                    'sql'   => '%A %d %B, %Y',
-                ],
-                5 => [
-                    'human' => 'March 20, 2014',
-                    'blog'  => 'B d, Y',
-                    'sql'   => '%B %d, %Y',
-                ],
-                6 => [
-                    'human' => 'Tue. 20, March',
-                    'blog'  => 'a d, B',
-                    'sql'   => '%a %d, %B',
-                ],
-            ],
-        ],
         'datetime' => [
             'short' => [
                 1 => [
@@ -362,7 +240,129 @@ return [
                 ],
             ],
         ],
-        'js' => [
+        'date'     => [
+            'short' => [
+                1 => [
+                    'human' => '03-20-2014 (MM-DD-YYYY)',
+                    'blog'  => 'm-d-Y',
+                    'sql'   => '%m-%d-%Y',
+                ],
+                2 => [
+                    'human' => '20-03-2014 (D-MM-YYYY)',
+                    'blog'  => 'e-m-Y',
+                    'sql'   => '%e-%m-%Y',
+                ],
+                3 => [
+                    'human' => '20-20-09 (MM-D-YY)',
+                    'blog'  => 'm-e-y',
+                    'sql'   => '%m-%e-%y',
+                ],
+                4 => [
+                    'human' => '20-03-09 (D-MM-YY)',
+                    'blog'  => 'e-m-y',
+                    'sql'   => '%e-%m-%y',
+                ],
+                5 => [
+                    'human' => 'Mar 20 2014',
+                    'blog'  => 'b d Y',
+                    'sql'   => '%b %d %Y',
+                ],
+            ],
+            'long'  => [
+                1 => [
+                    'human' => 'Monday 20 March 2014 07:00',
+                    'blog'  => 'A d B, Y H:M',
+                    'sql'   => '%A %d %B, %Y %H:%M',
+                ],
+                2 => [
+                    'human' => 'March 20, 2014 10:00 am',
+                    'blog'  => 'B d, Y I:M p',
+                    'sql'   => '%B %d, %Y %I:%M %p',
+                ],
+                3 => [
+                    'human' => '20 March 2014 05:00',
+                    'blog'  => 'd B Y H:M',
+                    'sql'   => '%d %B %Y %H:%M',
+                ],
+                4 => [
+                    'human' => 'Tuesday 20 March, 2014',
+                    'blog'  => 'A d B, Y',
+                    'sql'   => '%A %d %B, %Y',
+                ],
+                5 => [
+                    'human' => 'March 20, 2014',
+                    'blog'  => 'B d, Y',
+                    'sql'   => '%B %d, %Y',
+                ],
+                6 => [
+                    'human' => 'Tue. 20, March',
+                    'blog'  => 'a d, B',
+                    'sql'   => '%a %d, %B',
+                ],
+            ],
+        ],
+        'time'     => [
+            'short' => [
+                1 => [
+                    'human' => '03-20-2014 (MM-DD-YYYY)',
+                    'blog'  => 'm-d-Y',
+                    'sql'   => '%m-%d-%Y',
+                ],
+                2 => [
+                    'human' => '20-03-2014 (D-MM-YYYY)',
+                    'blog'  => 'e-m-Y',
+                    'sql'   => '%e-%m-%Y',
+                ],
+                3 => [
+                    'human' => '20-20-09 (MM-D-YY)',
+                    'blog'  => 'm-e-y',
+                    'sql'   => '%m-%e-%y',
+                ],
+                4 => [
+                    'human' => '20-03-09 (D-MM-YY)',
+                    'blog'  => 'e-m-y',
+                    'sql'   => '%e-%m-%y',
+                ],
+                5 => [
+                    'human' => 'Mar 20 2014',
+                    'blog'  => 'b d Y',
+                    'sql'   => '%b %d %Y',
+                ],
+            ],
+            'long'  => [
+                1 => [
+                    'human' => 'Monday 20 March 2014 07:00',
+                    'blog'  => 'A d B, Y H:M',
+                    'sql'   => '%A %d %B, %Y %H:%M',
+                ],
+                2 => [
+                    'human' => 'March 20, 2014 10:00 am',
+                    'blog'  => 'B d, Y I:M p',
+                    'sql'   => '%B %d, %Y %I:%M %p',
+                ],
+                3 => [
+                    'human' => '20 March 2014 05:00',
+                    'blog'  => 'd B Y H:M',
+                    'sql'   => '%d %B %Y %H:%M',
+                ],
+                4 => [
+                    'human' => 'Tuesday 20 March, 2014',
+                    'blog'  => 'A d B, Y',
+                    'sql'   => '%A %d %B, %Y',
+                ],
+                5 => [
+                    'human' => 'March 20, 2014',
+                    'blog'  => 'B d, Y',
+                    'sql'   => '%B %d, %Y',
+                ],
+                6 => [
+                    'human' => 'Tue. 20, March',
+                    'blog'  => 'a d, B',
+                    'sql'   => '%a %d, %B',
+                ],
+            ],
+        ],
+        'js'       => [
             'datetime' => [
                 'YYYY-MM-DD HH:mm',
                 'yyyy-mm-dd H:i:s',

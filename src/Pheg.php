@@ -29,6 +29,8 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\UIDTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
+use Dflydev\DotAccessData\Data;
+
 
 class Pheg
 {
@@ -59,23 +61,19 @@ class Pheg
         URLToolsTrait;
 
     private Loader $dataLoader;
+    private $supportData;
 
     public function __construct() {
         $this->dataLoader = new Loader();
+        $this->loadedData = new Data($this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject());
     }
 
     public static function getSupportData($request = null, $subRequest = null)
     {
-        $data = (new self())->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
-        if (!empty($request) && isset($data->support_data->$request)) {
-            if (!empty($subRequest) && isset($data->support_data->$request->$subRequest)) {
-                return $data->support_data->$request->$subRequest;
-            }else{
-                return $data->support_data->$request;
-            }
-        }else{
-            return isset($data->support_data) ? $data->support_data : null;
-        }
+        $subRequest = trim($subRequest);
+        $request    = trim($request);
+        $request    = !empty($subRequest) ? $request .'.'. $subRequest : $request;
+        return (new self())->supportData->get($request);
     }
 
     public static function copyright(): Copyright
