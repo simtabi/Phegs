@@ -29,6 +29,7 @@ public/vendor/core
 _ide_helper.php
 package-lock.json
 yarn.lock
+composer.lock
 /.sass-cache
 
 public/mix-manifest.json
