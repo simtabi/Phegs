@@ -64,11 +64,15 @@ class Pheg
         self::$dataLoader = new Loader();
     }
 
-    public static function getSupportData($request = null)
+    public static function getSupportData($request = null, $subRequest = null)
     {
         $data = self::$dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
         if (!empty($request) && isset($data->support_data->$request)) {
-            return $data->support_data->$request;
+            if (!empty($subRequest) && isset($data->support_data->$request->$subRequest)) {
+                return $data->support_data->$request->$subRequest;
+            }else{
+                return $data->support_data->$request;
+            }
         }else{
             return isset($data->support_data) ? $data->support_data : null;
         }
