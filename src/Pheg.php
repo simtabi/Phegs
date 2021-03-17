@@ -64,10 +64,14 @@ class Pheg
         $this->dataLoader = new Loader();
     }
 
-    public function getSupportData()
+    public function getSupportData($request = null)
     {
         $data = $this->dataLoader->setFolderName('config')->setFileNames(['support_data'])->toObject();
-        return isset($data->support_data) ? $data->support_data : false;
+        if (!empty($request) && isset($data->support_data->$request)) {
+            return $data->support_data->$request;
+        }else{
+            return isset($data->support_data) ? $data->support_data : false;
+        }
     }
 
     public static function copyright(): Copyright
