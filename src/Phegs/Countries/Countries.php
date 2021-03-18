@@ -26,17 +26,13 @@ class Countries
         LanguagesTrait,
         ValidatorsTrait;
 
+    private string $basePath  = '';
     private bool   $asObject  = false;
     private array  $keys      = [];
     private Dot    $data;
     private array  $raw       = [];
     private array  $loaded    = [];
-    private array  $loadFrom  = [
-        'countries' => BaseTools::PHEG_DIR_PATH.'vendor/annexare/countries-list/data',
-        'currency'  => [
-            BaseTools::PHEG_DIR_PATH.'data/currency'
-        ],
-    ];
+    private array  $loadFrom  = [];
 
     /**
      * Create class instance
@@ -46,12 +42,23 @@ class Countries
      */
     private static ?self $instance;
 
-    public static function getInstance() {
+    public static function getInstance(string $basePath = '') {
         if (isset(self::$instance) && !is_null(self::$instance)) {
             return self::$instance;
         } else {
 
             self::$instance = new static();
+            if (!empty($basePath) && is_string($basePath)) {
+                self::$instance->basePath = $basePath;
+            }
+
+            self::$instance->setLoadFrom([
+                'countries' => self::$instance->basePath.'/annexare/countries-list/data',
+                'currency'  => [
+                    BaseTools::PHEG_DIR_PATH.'/data/currency'
+                ],
+            ]);
+            
             self::$instance->initialize();
 
             return self::$instance;
@@ -229,6 +236,5 @@ class Countries
     public function getAll(){
         return $this->isAsObject() ? TypeConverter::fromAnyToObject($this->data->all()) : $this->data->all();
     }
-
 
 }

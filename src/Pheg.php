@@ -3,6 +3,7 @@
 namespace Simtabi\Pheg;
 
 use Adbar\Dot;
+use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
@@ -64,7 +65,8 @@ class Pheg
         UIDTools,
         URLToolsTrait;
 
-    private Loader $dataLoader;
+    private Loader    $dataLoader;
+    private Countries $countries;
     private $supportData;
 
     /**
@@ -81,10 +83,18 @@ class Pheg
         } else {
             self::$instance = new static();
             self::$instance->dataLoader  = new Loader();
-            self::$instance->supportData = new Dot(TypeConverter::fromAnyToArray(self::$instance->dataLoader
-                ->setFolderName('config')
-                ->setFileNames(['support_data'])
-                ->toObject()->support_data));
+            self::$instance->supportData = new Dot(
+                TypeConverter::fromAnyToArray(
+                    self::$instance->dataLoader
+                        ->setFolderName('config')
+                        ->setFileNames(['support_data'])
+                        ->toObject()->support_data
+                )
+            );
+
+            $path = BaseTools::getRootPath(4);
+            self::$instance->countries = (Countries::getInstance($path));
+
             return self::$instance;
         }
     }
@@ -92,7 +102,7 @@ class Pheg
     private function __construct() {}
     private function __clone() {}
 
-    public static function getSupportData($request = null, $subRequest = null)
+    public function getSupportData($request = null, $subRequest = null)
     {
         $request    = trim($request);
         $subRequest = trim($subRequest);
@@ -108,24 +118,22 @@ class Pheg
         return $subject->all();
     }
 
-    public static function copyright(): Copyright
+    public function copyright(): Copyright
     {
         return new Copyright();
     }
 
-    public static function validate(): Ensue
+    public function validate(): Ensue
     {
         return new Ensue();
     }
 
-    public static function keygen(): KeyGenerator
+    public function keygen(): KeyGenerator
     {
         return new KeyGenerator();
     }
 
-    public static function countries(): ?Countries
-    {
-        return Countries::getInstance();
+    public function countries(){
+        return $this->countries;
     }
-
 }
