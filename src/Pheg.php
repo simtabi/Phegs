@@ -3,6 +3,7 @@
 namespace Simtabi\Pheg;
 
 use Adbar\Dot;
+use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
@@ -120,6 +121,11 @@ class Pheg
     public static function keygen(): KeyGenerator
     {
         return new KeyGenerator();
+    }
+
+    public static function countries(): ?Countries
+    {
+        return Countries::getInstance();
     }
 
 }
