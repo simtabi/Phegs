@@ -5,6 +5,7 @@ namespace Simtabi\Pheg\Phegs\Countries;
 use Simtabi\Pheg\Phegs\Countries\Traits\ContinentsTrait;
 use Simtabi\Pheg\Phegs\Countries\Traits\CountriesTrait;
 use Simtabi\Pheg\Phegs\Countries\Traits\CurrenciesTrait;
+use Simtabi\Pheg\Phegs\Countries\Traits\ISOCodesTrait;
 use Simtabi\Pheg\Phegs\Countries\Traits\LanguagesTrait;
 use Adbar\Dot;
 use DirectoryIterator;
@@ -21,6 +22,7 @@ class Countries
         ContinentsTrait,
         CountriesTrait,
         CurrenciesTrait,
+        ISOCodesTrait,
         LanguagesTrait,
         ValidatorsTrait;
 

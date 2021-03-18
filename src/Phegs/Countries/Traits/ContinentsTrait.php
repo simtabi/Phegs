@@ -1,6 +1,7 @@
 <?php
 
 namespace Simtabi\Pheg\Phegs\Countries\Traits;
+use DateTimeZone;
 
 trait ContinentsTrait
 {

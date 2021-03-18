@@ -8,6 +8,38 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait ArrayToolsTrait
 {
 
+    /**
+     * Get an item from attributes array using "dot" notation.
+     *
+     * @param string $key
+     * @param $data
+     * @param mixed $default
+     *
+     * @return mixed
+     */
+    public function getFromArray(string $key, $data, $default = null)
+    {
+        $data = TypeConverter::fromAnyToArray($data);
+
+        if (is_null($key)) {
+            return $data;
+        }
+
+        if (array_key_exists($key, $data)) {
+            return $data[$key];
+        }
+
+        foreach (explode('.', $key) as $segment) {
+            if (is_array($data) && array_key_exists($segment, $data)) {
+                $data = $data[$segment];
+            } else {
+                return $default;
+            }
+        }
+
+        return $data;
+    }
+
     public static function getPurifiedArray($ArrayData){
         if (is_object($ArrayData) || is_array($ArrayData)){
             if (count((array)$ArrayData) == 0){
@@ -44,29 +76,7 @@ trait ArrayToolsTrait
 
     }
 
-    /**
-     * @param $key
-     * @param $data
-     * @return array|null|mixed
-     */
-    public static function getFromArray($key, $data){
-        if (Ensue::isEmpty($key)){
-            return $data;
-        }
-        else{
-            $parsed = explode('.', $key);
-            $data   = is_object($data) ? TypeConverter::toArray($data) : $data;
-            while ($parsed) {
-                $next = array_shift($parsed);
-                if (isset($data[$next])) {
-                    $data = $data[$next];
-                } else {
-                    return null;
-                }
-            }
-            return $data;
-        }
-    }
+
 
     public static function putToArray($key, $value, $data){
         $parsed =  explode('.', $key);

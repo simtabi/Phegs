@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Countries\Traits;
 
-use Adbar\Dot;
+use DateTimeZone;
 
 trait CountriesTrait
 {
@@ -126,6 +126,18 @@ trait CountriesTrait
 
     public function getCountryIso2ToIso3(){
         return $this->getCountriesData('countries2to3');
+    }
+
+    /**
+     * Get the timezones.
+     *
+     * @return array|null
+     */
+    public function getTimezones()
+    {
+        $code = $this->isValidIso3CountryCode() ? $this->getCountryIsoReversed() : $this->countryCode;
+
+        return DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $code);
     }
 
 }

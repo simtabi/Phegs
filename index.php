@@ -9,6 +9,6 @@ require_once 'vendor/autoload.php';
 
 $t = \Simtabi\Pheg\Phegs\Countries\Countries::getInstance();
 
-//dd($t->setAsObject(false)->setCurrencyCode('kes')->getCurrencyInfo());
+dd($t->getAllLanguages());
 dd($t->setAsObject(false)->setCurrencyCode('kes')->getCurrenciesList());
 $t->getAll();
