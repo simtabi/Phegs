@@ -4,6 +4,7 @@ namespace Simtabi\Pheg;
 
 use Adbar\Dot;
 use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\Support\Data;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
@@ -36,7 +37,6 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Jasny\DotKey\DotKey;
 use Pharaonic\DotArray\DotArray;
 
-
 class Pheg
 {
 
@@ -65,9 +65,6 @@ class Pheg
         UIDTools,
         URLToolsTrait;
 
-    private Loader $dataLoader;
-    private $supportData;
-
     /**
      * Create class instance
      *
@@ -81,38 +78,12 @@ class Pheg
             return self::$instance;
         } else {
             self::$instance = new static();
-            self::$instance->dataLoader  = new Loader();
-            self::$instance->supportData = new Dot(
-                TypeConverter::fromAnyToArray(
-                    self::$instance->dataLoader
-                        ->setFolderName('config')
-                        ->setFileNames(['support_data'])
-                        ->toObject()->support_data
-                )
-            );
-
             return self::$instance;
         }
     }
 
     private function __construct() {}
     private function __clone() {}
-
-    public function getSupportData($request = null, $subRequest = null)
-    {
-        $request    = trim($request);
-        $subRequest = trim($subRequest);
-        $subRequest = empty($subRequest) ? $request : $request .'.'. $subRequest;
-        $subject    = self::getInstance()->supportData;
-
-        if ($subject->has($request)) {
-            if ($subject->has($subRequest)) {
-                return $subject->get($subRequest);
-            }
-            return $subject->get($request);
-        }
-        return $subject->all();
-    }
 
     public function copyright(): Copyright
     {
@@ -132,5 +103,10 @@ class Pheg
     public function countries(): ?Countries
     {
         return (Countries::getInstance(BaseTools::getRootPath(4)));
+    }
+
+    public function data()
+    {
+        return new Data(self::$instance);
     }
 }

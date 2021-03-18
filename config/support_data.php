@@ -576,7 +576,7 @@ return [
         ],
     ],
 
-    'professions_types' => [
+    'profession_types' => [
         'public_service' => 'Public Service',
         'transport'      => 'Transport',
         'academia'       => 'Academia',
@@ -756,7 +756,7 @@ return [
         'zoologist'                         =>  'Zoologist',
     ],
 
-    'copyrights_texts' => [
+    'copyright_texts' => [
         'declaration' => "All brands, logos and trademarks are products and &copy; to their respective owners.",
         'made_in'     => "Made in Nairobi, Kenya",
         'rights'      => "All Rights Reserved",
@@ -829,7 +829,7 @@ return [
      * #######################################################################
      *
      */
-    'support_options' => [
+    'helpdesk_options' => [
         'departments' => [
             'billing'   => 'Billing',
             'sales'     => 'Sales',
