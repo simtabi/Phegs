@@ -75,7 +75,7 @@ class Pheg
     private static $instance;
 
     public static function getInstance() {
-        if (isset(self::$instance)) {
+        if (isset(self::$instance) && !is_null(self::$instance)) {
             return self::$instance;
         } else {
             self::$instance = new static();

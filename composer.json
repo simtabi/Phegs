@@ -44,10 +44,15 @@
         "gpslab/base64uid": "dev-master",
         "annexare/countries-list": "^2.6.1",
         "ezyang/htmlpurifier": "^v4.13.0",
-        "fightbulc/moment": "dev-master"
+        "fightbulc/moment": "dev-master",
+        "maxakawizard/json-collection-parser": "dev-master",
+        "nahid/jsonq": "dev-master",
+        "nahid/qarray": "^2.0.0",
+        "cerbero/json-objects": "^1.2.0",
+        "josantonius/json": "*@dev"
     },
     "require-dev": {
-
+        "symfony/var-dumper": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -63,7 +68,3 @@
     "extra": {
     }
 }
-
-
-
-

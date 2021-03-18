@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Simtabi\Pheg\Base\Services;
-
 
 class Translator
 {

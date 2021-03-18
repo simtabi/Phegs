@@ -19,6 +19,7 @@ class BaseTools
         TIMEZONE_PACIFIC    = 'pacific',
         TIMEZONE_UTC        = 'utc';
 
+
     /**
      * Default region for telephone utilities
      */
@@ -28,6 +29,8 @@ class BaseTools
      * Default language
      */
     public const DEFAULT_LOCALE = 'en';
+
+    public const PHEG_DIR_PATH = __DIR__.'/../../';
 
 
     /**
