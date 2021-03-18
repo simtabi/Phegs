@@ -65,8 +65,7 @@ class Pheg
         UIDTools,
         URLToolsTrait;
 
-    private Loader    $dataLoader;
-    private Countries $countries;
+    private Loader $dataLoader;
     private $supportData;
 
     /**
@@ -91,9 +90,6 @@ class Pheg
                         ->toObject()->support_data
                 )
             );
-
-            $path = BaseTools::getRootPath(4);
-            self::$instance->countries = (Countries::getInstance($path));
 
             return self::$instance;
         }
@@ -133,7 +129,8 @@ class Pheg
         return new KeyGenerator();
     }
 
-    public function countries(){
-        return $this->countries;
+    public function countries(): ?Countries
+    {
+        return (Countries::getInstance(BaseTools::getRootPath(4)));
     }
 }
