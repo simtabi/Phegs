@@ -698,7 +698,7 @@ trait DateTimeToolsTrait
         return $this->createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
     }
 
-    public function parseSqlDateTimeFormat($dateTime, $forSql = true, $readFormat = "Y-m-d H:i:s", $storeFormat = "Y-m-d"){
+    public static function parseSqlDateTimeFormat($dateTime, $forSql = true, $readFormat = "Y-m-d H:i:s", $storeFormat = "Y-m-d"){
         $dateTime = str_replace( "/", "-", trim($dateTime));
         $dateTime = str_replace( ",", "-", $dateTime);
         $dateTime = str_replace( ".", "-", $dateTime);
