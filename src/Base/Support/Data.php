@@ -83,7 +83,7 @@ class Data
     }
 
     /**
-     * @param string $default
+     * @param string|null $default
      * @return self
      */
     public function setDefault(?string $default): self
@@ -95,14 +95,16 @@ class Data
     public function getData()
     {
 
+        $data = [];
         if ($this->data->has($this->key)) {
-            return $this->data->get($this->key);
+            $data = $this->data->get($this->key);
         }
 
         if (!empty($this->default) && (is_array($data) && count($data) > 0)) {
-            return $this->pheg->getFromArray($this->default, $data);
+            $data = $this->pheg->getFromArray($this->default, $data);
         }
 
+        return $data;
     }
 
 }
