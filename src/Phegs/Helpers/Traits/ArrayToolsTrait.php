@@ -11,13 +11,13 @@ trait ArrayToolsTrait
     /**
      * Get an item from attributes array using "dot" notation.
      *
-     * @param string $key
+     * @param string|null $key
      * @param $data
      * @param mixed $default
      *
      * @return mixed
      */
-    public function getFromArray(string $key, $data, $default = null)
+    public function getFromArray(?string $key, $data, $default = null)
     {
         $data = TypeConverter::fromAnyToArray($data);
 

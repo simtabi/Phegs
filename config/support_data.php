@@ -378,7 +378,6 @@ return [
 
     'priority_types' => [
         'critical'    => 'Critical',
-        'very_urgent' => 'Very Urgent',
         'medium'      => 'Medium',
         'normal'      => 'Normal',
         'urgent'      => 'Urgent',
