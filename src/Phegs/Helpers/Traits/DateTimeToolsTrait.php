@@ -47,7 +47,7 @@ trait DateTimeToolsTrait
                     if ($expTimezone[0] !== $lastRegion) {
                         $lastRegion = $expTimezone[0];
                     }
-                    $getOffset = self::formatDisplayOffset($dateTimeZone->getOffset(new \DateTime()));
+                    $getOffset = $this->formatDisplayOffset($dateTimeZone->getOffset(new \DateTime()));
                     $grouped[$formatName($lastRegion)][$formatName($timezone)] = [
                         'timezone' => $timezone,
                         'offset'   => $getOffset,
@@ -84,30 +84,6 @@ trait DateTimeToolsTrait
         return ($showUTC === true ? "UTC " : null) . ($offset >= 0 ? '+':'-') . $hoursFormatted;
     }
 
-    public function timeNow($timestamp = FALSE, $datetimeFormat = "Y-m-d H:i:s", $datetime = NULL, $timezone = "Africa/Nairobi") {
-
-        $objDateTime = new DateTime();
-        $objDateTime->setTimezone(new DateTimeZone($timezone));
-
-        if (!empty($datetime)) {
-            $floatUnixTime = (is_string($datetime)) ? strtotime($datetime) : $datetime;
-            if (method_exists($objDateTime, "setTimestamp")) {
-                $objDateTime->setTimestamp($floatUnixTime);
-            }
-            else {
-                $arrDate = getdate($floatUnixTime);
-                $objDateTime->setDate($arrDate['year'],  $arrDate['mon'],     $arrDate['day']);
-                $objDateTime->setTime($arrDate['hours'], $arrDate['minutes'], $arrDate['seconds']);
-            }
-        }
-
-        if(TRUE === $timestamp){
-            // if get timestamp
-            return strtotime($objDateTime->format($datetimeFormat));
-        }else{
-            return $objDateTime->format($datetimeFormat);
-        }
-    }
 
 
     public function formatToSeconds($seconds, $timeFormat = 'hour', $toTime = false){
@@ -148,7 +124,7 @@ trait DateTimeToolsTrait
 
         // if convert seconds to time
         if($toTime){
-            $converted = self::secondsToTime($inSeconds)->data->string;
+            $converted = $this->secondsToTime($inSeconds)->data->string;
         }else{
             $converted = $inSeconds;
         }
@@ -168,7 +144,7 @@ trait DateTimeToolsTrait
         if($format){
 
             // return formatted values from array
-            $data = self::formatToSeconds($seconds);
+            $data = $this->formatToSeconds($seconds);
             return $data['raw_time'] . $data['format'];
 
         }else{
@@ -253,7 +229,7 @@ trait DateTimeToolsTrait
             }
 
             if(empty($default_time)){
-                $current_time = self::timeNow();
+                $current_time = $this->getCurrentTime();
             }else{
                 $current_time = $default_time;
             }
@@ -388,9 +364,9 @@ trait DateTimeToolsTrait
 
     public function dateTimeDifference($endTime, $startTime, $twoView = false){
         $fmt = 'Y-m-d H:i:s';
-        $str = self::simpleTime($startTime, $fmt);
+        $str = $this->simpleTime($startTime, $fmt);
         $now = new DateTime($str);
-        $end = self::simpleTime($endTime, $fmt);
+        $end = $this->simpleTime($endTime, $fmt);
         $ref = new DateTime($end);
         $diff = $now->diff($ref);
 
@@ -623,7 +599,7 @@ trait DateTimeToolsTrait
 
         $date = strtotime($date);
         if(empty($defaultDate)){
-            $default = strtotime(self::timeNow());
+            $default = strtotime($this->getCurrentTime());
         }else{
             $default = strtotime($defaultDate);
         }
@@ -638,7 +614,7 @@ trait DateTimeToolsTrait
 
     public function evaluateCertainTime($dateTimeStr, $operand = '>', $datetimeFormat = "Y-m-d H:i:s")
     {
-        $timeNow = new DateTime(self::timeNow($timestamp = FALSE, $datetimeFormat));
+        $timeNow = new DateTime($this->getCurrentTime($timestamp = FALSE, $datetimeFormat));
         $timeAgo = new DateTime($dateTimeStr);
 
         switch (strtolower($operand))
@@ -683,7 +659,7 @@ trait DateTimeToolsTrait
 
     public function parseDateFromDatabase($time, $format = 'Y-m-d'): ?string
     {
-        return self::formatTime(Carbon::parse($time), $format);
+        return $this->formatTime(Carbon::parse($time), $format);
     }
 
     function getFormattedTime($baseTime = null, $format = 'M jS, Y H:i T', $timezone = 'America/New_York'){
@@ -719,7 +695,17 @@ trait DateTimeToolsTrait
 
     public function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
     {
-        return self::createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
+        return $this->createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
     }
 
+    public function parseSqlDateTimeFormat($dateTime, $forSql = true, $readFormat = "Y-m-d H:i:s", $storeFormat = "Y-m-d"){
+        $dateTime = str_replace( "/", "-", trim($dateTime));
+        $dateTime = str_replace( ",", "-", $dateTime);
+        $dateTime = str_replace( ".", "-", $dateTime);
+        if ($forSql) {
+            return date((!empty($storeFormat) ? $storeFormat : "Y-m-d"), strtotime( $dateTime ) );
+        }
+        return date((!empty($readFormat) ? $readFormat : "Y-m-d H:i:s"), strtotime($dateTime));
+    }
+    
 }
