@@ -15,12 +15,12 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait DateTimeToolsTrait
 {
 
-    public static function getDateDifference($end, $start, $endTimeZone = 'Africa/Nairobi', $startTimeZone = 'Africa/Nairobi'){
+    public function getDateDifference($end, $start, $endTimeZone = 'Africa/Nairobi', $startTimeZone = 'Africa/Nairobi'){
         $moment = new Moment($end, $endTimeZone);
         return $moment->from($start, $startTimeZone);
     }
 
-    public static function getTimezones(): array
+    public function getTimezones(): array
     {
 
         $lastRegion = null;
@@ -75,7 +75,7 @@ trait DateTimeToolsTrait
         ];
     }
 
-    public static function formatDisplayOffset($offset, $showUTC = true): ?string
+    public function formatDisplayOffset($offset, $showUTC = true): ?string
     {
         $initial = new DateTime();
         $initial->setTimestamp(abs($offset));
@@ -84,7 +84,7 @@ trait DateTimeToolsTrait
         return ($showUTC === true ? "UTC " : null) . ($offset >= 0 ? '+':'-') . $hoursFormatted;
     }
 
-    public static function timeNow($timestamp = FALSE, $datetimeFormat = "Y-m-d H:i:s", $datetime = NULL, $timezone = "Africa/Nairobi") {
+    public function timeNow($timestamp = FALSE, $datetimeFormat = "Y-m-d H:i:s", $datetime = NULL, $timezone = "Africa/Nairobi") {
 
         $objDateTime = new DateTime();
         $objDateTime->setTimezone(new DateTimeZone($timezone));
@@ -110,7 +110,7 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function formatToSeconds($seconds, $timeFormat = 'hour', $toTime = false){
+    public function formatToSeconds($seconds, $timeFormat = 'hour', $toTime = false){
 
         $timeFormat = strtolower($timeFormat);
         $str        = rtrim($timeFormat, "s");
@@ -163,7 +163,7 @@ trait DateTimeToolsTrait
 
     }
 
-    public static function formattedSeconds($seconds, $format = FALSE){
+    public function formattedSeconds($seconds, $format = FALSE){
 
         if($format){
 
@@ -178,7 +178,7 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function secondsToTime($seconds){
+    public function secondsToTime($seconds){
 
         // output variables
         $status = FALSE;
@@ -235,7 +235,7 @@ trait DateTimeToolsTrait
 
     }
 
-    public static function addToTime($time, $format = 'minute', $default_time = NULL, $date_format = 'Y-m-d H:i:s'){
+    public function addToTime($time, $format = 'minute', $default_time = NULL, $date_format = 'Y-m-d H:i:s'){
 
         // output variables
         $status = FALSE;
@@ -279,7 +279,7 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function simpleTime($dateTime, $outputFormat = 'M j, Y g:i a', $defaultFormat = 'Y-m-d H:i:s', $timezone = "Africa/Nairobi"){
+    public function simpleTime($dateTime, $outputFormat = 'M j, Y g:i a', $defaultFormat = 'Y-m-d H:i:s', $timezone = "Africa/Nairobi"){
 
         // set default fallback format
         $defaultFormat = empty($defaultFormat) ? 'Y-m-d H:i:s' : $defaultFormat;
@@ -310,7 +310,7 @@ trait DateTimeToolsTrait
         return false;
     }
 
-    public static function humanizeSeconds($seconds, $getIn = array(), $char = 's', $conjunction = 'and') {
+    public function humanizeSeconds($seconds, $getIn = array(), $char = 's', $conjunction = 'and') {
 
         // set variables
         $secondsInYear 	 = 31536000;//365 days
@@ -386,7 +386,7 @@ trait DateTimeToolsTrait
         return TypeConverter::toObject($out);
     }
 
-    public static function dateTimeDifference($endTime, $startTime, $twoView = false){
+    public function dateTimeDifference($endTime, $startTime, $twoView = false){
         $fmt = 'Y-m-d H:i:s';
         $str = self::simpleTime($startTime, $fmt);
         $now = new DateTime($str);
@@ -471,27 +471,27 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function yearsToSeconds($value = '1'){
+    public function yearsToSeconds($value = '1'){
         return ceil($value * 31536000);
     }
 
-    public static function monthsToSeconds($value = '1'){
+    public function monthsToSeconds($value = '1'){
         return ceil($value * 2592000);
     }
 
-    public static function weeksToSeconds($value = '1'){
+    public function weeksToSeconds($value = '1'){
         return ceil($value * 604800);
     }
 
-    public static function daysToSeconds($value = '1'){
+    public function daysToSeconds($value = '1'){
         return $value * (24*(60*60));
     }
 
-    public static function hoursToSeconds($value){
+    public function hoursToSeconds($value){
         return $value * (60*60);
     }
 
-    public static function minutesToSeconds($value){
+    public function minutesToSeconds($value){
         return $value *60;
     }
 
@@ -499,7 +499,7 @@ trait DateTimeToolsTrait
 
 
 
-    public static function yearsInRangeByOrder($startYear = 1900, $endYear = NULL, $sort = false){
+    public function yearsInRangeByOrder($startYear = 1900, $endYear = NULL, $sort = false){
 
         if(empty($endYear)){
             $currentYear = date('Y');
@@ -518,7 +518,7 @@ trait DateTimeToolsTrait
         return $years;
     }
 
-    public static function yearsInRange($endYear = '', $startYear = 1900, $sort = true){
+    public function yearsInRange($endYear = '', $startYear = 1900, $sort = true){
 
         // Year to start available options at
         if(empty($startYear)){
@@ -553,7 +553,7 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function timeBasedGreetings($timezone = 'Africa/Nairobi'){
+    public function timeBasedGreetings($timezone = 'Africa/Nairobi'){
 
         // output variables
         $status      = false;
@@ -613,13 +613,13 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function dateOrdinalSuffix(){
+    public function dateOrdinalSuffix(){
         echo date('M j<\s\up>S</\s\up> Y'); // < PHP 5.2.2
         echo date('M j<\s\up>S</\s\up> Y'); // >= PHP 5.2.2
     }
 
 
-    public static function isDateGreater($date, $defaultDate = ''){
+    public function isDateGreater($date, $defaultDate = ''){
 
         $date = strtotime($date);
         if(empty($defaultDate)){
@@ -636,7 +636,7 @@ trait DateTimeToolsTrait
         return false;
     }
 
-    public static function evaluateCertainTime($dateTimeStr, $operand = '>', $datetimeFormat = "Y-m-d H:i:s")
+    public function evaluateCertainTime($dateTimeStr, $operand = '>', $datetimeFormat = "Y-m-d H:i:s")
     {
         $timeNow = new DateTime(self::timeNow($timestamp = FALSE, $datetimeFormat));
         $timeAgo = new DateTime($dateTimeStr);
@@ -653,7 +653,7 @@ trait DateTimeToolsTrait
         return $status;
     }
 
-    public static function timeAgo($time, $fromTimestamp = false, $tense = "ago"){
+    public function timeAgo($time, $fromTimestamp = false, $tense = "ago"){
         if(empty($time)) return "n/a";
         $time       = true === $fromTimestamp ? $time : strtotime($time);
         $periods    = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
@@ -671,7 +671,7 @@ trait DateTimeToolsTrait
     }
 
 
-    public static function formatTime(Carbon $timestamp, $format = 'j M Y H:i'): ?string
+    public function formatTime(Carbon $timestamp, $format = 'j M Y H:i'): ?string
     {
         $first = Carbon::create(0000, 0, 0, 00, 00, 00);
         if ($timestamp->lte($first)) {
@@ -681,7 +681,7 @@ trait DateTimeToolsTrait
         return $timestamp->format($format);
     }
 
-    public static function parseDateFromDatabase($time, $format = 'Y-m-d'): ?string
+    public function parseDateFromDatabase($time, $format = 'Y-m-d'): ?string
     {
         return self::formatTime(Carbon::parse($time), $format);
     }
@@ -712,12 +712,12 @@ trait DateTimeToolsTrait
         return false;
     }
 
-    public static function createCarbonDateTimeObj(string $dateTimeString): Carbon
+    public function createCarbonDateTimeObj(string $dateTimeString): Carbon
     {
         return Carbon::parse($dateTimeString);
     }
 
-    public static function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
+    public function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
     {
         return self::createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
     }
