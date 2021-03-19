@@ -10,12 +10,12 @@ trait LanguagesTrait
         return isset($data[$request]) && is_array($data) ? $data[$request] : $data;
     }
 
-    public function getAllLanguages(){
+    public function getAllLanguages($request = null){
         $data = [];
         foreach($this->getLanguagesData() as $key => $item) {
             $data[strtolower(trim($key))] = $item['native'];
         }
-        return $data;
+        return !empty($request) && isset($data[$request]) ? $data[$request] :$data;
     }
 
 }
