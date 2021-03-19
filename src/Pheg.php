@@ -17,6 +17,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\GravatarToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HTMLToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\JSONToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\MathToolsTrait;
+use Simtabi\Pheg\Phegs\Helpers\Traits\MomentDatetimeToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\MoneyToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\PasswordTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\PhoneToolsTrait;
@@ -54,6 +55,7 @@ class Pheg
         HumanizeTrait,
         JSONToolsTrait,
         MathToolsTrait,
+        MomentDatetimeToolsTrait,
         MoneyToolsTrait,
         PasswordTools,
         PhoneToolsTrait,
