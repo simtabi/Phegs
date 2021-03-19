@@ -107,6 +107,6 @@ class Pheg
 
     public function data()
     {
-        return new Data(self::$instance);
+        return Data::getInstance(self::$instance);
     }
 }

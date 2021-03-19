@@ -24,21 +24,37 @@ class Data
     private Pheg   $pheg;
 
     /**
-     * SupportDataHelper constructor.
+     * Create class instance
+     *
+     * @version      1.0
+     * @since        1.0
      */
-    public function __construct(Pheg $pheg)
-    {
-        $this->loader = new Loader();
-        $this->data   = new Dot(
-            TypeConverter::fromAnyToArray(
-                $this->loader
-                    ->setFolderName('config')
-                    ->setFileNames(['support_data'])
-                    ->toObject()->support_data
-            )
-        );
-        $this->pheg = $pheg;
+    private static $instance;
+
+    public static function getInstance(Pheg $pheg) {
+        if (isset(self::$instance) && !is_null(self::$instance)) {
+            return self::$instance;
+        } else {
+            self::$instance = new static();
+
+            self::$instance->loader = new Loader();
+            self::$instance->data   = new Dot(
+                TypeConverter::fromAnyToArray(
+                    self::$instance->loader
+                        ->setFolderName('config')
+                        ->setFileNames(['support_data'])
+                        ->toObject()->support_data
+                )
+            );
+            self::$instance->pheg = $pheg;
+
+
+            return self::$instance;
+        }
     }
+
+    private function __construct() {}
+    private function __clone() {}
 
     /**
      * @return mixed
