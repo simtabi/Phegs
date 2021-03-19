@@ -31,7 +31,7 @@ trait FormToolsTrait
     }
 
 
-    public static function getCheckboxStatus($name){
+    public function getCheckboxStatus($name){
         return isset($_REQUEST[$name]) ? ' checked="true" ' : '';
     }
 
@@ -43,7 +43,7 @@ trait FormToolsTrait
      * @return bool
      *
      */
-    public static function checkboxStatus($input){
+    public function isCheckboxStatus($input){
         return !empty($input) || 1 === $input ? true : false;
     }
 
