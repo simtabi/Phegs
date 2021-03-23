@@ -33,7 +33,7 @@ trait CountriesTrait
     }
 
 
-    public function getAllCountries(){
+    public function getAllCountriesWithData(){
         $countries = $this->getCountriesData('countries');
         $iso2data  = $this->getCountriesData('countries2to3');
         $data      = [];
@@ -48,8 +48,17 @@ trait CountriesTrait
         return $data;
     }
 
+    public function getAllCountries(){
+        $countries = $this->getAllCountriesWithData();
+        $data      = [];
+        foreach ($countries as $code => $country){
+            $data[strtoupper(strtolower($code))] = ucwords(strtolower($country['name']));
+        }
+        return $data;
+    }
+
     public function getCountryInfo(){
-        $data = $this->getAllCountries();
+        $data = $this->getAllCountriesWithData();
         // reverse if we are having a valid iso3 code
         $code = $this->isValidIso3CountryCode() ? $this->getCountryIsoReversed() : $this->countryCode;
 

@@ -7,7 +7,7 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait FormToolsTrait
 {
 
-    public static function ifIsSet($var, $getKey = false, $default = null){
+    public function ifIsSet($var, $getKey = false, $default = null){
 
         // some logic
         if (!isset($_REQUEST[$var])){
