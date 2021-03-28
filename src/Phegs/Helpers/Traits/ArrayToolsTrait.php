@@ -318,14 +318,26 @@ trait ArrayToolsTrait
         return $picked;
     }
 
+    public static function randomizeData(array $array, $counter = 10){
+        $output = [];
 
-    /**
-     * @param $ModelData
-     * @param int $number
-     * @return bool|object
-     */
-    public static function getOneRandomModelEntry($ModelData, int $number = 1){
-        return self::getRandomArrayElements(get_clean_model_array($ModelData), $number);
+        if (is_array($array) && (($total = count($array)) > 0)) {
+
+            // shuffle data
+            shuffle($array);
+
+            foreach ($array as $key => $data) {
+                if(($counter <= $total) && $key <= $counter){
+                    $output[$key] = $data;
+                    break;
+                }
+            }
+
+            return $output;
+
+        }
+
+        return false;
     }
 
     /**
@@ -407,28 +419,6 @@ trait ArrayToolsTrait
             ++$index;
         }
         return $return;
-    }
-
-
-    public static function randomizeData(array $array, $counter = 10){
-        $output = [];
-
-        if (is_array($array) && (($total = count($array)) > 0)) {
-
-            // shuffle data
-            shuffle($array);
-
-            foreach ($array as $key => $data) {
-                if(($counter <= $total) && $key <= $counter){
-                    $output[$key] = $data;
-                }
-            }
-
-            return $output;
-
-        }
-
-        return false;
     }
 
     public static function debugArray($array, $echo = true ) {
