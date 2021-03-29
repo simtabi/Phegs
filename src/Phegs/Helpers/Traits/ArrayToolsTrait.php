@@ -320,24 +320,35 @@ trait ArrayToolsTrait
 
     public static function randomizeData(array $array, $counter = 10){
         $output = [];
+        $count  = 0;
+        $total  = count($array);
 
-        if (is_array($array) && (($total = count($array)) > 0)) {
+        // shuffle data
+        $array = self::shuffle_assoc($array);
 
-            // shuffle data
-            shuffle($array);
+        foreach ($array as $key => $item) {
+            if(($counter <= $total) && ($count < $counter)){
+                $output[$count] = [
+                    'key'   => $key,
+                    'value' => $item,
+                ];
 
-            foreach ($array as $key => $data) {
-                if(($counter <= $total) && $key <= $counter){
-                    $output[$key] = $data;
-                    break;
-                }
             }
-
-            return $output;
-
+            $count++;
         }
+        return $output;
+    }
 
-        return false;
+    public static function shuffle_assoc($list) {
+        if (!is_array($list)) return $list;
+
+        $keys = array_keys($list);
+        shuffle($keys);
+        $random = array();
+        foreach ($keys as $key) {
+            $random[$key] = $list[$key];
+        }
+        return $random;
     }
 
     /**
