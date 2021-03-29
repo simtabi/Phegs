@@ -44,7 +44,7 @@ trait FormToolsTrait
      *
      */
     public function isCheckboxStatus($input){
-        return !empty($input) || 1 === $input ? true : false;
+        return !empty($input) || 1 === $input ? 1 : 0;
     }
 
 }
