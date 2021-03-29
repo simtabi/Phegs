@@ -190,6 +190,11 @@ trait DataHelpersTrait
         return $this->setKey('search_options')->setDefault($default)->getData();
     }
 
+    public function getAddressContactTypes($default = null)
+    {
+        return $this->setKey('address_contact_types')->setDefault($default)->getData();
+    }
+
     public function getHelpdeskOptions($default = null)
     {
         return $this->setKey('helpdesk_options')->setDefault($default)->getData();
