@@ -5,7 +5,7 @@ namespace Simtabi\Pheg\Base\Services;
 use Adbar\Dot;
 use DirectoryIterator;
 use JetBrains\PhpStorm\Pure;
-use Josantonius\Json\Json;
+use Simtabi\Json\Json;
 use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use stdClass;

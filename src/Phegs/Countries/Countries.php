@@ -9,7 +9,7 @@ use Simtabi\Pheg\Phegs\Countries\Traits\ISOCodesTrait;
 use Simtabi\Pheg\Phegs\Countries\Traits\LanguagesTrait;
 use Adbar\Dot;
 use DirectoryIterator;
-use Josantonius\Json\Json;
+use Simtabi\Json\Json;
 use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Phegs\Countries\Traits\ValidatorsTrait;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;

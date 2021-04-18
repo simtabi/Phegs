@@ -49,7 +49,7 @@
         "nahid/jsonq": "dev-master",
         "nahid/qarray": "^2.0.0",
         "cerbero/json-objects": "^1.2.0",
-        "josantonius/json": "*@dev",
+        "simtabi/json": "dev-master",
         "sokil/php-isocodes": "^3.3"
     },
     "require-dev": {
