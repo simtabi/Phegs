@@ -3,6 +3,7 @@
 namespace Simtabi\Pheg\Phegs\Copyright;
 
 use DateTime;
+use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 
 class Copyright
 {
@@ -347,10 +348,19 @@ class Copyright
         $copyrightYear = $this->build()->build;
         $companyName   = $this->companyName;
         $declaration   = $this->copyrightDeclarationText;
+        $declaration   = ucfirst(strtolower(htmlentities($declaration)));
+        $symbol        = html_entity_decode($symbol);
 
         // construct
-        $htmlText = '&copy;&nbsp;' . $copyrightYear . '&nbsp;' . $companyName . '&nbsp;&centerdot;&nbsp;' . ucfirst(strtolower(htmlentities($declaration)));
-        return html_entity_decode($htmlText);
+        $htmlText = $symbol . $copyrightYear . '&nbsp;' . $companyName . '&nbsp;&centerdot;&nbsp;' . $declaration;
+        return TypeConverter::fromAnyToObject([
+            'html' => html_entity_decode($htmlText),
+            'text' => [
+                'declaration' => $declaration,
+                'symbol'      => $symbol,
+                'year'        => $copyrightYear,
+            ],
+        ]);
     }
 
     public function buildCompanyName($companyName){
