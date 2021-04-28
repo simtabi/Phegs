@@ -15,10 +15,11 @@ class Copyright
 
     private
         $dateTime,
-        $registeredSign           = "&reg;",
-        $trademarkSign            = "&trade;",
-        $trademarked              = true,
-        $registered               = true,
+        $copyrightSymbol = "&copy;",
+        $registeredSign  = "&reg;",
+        $trademarkSign   = "&trade;",
+        $trademarked     = true,
+        $registered      = true,
 
 
         $copyrightDeclarationText = '',
@@ -30,9 +31,30 @@ class Copyright
         $type                     = 'combined',
         $build                    = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->dateTime = new DateTime();
     }
+
+    /**
+     * @return string
+     */
+    public function getCopyrightSymbol(): string
+    {
+        return $this->copyrightSymbol;
+    }
+
+    /**
+     * @param string $copyrightSymbol
+     * @return $this
+     */
+    public function setCopyrightSymbol(string $copyrightSymbol): self
+    {
+        $this->copyrightSymbol = $copyrightSymbol;
+        return $this;
+    }
+
+
 
     /**
      * @return string
@@ -234,7 +256,8 @@ class Copyright
     }
 
 
-    private function build(){
+    private function build()
+    {
 
         $startYear   = $this->copyrightStartYear;
         $endYear     = $this->copyrightEndYear;
@@ -246,22 +269,22 @@ class Copyright
         $dateTime    = new DateTime();
 
         // get and process start year
-        if(empty($startYear)){
+        if (empty($startYear)) {
             $startYear = date('Y') . '-01-01';
-        }else{
+        } else {
             $startYear = $startYear . '-01-01';
         }
 
         // get and process end year
-        if(empty($endYear)){
+        if (empty($endYear)) {
             $startYear = date('Y') . '-01-01';
-        }else{
+        } else {
             $endYear = $endYear . '-01-01';
         }
 
         // start process
-        if(!empty($startYear) && !empty($endYear)){
-            switch ($longFormat){
+        if (!empty($startYear) && !empty($endYear)) {
+            switch ($longFormat) {
                 // lets filter format output
                 case true :
 
@@ -271,8 +294,8 @@ class Copyright
 
                     // end year
                     $dateTime->setTimestamp(strtotime($endYear));
-                    $endYear  = $dateTime->format('Y');
-                    ; break;
+                    $endYear = $dateTime->format('Y');;
+                    break;
                 case false :
 
                     // start year
@@ -281,9 +304,8 @@ class Copyright
 
                     // end year
                     $dateTime->setTimestamp(strtotime($endYear));
-                    $endYear   = $dateTime->format('y');
-
-                    ; break;
+                    $endYear = $dateTime->format('y');;
+                    break;
                 default :
                     // start year
                     $dateTime->setTimestamp(strtotime($startYear));
@@ -291,46 +313,74 @@ class Copyright
 
                     // end year
                     $dateTime->setTimestamp(strtotime($endYear));
-                    $endYear   = $dateTime->format('y');
-                    ; break;
+                    $endYear = $dateTime->format('y');;
+                    break;
             }
 
             // lets filter version request
-            switch ($longVersion){
+            switch ($longVersion) {
                 case true :
-                    switch ($type){
+                    switch ($type) {
                         // lets filter output request
-                        case "combined" : $this->build = $startYear . " - " . $endYear ; break;
-                        case "start"    : $this->build = $startYear; break;
-                        case "end"      : $this->build = $endYear; break;
-                        default         : $this->build = $endYear; break;
-                    } break;
+                        case "combined" :
+                            $this->build = $startYear . " - " . $endYear;
+                            break;
+                        case "start"    :
+                            $this->build = $startYear;
+                            break;
+                        case "end"      :
+                            $this->build = $endYear;
+                            break;
+                        default         :
+                            $this->build = $endYear;
+                            break;
+                    }
+                    break;
                 case false :
-                    switch ($type){
+                    switch ($type) {
                         // lets filter output request
-                        case "start" : $this->build = $startYear ; break;
-                        case "end"   : $this->build = $endYear; break;
-                        default      : $this->build = $endYear; break;
-                    } break;
+                        case "start" :
+                            $this->build = $startYear;
+                            break;
+                        case "end"   :
+                            $this->build = $endYear;
+                            break;
+                        default      :
+                            $this->build = $endYear;
+                            break;
+                    }
+                    break;
                 default :
-                    switch ($type){
-                        case "start" : $this->build = $startYear; break;
-                        case "end"   : $this->build = $endYear; break;
-                        default      : $this->build = $endYear; break;
-                    } break;
+                    switch ($type) {
+                        case "start" :
+                            $this->build = $startYear;
+                            break;
+                        case "end"   :
+                            $this->build = $endYear;
+                            break;
+                        default      :
+                            $this->build = $endYear;
+                            break;
+                    }
+                    break;
             }
 
-        }
-        else{
+        } else {
 
             // set default date
             $dateTime->setTimestamp(strtotime(date('Y')));
 
             // lets filter output request
-            switch ($longVersion){
-                case true  : $this->build = $dateTime->format('Y'); break;
-                case false : $this->build = $dateTime->format('y'); break;
-                default    : $this->build = $dateTime->format('y'); break;
+            switch ($longVersion) {
+                case true  :
+                    $this->build = $dateTime->format('Y');
+                    break;
+                case false :
+                    $this->build = $dateTime->format('y');
+                    break;
+                default    :
+                    $this->build = $dateTime->format('y');
+                    break;
             }
 
         }
@@ -338,38 +388,43 @@ class Copyright
         return $this;
     }
 
-    public function buildCopyrightYear(){
+    public function buildCopyrightYear()
+    {
         return $this->build()->build;
     }
 
-    public function buildCopyrightText(){
+    public function buildCopyrightText()
+    {
 
         // get copyright year
         $copyrightYear = $this->build()->build;
         $companyName   = $this->companyName;
         $declaration   = $this->copyrightDeclarationText;
         $declaration   = ucfirst(strtolower(htmlentities($declaration)));
-        $symbol        = html_entity_decode($symbol);
+        $symbol        = html_entity_decode($this->copyrightSymbol);
 
         // construct
-        $htmlText = $symbol . $copyrightYear . '&nbsp;' . $companyName . '&nbsp;&centerdot;&nbsp;' . $declaration;
+        $htmlText      = $symbol . '&nbsp;' . $copyrightYear . '&nbsp;' . $companyName . '&nbsp;&centerdot;&nbsp;' . $declaration;
         return TypeConverter::fromAnyToObject([
             'html' => html_entity_decode($htmlText),
             'text' => [
                 'declaration' => $declaration,
+                'company'     => $companyName,
                 'symbol'      => $symbol,
                 'year'        => $copyrightYear,
             ],
         ]);
+
     }
 
-    public function buildCompanyName($companyName){
+    public function buildCompanyName($companyName)
+    {
         // get company name
         $companyName = ucwords(strtolower($companyName));
 
         // construct signs
-        $trademark  = !$this->isTrademarked() ? '' : $this->getTrademarkSign();
-        $registered = !$this->isRegistered() ? ''  : " " .$this->getRegisteredSign();
+        $trademark   = !$this->isTrademarked() ? '' : $this->getTrademarkSign();
+        $registered  = !$this->isRegistered()  ? '' : " " . $this->getRegisteredSign();
         return $companyName . $trademark . $registered;
     }
 
