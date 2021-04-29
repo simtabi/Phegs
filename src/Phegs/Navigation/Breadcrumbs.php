@@ -293,7 +293,7 @@ class Breadcrumbs
         for ($b = 0; $b <= $last; $b++) {
 
             if ($b == $last) {
-                $breadcrumb .= "<li class=\"$liClass $liActiveClass {$links[$b]["class"]}\" aria-current=\"$liAriaCurrent\">{$this->separator}{$links[$b]["title"]}</li>" . "\n";
+                $breadcrumb .= "<li class=\"$liActiveClass {$links[$b]["class"]}\" aria-current=\"$liAriaCurrent\">{$this->separator}{$links[$b]["title"]}</li>" . "\n";
             } else {
                 $breadcrumb .= "<li class=\"$liClass {$links[$b]["class"]}\">{$this->separator}<a href=\"{$links[$b]["url"]}\" class=\"$linkClass\">{$links[$b]["title"]}</a></li>" . "\n";
             }
@@ -317,7 +317,7 @@ class Breadcrumbs
         $linkClass     = $this->linkClass;
 
         if (!$this->links) {
-            return "<li class=\"$liClass $liActiveClass {$class}\" aria-current=\"$liAriaCurrent\">{$icon}{$title}</li>";
+            return "<li class=\"$liActiveClass {$class}\" aria-current=\"$liAriaCurrent\">{$icon}{$title}</li>";
         }
 
         return "<li class=\"$liClass {$class}\"><a href=\"{$url}\" class=\"$linkClass\">{$icon}{$title}</a></li>";
