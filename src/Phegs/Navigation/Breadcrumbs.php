@@ -63,7 +63,7 @@ class Breadcrumbs
         $this->liClass       = null;
         $this->liActiveClass = 'active';
         $this->liAriaCurrent = 'page';
-        $linkClass           = $this->linkClass;
+        $this->linkClass     = '';
         $this->links         = [];
 
     }
