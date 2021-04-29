@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Navigation;
+namespace Simtabi\Pheg\Phegs\Navigation;
 
 class Breadcrumbs
 {
