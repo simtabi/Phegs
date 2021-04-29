@@ -5,6 +5,7 @@ namespace Simtabi\Pheg;
 use Adbar\Dot;
 use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Base\Support\Data;
+use Simtabi\Pheg\Navigation\Breadcrumbs;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Base\Loader;
@@ -110,5 +111,10 @@ class Pheg
     public function data()
     {
         return Data::getInstance(self::$instance);
+    }
+
+    public function breadcrumb($breadcrumbs = [], $cssClasses = [])
+    {
+        return new Breadcrumbs($breadcrumbs, $cssClasses);
     }
 }
