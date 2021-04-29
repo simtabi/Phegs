@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Navigation;
 
-class Breadcrumb
+class Breadcrumbs
 {
     /**
      * @var
@@ -41,7 +41,7 @@ class Breadcrumb
         bool $showTitle = true,
         ?string $icon   = null,
         string $class   = null
-    ): Breadcrumb
+    ): Breadcrumbs
     {
         $this->base = [
             "url"       => $baseUrl,
@@ -57,9 +57,9 @@ class Breadcrumb
      * @param string $title
      * @param string|null $url
      * @param null|string $class
-     * @return Breadcrumb
+     * @return Breadcrumbs
      */
-    public function addCrumb(string $title, ?string $url, ?string $class = null): Breadcrumb
+    public function addCrumb(string $title, ?string $url, ?string $class = null): Breadcrumbs
     {
         $this->links[] = $this->parts($title, $url, $class);
         return $this;

@@ -2,12 +2,10 @@
 
 namespace Simtabi\Pheg;
 
-use Adbar\Dot;
 use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Base\Support\Data;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
-use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
@@ -110,9 +108,9 @@ class Pheg
         return Data::getInstance(self::$instance);
     }
 
-    public function breadcrumb($breadcrumbs = [], $cssClasses = [])
+    public function breadcrumb(?string $separator = null)
     {
-        return new Breadcrumbs($breadcrumbs, $cssClasses);
+        return new Breadcrumbs($separator);
     }
 
 }
