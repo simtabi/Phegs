@@ -41,6 +41,11 @@ class Breadcrumbs
     private ?string $liAriaCurrent = 'page';
 
     /**
+     * @var null|string
+     */
+    private ?string $linkClass;
+
+    /**
      * @var array
      */
     private array $links;
@@ -58,6 +63,7 @@ class Breadcrumbs
         $this->liClass       = null;
         $this->liActiveClass = 'active';
         $this->liAriaCurrent = 'page';
+        $linkClass           = $this->linkClass;
         $this->links         = [];
 
     }
@@ -90,9 +96,9 @@ class Breadcrumbs
 
     /**
      * @param string|null $ulClass
-     * @return self
+     * @return Self
      */
-    public function setUlClass(?string $ulClass): self
+    public function setUlClass(?string $ulClass): Self
     {
         $this->ulClass = $ulClass;
         return $this;
@@ -108,9 +114,9 @@ class Breadcrumbs
 
     /**
      * @param string|null $ulAriaLabel
-     * @return self
+     * @return Self
      */
-    public function setUlAriaLabel(?string $ulAriaLabel): self
+    public function setUlAriaLabel(?string $ulAriaLabel): Self
     {
         $this->ulAriaLabel = $ulAriaLabel;
         return $this;
@@ -126,9 +132,9 @@ class Breadcrumbs
 
     /**
      * @param string|null $liClass
-     * @return self
+     * @return Self
      */
-    public function setLiClass(?string $liClass): self
+    public function setLiClass(?string $liClass): Self
     {
         $this->liClass = $liClass;
         return $this;
@@ -144,9 +150,9 @@ class Breadcrumbs
 
     /**
      * @param string|null $liActiveClass
-     * @return self
+     * @return Self
      */
-    public function setLiActiveClass(?string $liActiveClass): self
+    public function setLiActiveClass(?string $liActiveClass): Self
     {
         $this->liActiveClass = $liActiveClass;
         return $this;
@@ -162,9 +168,9 @@ class Breadcrumbs
 
     /**
      * @param string|null $liAriaCurrent
-     * @return self
+     * @return Self
      */
-    public function setLiAriaCurrent(?string $liAriaCurrent): self
+    public function setLiAriaCurrent(?string $liAriaCurrent): Self
     {
         $this->liAriaCurrent = $liAriaCurrent;
         return $this;
@@ -180,11 +186,29 @@ class Breadcrumbs
 
     /**
      * @param array $links
-     * @return self
+     * @return Self
      */
-    public function setLinks(array $links): self
+    public function setLinks(array $links): Self
     {
         $this->links = $links;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkClass(): ?string
+    {
+        return $this->linkClass;
+    }
+
+    /**
+     * @param string|null $linkClass
+     * @return self
+     */
+    public function setLinkClass(?string $linkClass): self
+    {
+        $this->linkClass = $linkClass;
         return $this;
     }
 
@@ -264,13 +288,14 @@ class Breadcrumbs
         $liClass       = $this->liClass;
         $liActiveClass = $this->liActiveClass;
         $liAriaCurrent = $this->liAriaCurrent;
+        $linkClass     = $this->linkClass;
 
         for ($b = 0; $b <= $last; $b++) {
 
             if ($b == $last) {
                 $breadcrumb .= "<li class=\"$liClass $liActiveClass {$links[$b]["class"]}\" aria-current=\"$liAriaCurrent\">{$this->separator}{$links[$b]["title"]}</li>" . "\n";
             } else {
-                $breadcrumb .= "<li class=\"$liClass {$links[$b]["class"]}\">{$this->separator}<a href=\"{$links[$b]["url"]}\">{$links[$b]["title"]}</a></li>" . "\n";
+                $breadcrumb .= "<li class=\"$liClass {$links[$b]["class"]}\">{$this->separator}<a href=\"{$links[$b]["url"]}\" class=\"$linkClass\">{$links[$b]["title"]}</a></li>" . "\n";
             }
         }
 
@@ -289,12 +314,13 @@ class Breadcrumbs
         $liClass       = $this->liClass;
         $liActiveClass = $this->liActiveClass;
         $liAriaCurrent = $this->liAriaCurrent;
+        $linkClass     = $this->linkClass;
 
         if (!$this->links) {
             return "<li class=\"$liClass $liActiveClass {$class}\" aria-current=\"$liAriaCurrent\">{$icon}{$title}</li>";
         }
 
-        return "<li class=\"$liClass {$class}\"><a href=\"{$url}\">{$icon}{$title}</a></li>";
+        return "<li class=\"$liClass {$class}\"><a href=\"{$url}\" class=\"$linkClass\">{$icon}{$title}</a></li>";
     }
 
     /**
