@@ -134,6 +134,7 @@ class Breadcrumbs
                 'href'          => $href,
                 'hrefIsFullUrl' => $hrefIsFullUrl,
             ];
+
             $this->breadcrumbs[] = $crumb;
         }
 
