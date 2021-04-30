@@ -51,6 +51,11 @@ class Breadcrumbs
     private array $links;
 
     /**
+     * @var boolean
+     */
+    private bool $fullUrl = false;
+
+    /**
      * Breadcrumb constructor.
      * @param null|string $separator
      */
@@ -212,6 +217,24 @@ class Breadcrumbs
         return $this;
     }
 
+    /**
+     * @return bool
+     */
+    public function isFullUrl(): bool
+    {
+        return $this->fullUrl;
+    }
+
+    /**
+     * @param bool $fullUrl
+     * @return self
+     */
+    public function setFullUrl(bool $fullUrl): self
+    {
+        $this->fullUrl = $fullUrl;
+        return $this;
+    }
+
 
 
 
@@ -249,9 +272,9 @@ class Breadcrumbs
      * @param null|string $class
      * @return self
      */
-    public function addCrumb(string $title, ?string $url, ?string $class = null): self
+    public function addCrumb(string $title, ?string $url, ?string $class = null,  bool $isFullUrl = false): self
     {
-        $this->links[] = $this->parts($title, $url, $class);
+        $this->links[] = $this->parts($title, $url, $class, $isFullUrl);
         return $this;
     }
 
@@ -331,16 +354,17 @@ class Breadcrumbs
      */
     private function parts(
         string $title,
-        string $url   = null,
-        string $class = null
+        string $url     = null,
+        string $class   = null,
+        bool $isFullUrl = false
     ): array
     {
-        $url = $this->setUrl($url);
+        $url = $this->setUrl($url, $isFullUrl);
 
         return [
             "url"   => $url,
             "title" => $title,
-            "class" => $class
+            "class" => $class,
         ];
     }
 
@@ -348,11 +372,15 @@ class Breadcrumbs
      * @param string $url
      * @return string
      */
-    private function setUrl(string $url): string
+    private function setUrl(string $url, bool $isFullUrl = false): string
     {
-        $url = str_replace($this->base["url"], "", $url);
-        $url = ($url[0] == "/" ? $url : "/" . $url);
+        if (!$isFullUrl) {
+            $url = str_replace($this->base["url"], "", $url);
+            $url = ($url[0] == "/" ? $url : "/" . $url);
 
-        return $this->base["url"] . $url;
+            return $this->base["url"] . $url;
+        }
+        return $this->base["url"] = $url;
+
     }
 }
