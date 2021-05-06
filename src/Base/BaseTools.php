@@ -19,6 +19,10 @@ class BaseTools
         TIMEZONE_PACIFIC    = 'pacific',
         TIMEZONE_UTC        = 'utc';
 
+    public const
+        UID_CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        UID_LENGTH  = 16;
+
 
     /**
      * Default region for telephone utilities
