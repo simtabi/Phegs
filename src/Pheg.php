@@ -6,6 +6,7 @@ use Simtabi\Pheg\Base\BaseTools;
 use Simtabi\Pheg\Base\Support\Data;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
+use Simtabi\Pheg\Phegs\Factories\Base64UID;
 use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
@@ -111,6 +112,11 @@ class Pheg
     public function breadcrumb(?string $separator = null)
     {
         return new Breadcrumbs($separator);
+    }
+
+    public function base64Uid()
+    {
+        return Base64UID::getInstance();
     }
 
 }
