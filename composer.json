@@ -50,6 +50,7 @@
         "nahid/qarray": "^2.0.0",
         "cerbero/json-objects": "^1.2.0",
         "simtabi/json": "dev-master",
+        "symfony/uid": "^v5.2.6",
         "sokil/php-isocodes": "^3.3"
     },
     "require-dev": {
