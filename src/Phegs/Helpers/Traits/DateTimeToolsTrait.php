@@ -6,7 +6,7 @@ use DateTimeZone;
 use Moment\Moment;
 use DateTime;
 use Carbon\Carbon;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Exception\PhegException;
 use Simtabi\Pheg\Pheg;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
@@ -166,12 +166,12 @@ trait DateTimeToolsTrait
 
             // validate time
             if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Ensue::isNumeric($seconds)){
-                throw new PhegException(BaseTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
+                throw new PhegException(BasePhegTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
             }
 
             // validate time
             if(TRUE !== Ensue::isInteger($seconds) && TRUE !== Ensue::isNumeric($seconds)){
-                throw new PhegException(BaseTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
+                throw new PhegException(BasePhegTools::_e('TIME_VALIDATION_INVALID_SECONDS'));
             }
 
             // calculate and set time variables
@@ -239,7 +239,7 @@ trait DateTimeToolsTrait
                 $status   = TRUE;
                 $data     = date ( $date_format , $new_date );
             }else{
-                throw new PhegException(BaseTools::_e('time_addition_error'));
+                throw new PhegException(BasePhegTools::_e('time_addition_error'));
             }
 
         }catch(PhegException $e){
@@ -542,7 +542,7 @@ trait DateTimeToolsTrait
 
             // validate timezone
             if(empty($timezone)){
-                throw new PhegException(BaseTools::_e('TIMEZONE_IS_REQUIRED'));
+                throw new PhegException(BasePhegTools::_e('TIMEZONE_IS_REQUIRED'));
             }else{
                 $validateTimezone = Ensue::isTimezone($timezone);
                 if(TRUE !== $validateTimezone){
@@ -558,12 +558,12 @@ trait DateTimeToolsTrait
             // filter greeting
             switch ($currentTime){
                 case ($currentTime >= 0 && $currentTime <= 11) :
-                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
+                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
                 case ($currentTime >= 12 && $currentTime <=17 ) :
-                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
+                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
                 case ($currentTime >= 18 && $currentTime <=23) :
-                    $greetings = BaseTools::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
-                default : $greetings = BaseTools::_e('TIME_WELCOME_GREETING'); break;
+                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
+                default : $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING'); break;
             }
 
             // set status
@@ -624,7 +624,7 @@ trait DateTimeToolsTrait
             case '<'   : $status = ($timeAgo < $timeNow)  ?  TRUE : FALSE; break;
             case '<='  : $status = ($timeAgo <= $timeNow) ?  TRUE : FALSE; break;
             default :
-                $status          = BaseTools::_e('operand not set or is invalid');
+                $status          = BasePhegTools::_e('operand not set or is invalid');
         }
         return $status;
     }

@@ -10,7 +10,7 @@ use Simtabi\Pheg\Phegs\Countries\Traits\LanguagesTrait;
 use Adbar\Dot;
 use DirectoryIterator;
 use Simtabi\Json\Json;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Phegs\Countries\Traits\ValidatorsTrait;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use stdClass;
@@ -55,7 +55,7 @@ class Countries
             self::$instance->setLoadFrom([
                 'countries' => self::$instance->basePath.'/annexare/countries-list/data',
                 'currency'  => [
-                    BaseTools::PHEG_DIR_PATH.'/data/currency'
+                    BasePhegTools::PHEG_DIR_PATH.'/data/currency'
                 ],
             ]);
             

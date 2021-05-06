@@ -6,7 +6,7 @@ use DateTimeZone;
 use Moment\Moment;
 use DateTime;
 use Carbon\Carbon;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Exception\PhegException;
 use Simtabi\Pheg\Pheg;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;

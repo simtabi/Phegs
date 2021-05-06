@@ -9,7 +9,7 @@ use libphonenumber\PhoneNumberToCarrierMapper;
 use libphonenumber\PhoneNumberToTimeZonesMapper;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 
 trait PhoneToolsTrait
 {
@@ -23,7 +23,7 @@ trait PhoneToolsTrait
     }
 
 
-    public static function getPhoneNumberByCountryInfo($number, $countryISOCode = BaseTools::DEFAULT_REGION){
+    public static function getPhoneNumberByCountryInfo($number, $countryISOCode = BasePhegTools::DEFAULT_REGION){
 
         // output variables
         $status = false;

@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg;
 
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Support\Data;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
@@ -99,7 +99,7 @@ class Pheg
 
     public function countries(): ?Countries
     {
-        return (Countries::getInstance(BaseTools::getRootPath(4)));
+        return (Countries::getInstance(BasePhegTools::getRootPath(4)));
     }
 
     public function data()

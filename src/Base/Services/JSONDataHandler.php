@@ -6,7 +6,7 @@ use Adbar\Dot;
 use DirectoryIterator;
 use JetBrains\PhpStorm\Pure;
 use Simtabi\Json\Json;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use stdClass;
 
@@ -33,7 +33,7 @@ class JSONDataHandler
         } else {
 
             self::$instance = new static();
-            self::$instance->filesPath = BaseTools::PHEG_DIR_PATH.'vendor/annexare/countries-list/data';
+            self::$instance->filesPath = BasePhegTools::PHEG_DIR_PATH.'vendor/annexare/countries-list/data';
 
             self::$instance->autoloadJSONFiles(
                 self::$instance->filesPath

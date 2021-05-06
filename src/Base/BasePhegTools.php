@@ -4,7 +4,7 @@ namespace Simtabi\Pheg\Base;
 
 use Respect\Validation\Validator as Respect;
 
-class BaseTools
+class BasePhegTools
 {
 
     public const

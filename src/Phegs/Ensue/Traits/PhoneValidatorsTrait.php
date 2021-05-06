@@ -9,7 +9,7 @@ use libphonenumber\PhoneNumberToCarrierMapper;
 use libphonenumber\PhoneNumberToTimeZonesMapper;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
-use Simtabi\Pheg\Base\BaseTools;
+use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Services\Translator;
 
 trait PhoneValidatorsTrait
@@ -19,7 +19,7 @@ trait PhoneValidatorsTrait
         return !Countries::getCountryNameByCallingCode($value) ? false : true;
     }
 
-    public function isValidPhoneNumber($value, $defaultRegion = BaseTools::DEFAULT_REGION){
+    public function isValidPhoneNumber($value, $defaultRegion = BasePhegTools::DEFAULT_REGION){
 
         // output variables
         $status = false;
