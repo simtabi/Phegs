@@ -30,7 +30,6 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\DateTimeToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\DirectoryToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FileToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
-use Simtabi\Pheg\Phegs\Helpers\Traits\UIDTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Simtabi\Pheg\Phegs\Navigation\Breadcrumbs;
@@ -61,7 +60,6 @@ class Pheg
         SlugToolsTrait,
         SQLToolsTrait,
         StringToolsTrait,
-        UIDTools,
         URLToolsTrait;
 
     /**
@@ -114,7 +112,7 @@ class Pheg
         return new Breadcrumbs($separator);
     }
 
-    public function base64Uid()
+    public function base64Uid(): ?Base64UID
     {
         return Base64UID::getInstance();
     }
