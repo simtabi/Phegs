@@ -1,5 +1,9 @@
 <?php
 
+namespace Simtabi\Pheg\Phegs\SVG;
+
+use DOMDocument;
+use DOMXPath;
 
 class SVGHelper
 {
