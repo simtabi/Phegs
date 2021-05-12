@@ -370,7 +370,6 @@ trait StringToolsTrait
         $lastName  = ucfirst($obj->last_name);
         $username  = ucfirst($obj->username);
         $email     = $obj->email;
-        $name      = null;
 
         if (!empty($firstName) && !empty($lastName)) {
             $name = sprintf("%s %s", ucwords($obj->first_name), ucwords($obj->last_name));
