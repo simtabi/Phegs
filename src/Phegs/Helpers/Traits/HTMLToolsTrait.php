@@ -71,4 +71,8 @@ trait HTMLToolsTrait
         return sprintf($wrapper, $argument);
     }
 
+    public static function oddEvenClass(int $number){
+        return self::isOddNumber($number) ? 'Even' : 'Odd';
+    }
+
 }

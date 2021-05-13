@@ -7,6 +7,10 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 trait MathToolsTrait
 {
 
+    public static function isOddNumber(int $number){
+        return ($number % 2 == 0) ? true : false;
+    }
+
     public static function zeroFillNumber ($num, $zerofill = '1'){
         return str_pad($num, $zerofill, '0', STR_PAD_LEFT);
     }
