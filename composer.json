@@ -51,6 +51,7 @@
         "cerbero/json-objects": "^1.2.0",
         "simtabi/json": "dev-master",
         "symfony/uid": "^v5.2.6",
+        "jimmiw/php-time-ago": "dev-master",
         "sokil/php-isocodes": "^3.3"
     },
     "require-dev": {

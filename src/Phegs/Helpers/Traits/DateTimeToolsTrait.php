@@ -11,6 +11,7 @@ use Simtabi\Pheg\Base\Exception\PhegException;
 use Simtabi\Pheg\Pheg;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
+use Westsworld\TimeAgo;
 
 trait DateTimeToolsTrait
 {
@@ -693,9 +694,13 @@ trait DateTimeToolsTrait
         return Carbon::parse($dateTimeString);
     }
 
-    public function getTimeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
+    public function timeAgoFromString(string $dateTimeString, $other = null, $syntax = null, $short = false, $parts = 1, $options = null): ?string
     {
         return $this->createCarbonDateTimeObj($dateTimeString)->diffForHumans($other, $syntax, $short, $parts, $options);
+    }
+
+    function timeAgoFromStringAlt($stringTime){
+        return (new TimeAgo())->inWordsFromStrings($stringTime);
     }
 
     public function parseSqlDateTimeFormat($dateTime, $forSql = true, $readFormat = "Y-m-d H:i:s", $storeFormat = "Y-m-d"){
