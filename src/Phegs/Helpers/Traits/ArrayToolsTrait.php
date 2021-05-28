@@ -4,6 +4,7 @@ namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
+use stdClass;
 
 trait ArrayToolsTrait
 {
@@ -508,12 +509,18 @@ trait ArrayToolsTrait
         foreach($array as $k => $v) {
             if(strlen($k)) {
                 if(is_array($v)) {
-                    $obj->{$k} = array2Object($v); //RECURSION
+                    $obj->{$k} = $this->array2Object($v); //RECURSION
                 } else {
                     $obj->{$k} = $v;
                 }
             }
         }
         return $obj;
+    }
+
+    public function count($data, $associative = false): int
+    {
+        $data = TypeConverter::fromAnyToArray($data, $associative);
+        return count( (array) $data);
     }
 }
