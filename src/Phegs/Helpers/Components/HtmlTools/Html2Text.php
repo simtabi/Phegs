@@ -4,6 +4,7 @@ namespace Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools;
 
 use DOMDocument;
 use Simtabi\Pheg\Base\Exception\Html2TextException;
+use Simtabi\Pheg\Pheg;
 
 class Html2Text {
 

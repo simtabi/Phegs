@@ -33,6 +33,8 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\HumanizeTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Simtabi\Pheg\Phegs\Navigation\Breadcrumbs;
+use Respect\Validation\Validator as Respect;
+
 
 class Pheg
 {
@@ -62,6 +64,8 @@ class Pheg
         StringToolsTrait,
         URLToolsTrait;
 
+    public static Respect $respectValidation;
+
     /**
      * Create class instance
      *
@@ -75,11 +79,13 @@ class Pheg
             return self::$instance;
         } else {
             self::$instance = new static();
+            self::$respectValidation = new Respect();
             return self::$instance;
         }
     }
 
-    private function __construct() {}
+    private function __construct() {
+    }
     private function __clone() {}
 
     public function copyright(): Copyright
