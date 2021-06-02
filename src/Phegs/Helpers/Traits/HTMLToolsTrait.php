@@ -57,8 +57,12 @@ trait HTMLToolsTrait
         return str_replace("\n", '<br />', $string);
     }
 
-    public static function html2text($htmlContent, $options = array()){
-        return Html2Text::convert($htmlContent, $options);
+    public static function html2text($html, $ignoreErrors = false, $dropLinks = false, $dropImages = false){
+        return Html2Text::convert($html, [
+            'ignore_errors' => $ignoreErrors,
+            'drop_images'   => $dropImages,
+            'drop_links'    => $dropLinks,
+        ]);
     }
 
     public static function formatTags($string, $splitter = ',', $notWanted = null){

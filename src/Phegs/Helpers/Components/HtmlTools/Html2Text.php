@@ -26,9 +26,9 @@ class Html2Text {
      * </ul>
      *
      * @param string $html the input HTML
-     * @param boolean $ignore_error Ignore xml parsing errors
+     * @param array $options
      * @return string the HTML converted, as best as possible, to text
-     * @throws Html2TextException if the HTML could not be loaded as a {@link \DOMDocument}
+     * @throws Html2TextException if the HTML could not be loaded as a <a href="psi_element://\DOMDocument">\DOMDocument</a>
      */
     public static function convert($html, $options = array()) {
 
