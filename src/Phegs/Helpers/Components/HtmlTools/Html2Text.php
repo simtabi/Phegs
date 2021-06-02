@@ -2,15 +2,16 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools;
 
-// https://github.com/notcod/html2text
-// https://github.com/voku/html2text use this as it has more options
+use DOMDocument;
+use Simtabi\Pheg\Base\Exception\Html2TextException;
 
-class Html2Text
-{
+class Html2Text {
+
     public static function defaultOptions() {
         return array(
             'ignore_errors' => false,
             'drop_links'    => false,
+            'drop_images'	=> false
         );
     }
 
@@ -59,7 +60,7 @@ class Html2Text
 
         $doc = static::getDocument($html, $options['ignore_errors']);
 
-        $output = static::iterateOverNode($doc, null, false, $is_office_document, $options);
+        $output = static::iterateOverNode($doc, $options, null, false, $is_office_document);
 
         // process output for whitespace/newlines
         $output = static::processWhitespaceNewlines($output);
@@ -140,11 +141,12 @@ class Html2Text
      *
      * @param string $html the input HTML
      * @param boolean $ignore_error Ignore xml parsing errors
-     * @return \DOMDocument the parsed document tree
+     * @return DOMDocument the parsed document tree
+     * @throws Html2TextException
      */
     static function getDocument($html, $ignore_error = false) {
 
-        $doc = new \DOMDocument();
+        $doc = new DOMDocument();
 
         $html = trim($html);
 
@@ -231,7 +233,7 @@ class Html2Text
         return $nextName;
     }
 
-    static function iterateOverNode($node, $prevName = null, $in_pre = false, $is_office_document = false, $options) {
+    static function iterateOverNode($node, $options, $prevName = null, $in_pre = false, $is_office_document = false) {
         if ($node instanceof \DOMText) {
             // Replace whitespace characters with a space (equivilant to \s)
             if ($in_pre) {
@@ -352,7 +354,7 @@ class Html2Text
 
             while ($n != null) {
 
-                $text = static::iterateOverNode($n, $previousSiblingName, $in_pre || $name == 'pre', $is_office_document, $options);
+                $text = static::iterateOverNode($n, $options, $previousSiblingName, $in_pre || $name == 'pre', $is_office_document);
 
                 // Pass current node name to next child, as previousSibling does not appear to get populated
                 if ($n instanceof \DOMDocumentType
@@ -362,9 +364,9 @@ class Html2Text
                     $trailing_whitespace++;
                 }
                 else {
-                    $previousSiblingName = strtolower($n->nodeName);
+                    $previousSiblingName    = strtolower($n->nodeName);
                     $previousSiblingNames[] = $previousSiblingName;
-                    $trailing_whitespace = 0;
+                    $trailing_whitespace    = 0;
                 }
 
                 $node->removeChild($n);
@@ -414,7 +416,7 @@ class Html2Text
 
             case "a":
                 // links are returned in [text](link) format
-                $href = $node->getAttribute("href");
+                $href   = $node->getAttribute("href");
 
                 $output = trim($output);
 
@@ -470,7 +472,9 @@ class Html2Text
                 break;
 
             case "img":
-                if ($node->getAttribute("title")) {
+                if ($options["drop_images"]) {
+                    $output = "";
+                } elseif ($node->getAttribute("title")) {
                     $output = "[" . $node->getAttribute("title") . "]";
                 } elseif ($node->getAttribute("alt")) {
                     $output = "[" . $node->getAttribute("alt") . "]";
