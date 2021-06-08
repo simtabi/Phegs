@@ -9,7 +9,7 @@ use Simtabi\Pheg\Phegs\Countries\Traits\ISOCodesTrait;
 use Simtabi\Pheg\Phegs\Countries\Traits\LanguagesTrait;
 use Adbar\Dot;
 use DirectoryIterator;
-use Simtabi\Json\Json;
+use Simtabi\Jsoned\Json2File;
 use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Phegs\Countries\Traits\ValidatorsTrait;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
@@ -88,7 +88,7 @@ class Countries
                     ];
                     $this->setKeys($_name);
                     $this->setLoaded($id);
-                    $data[$_name] = Json::fileToArray($fileInfo->getPathname());
+                    $data[$_name] = Json2File::fileToArray($fileInfo->getPathname());
                 }
             }
 

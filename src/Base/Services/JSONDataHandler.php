@@ -5,7 +5,7 @@ namespace Simtabi\Pheg\Base\Services;
 use Adbar\Dot;
 use DirectoryIterator;
 use JetBrains\PhpStorm\Pure;
-use Simtabi\Json\Json;
+use Simtabi\Jsoned\Json2File;
 use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 use stdClass;
@@ -116,7 +116,7 @@ class JSONDataHandler
         $array = [];
         $keys  = [];
         foreach ($directories as $cacheKey => $value){
-            $array[$cacheKey] = Json::fileToArray($value['pathname']);
+            $array[$cacheKey] = Json2File::fileToArray($value['pathname']);
             $keys[]           = $cacheKey;
         }
 

@@ -49,10 +49,9 @@
         "ezyang/htmlpurifier": "^v4.13.0",
         "fightbulc/moment": "dev-master",
         "maxakawizard/json-collection-parser": "dev-master",
-        "nahid/jsonq": "dev-master",
         "nahid/qarray": "^2.0.0",
         "cerbero/json-objects": "^1.2.0",
-        "simtabi/json": "dev-master",
+        "simtabi/json-db": "dev-master",
         "symfony/uid": "^v5.2.6",
         "jimmiw/php-time-ago": "dev-master",
         "sokil/php-isocodes": "^3.3"
