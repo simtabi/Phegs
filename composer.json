@@ -19,7 +19,7 @@
         "ext-gd": "*",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "mleczek/collections": "^1.0",
+        "mleczek/collections": "dev-master",
         "adbario/php-dot-notation": "^2.2",
         "jasny/dotkey": "dev-master",
         "ichtrojan/laravel-otp": "dev-master",
