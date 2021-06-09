@@ -52,6 +52,7 @@
         "nahid/qarray": "^2.0.0",
         "cerbero/json-objects": "^1.2.0",
         "simtabi/json-db": "dev-master",
+        "simtabi/nyoka": "dev-master",
         "symfony/uid": "^v5.2.6",
         "jimmiw/php-time-ago": "dev-master",
         "sokil/php-isocodes": "^3.3"
