@@ -78,4 +78,20 @@ trait DataTypeValidatorTrait
         return false;
     }
 
+    /**
+     * Determine whether a variable has a non-empty value.
+     *
+     * Alternative to {@see empty()} that accepts non-empty values:
+     * - _0_ (0 as an integer)
+     * - _0.0_ (0 as a float)
+     * - _"0"_ (0 as a string)
+     *
+     * @param  mixed $number The value to be checked.
+     * @return boolean Returns FALSE if var exists and has a non-empty value. Otherwise returns TRUE.
+     */
+    function isBlank(mixed $number): bool
+    {
+        return empty($number) && !is_numeric($number);
+    }
+
 }
