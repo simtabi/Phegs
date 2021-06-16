@@ -838,6 +838,7 @@ return [
         'billing'  => 'Billing',
         'location' => 'Location',
         'service'  => 'Service',
+        'mailing'  => 'Mailing',
     ],
 
     /**
