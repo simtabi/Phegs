@@ -210,4 +210,18 @@ trait MathToolsTrait
         $pow = pow ( 10, $precision );
         return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow;
     }
+
+    public static function isAnEmptyNumber($number): bool
+    {
+        $number = !empty($number) && (
+            is_integer($number) || is_numeric($number) || is_float($number)
+        ) ? (float) $number : 0;
+
+        return ($number === 0) ? true : false;
+    }
+
+    public static function ensureNumberIsFloat($value): float|int
+    {
+        return !empty($value) && (is_integer($value) || is_numeric($value) || is_float($value)) ? (float) $value : 0;
+    }
 }
