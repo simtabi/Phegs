@@ -893,6 +893,10 @@ return [
                 'name'  => 'Locked',
                 'color' => '#111827',
             ],
+            'resolved'               => [
+                'name'  => 'Resolved',
+                'color' => '#10B981',
+            ],
             'solved'               => [
                 'name'  => 'Solved',
                 'color' => '#10B981',
