@@ -4,6 +4,7 @@ namespace Simtabi\Pheg;
 
 use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Support\Data;
+use Simtabi\Pheg\Phegs\Console\Painter\ConsolePainter;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Factories\Base64UID;
@@ -88,32 +89,32 @@ class Pheg
     }
     private function __clone() {}
 
-    public function copyright(): Copyright
+    final public function copyright(): Copyright
     {
         return new Copyright();
     }
 
-    public function validate(): Ensue
+    final public function validate(): Ensue
     {
         return new Ensue();
     }
 
-    public function keygen(): KeyGenerator
+    final public function keygen(): KeyGenerator
     {
         return new KeyGenerator();
     }
 
-    public function countries(): ?Countries
+    final public function countries(): ?Countries
     {
         return (Countries::getInstance(BasePhegTools::getRootPath(4)));
     }
 
-    public function data()
+    final public function data()
     {
         return Data::getInstance(self::$instance);
     }
 
-    public function breadcrumb(?string $separator = null)
+    final public function breadcrumb(?string $separator = null)
     {
         return new Breadcrumbs($separator);
     }
@@ -121,6 +122,11 @@ class Pheg
     public function base64Uid(): ?Base64UID
     {
         return Base64UID::getInstance();
+    }
+
+    final public function consolePainter(): ConsolePainter
+    {
+        return new ConsolePainter();
     }
 
 }

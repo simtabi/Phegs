@@ -79,4 +79,10 @@ trait HTMLToolsTrait
         return self::isOddNumber($number) ? 'Even' : 'Odd';
     }
 
+    public static function progressbar($done, $total, $info = "", $width = 50) {
+        $percentage = round(($done * 100) / $total);
+        $bar        = round(($width * $percentage) / 100);
+        return sprintf("%s%%[%s>%s]%s\r", $percentage, str_repeat("=", $bar), str_repeat(" ", $width-$bar), $info);
+    }
+
 }
