@@ -861,6 +861,10 @@ return [
                 'name'  => 'New',
                 'color' => '#F472B6',
             ],
+            'assigned'             => [
+                'name'  => 'Assigned',
+                'color' => '#F472B6',
+            ],
             'open'                 => [
                 'name'  => 'Open',
                 'color' => '#1E40AF',
@@ -883,6 +887,10 @@ return [
             ],
             'waiting_on_support'   => [
                 'name'  => 'Waiting on support',
+                'color' => '#9CA3AF',
+            ],
+            'waiting_on_third_party'   => [
+                'name'  => 'Waiting on Third-party',
                 'color' => '#9CA3AF',
             ],
             'under_review'         => [
