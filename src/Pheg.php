@@ -8,6 +8,7 @@ use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Factories\Base64UID;
 use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
+use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\HTMLCleaner;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
 use Simtabi\Pheg\Phegs\Helpers\Traits\FormToolsTrait;
@@ -132,6 +133,11 @@ class Pheg
     final public function base64Handler(): Base64Handler
     {
         return new Base64Handler();
+    }
+
+    final public function html5Cleaner(): HTMLCleaner
+    {
+        return new HTMLCleaner();
     }
 
 }
