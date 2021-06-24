@@ -4,7 +4,6 @@ namespace Simtabi\Pheg;
 
 use Simtabi\Pheg\Base\BasePhegTools;
 use Simtabi\Pheg\Base\Support\Data;
-use Simtabi\Pheg\Phegs\Console\Painter\ConsolePainter;
 use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Factories\Base64UID;
@@ -35,6 +34,7 @@ use Simtabi\Pheg\Phegs\Helpers\Traits\URLToolsTrait;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Simtabi\Pheg\Phegs\Navigation\Breadcrumbs;
 use Respect\Validation\Validator as Respect;
+use Simtabi\Pheg\Phegs\Security\Base64Handler;
 
 
 class Pheg
@@ -127,6 +127,11 @@ class Pheg
     final public function consolePainter(): ConsolePainter
     {
         return new ConsolePainter();
+    }
+
+    final public function base64Handler(): Base64Handler
+    {
+        return new Base64Handler();
     }
 
 }
