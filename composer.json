@@ -54,7 +54,8 @@
         "simtabi/nyoka": "dev-master",
         "symfony/uid": "^v5.2.6",
         "jimmiw/php-time-ago": "dev-master",
-        "sokil/php-isocodes": "^3.3"
+        "sokil/php-isocodes": "^3.3",
+        "masterminds/html5": "^2.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.2"
