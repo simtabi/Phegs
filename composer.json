@@ -47,7 +47,7 @@
         "gpslab/base64uid": "dev-master",
         "annexare/countries-list": "^2.6.1",
         "ezyang/htmlpurifier": "^v4.13.0",
-        "fightbulc/moment": "dev-master",
+        "fightbulc/moment": ">=1.33.0",
         "maxakawizard/json-collection-parser": "dev-master",
         "cerbero/json-objects": "^1.2.0",
         "simtabi/json-db": "dev-master",
