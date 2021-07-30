@@ -855,6 +855,7 @@ return [
             'sales'     => 'Sales',
             'technical' => 'Technical',
             'support'   => 'Support',
+            'r_and_d'   => 'Research & Design',
         ],
         'statuses' => [
             'new'                  => [
