@@ -453,8 +453,4 @@ class PhegUuid
         return (boolean) preg_match('~' . static::VALID_UUID_REGEX . '~', static::import($uuid)->string);
     }
 
-    public static function getInstance()
-    {
-        return static();
-    }
 }
