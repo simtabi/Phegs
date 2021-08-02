@@ -8,6 +8,7 @@ use Simtabi\Pheg\Phegs\Countries\Countries;
 use Simtabi\Pheg\Phegs\Copyright\Copyright;
 use Simtabi\Pheg\Phegs\Factories\Base64UID;
 use Simtabi\Pheg\Phegs\Generators\KeyGenerator;
+use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\Html2Text;
 use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\HTMLCleaner;
 use Simtabi\Pheg\Phegs\Helpers\Traits\Base64ToolsTrait;
 use Simtabi\Pheg\Phegs\Helpers\Traits\BooleanTools;
@@ -41,30 +42,29 @@ use Simtabi\Pheg\Phegs\Security\Base64Handler;
 class Pheg
 {
 
-    use
-        ArrayToolsTrait,
-        Base64ToolsTrait,
-        BooleanTools,
-        ColorToolsTrait,
-        DateTimeToolsTrait,
-        DirectoryToolsTrait,
-        FileToolsTrait,
-        FormToolsTrait,
-        GravatarToolsTrait,
-        HTMLToolsTrait,
-        HumanizeTrait,
-        JSONToolsTrait,
-        MathToolsTrait,
-        MomentDatetimeToolsTrait,
-        MoneyToolsTrait,
-        PasswordTools,
-        PhoneToolsTrait,
-        SecurityToolsTrait,
-        ServerToolsTrait,
-        SlugToolsTrait,
-        SQLToolsTrait,
-        StringToolsTrait,
-        URLToolsTrait;
+    use ArrayToolsTrait;
+    use Base64ToolsTrait;
+    use BooleanTools;
+    use ColorToolsTrait;
+    use DateTimeToolsTrait;
+    use DirectoryToolsTrait;
+    use FileToolsTrait;
+    use FormToolsTrait;
+    use GravatarToolsTrait;
+    use HTMLToolsTrait;
+    use HumanizeTrait;
+    use JSONToolsTrait;
+    use MathToolsTrait;
+    use MomentDatetimeToolsTrait;
+    use MoneyToolsTrait;
+    use PasswordTools;
+    use PhoneToolsTrait;
+    use SecurityToolsTrait;
+    use ServerToolsTrait;
+    use SlugToolsTrait;
+    use SQLToolsTrait;
+    use StringToolsTrait;
+    use URLToolsTrait;
 
     public static Respect $respectValidation;
 
@@ -86,7 +86,9 @@ class Pheg
         }
     }
 
-    private function __construct() {
+    private function __construct()
+    {
+
     }
     private function __clone() {}
 
@@ -125,14 +127,14 @@ class Pheg
         return Base64UID::getInstance();
     }
 
-    final public function consolePainter(): ConsolePainter
-    {
-        return new ConsolePainter();
-    }
-
     final public function base64Handler(): Base64Handler
     {
         return new Base64Handler();
+    }
+
+    final public function html2text(): Html2Text
+    {
+        return new Html2Text();
     }
 
     final public function html5Cleaner(): HTMLCleaner

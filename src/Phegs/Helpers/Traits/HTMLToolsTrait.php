@@ -2,6 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Traits;
 
+use Simtabi\Pheg\Pheg;
 use Simtabi\Pheg\Phegs\Helpers\Components\HtmlTools\Html2Text;
 use Simtabi\Pheg\Phegs\Ensue\Ensue;
 
@@ -55,14 +56,6 @@ trait HTMLToolsTrait
     public static function nl2br($string)
     {
         return str_replace("\n", '<br />', $string);
-    }
-
-    public static function html2text($html, $ignoreErrors = false, $dropLinks = false, $dropImages = false){
-        return Html2Text::convert($html, [
-            'ignore_errors' => $ignoreErrors,
-            'drop_images'   => $dropImages,
-            'drop_links'    => $dropLinks,
-        ]);
     }
 
     public static function formatTags($string, $splitter = ',', $notWanted = null){
