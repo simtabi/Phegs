@@ -1,102 +1,237 @@
-html2text [![Build Status](https://travis-ci.org/soundasleep/html2text.svg?branch=master)](https://travis-ci.org/soundasleep/html2text) [![Total Downloads](https://poser.pugx.org/soundasleep/html2text/downloads.png)](https://packagist.org/packages/soundasleep/html2text)
-=========
+# Html
 
-html2text is a very simple script that uses DOM methods to convert HTML into a format similar to what would be
-rendered by a browser - perfect for places where you need a quick text representation. For example:
+![license](https://img.shields.io/badge/license-MIT-brightGreen.svg)
+[![build](https://github.com/originphp/html/workflows/CI/badge.svg)](https://github.com/originphp/html/actions)
+[![coverage](https://coveralls.io/repos/github/originphp/html/badge.svg?branch=master)](https://coveralls.io/github/originphp/html?branch=master)
+
+The Html class provides some useful functions for when working with HTML.
+
+## Installation
+
+To install this package
+
+```linux
+$ composer require originphp/html
+```
+
+Then add to your file
+
+```
+use Origin\Html\Html;
+```
+
+## From Text
+
+If you need to convert a text block to html
+
+```php
+$text = <<< EOF
+This is a paragrpah.
+This is another line part of the paragraph.
+
+This is a new paragraph.
+EOF;
+$html = Html::fromText($text);
+```
+
+This will create:
 
 ```html
-<html>
-<title>Ignored Title</title>
-<body>
-  <h1>Hello, World!</h1>
-
-  <p>This is some e-mail content.
-  Even though it has whitespace and newlines, the e-mail converter
-  will handle it correctly.
-
-  <p>Even mismatched tags.</p>
-
-  <div>A div</div>
-  <div>Another div</div>
-  <div>A div<div>within a div</div></div>
-
-  <a href="http://foo.com">A link</a>
-
-</body>
-</html>
+<p>This is a paragrpah.<br>This is another line part of the paragraph.</p>
+<p>This is a new paragraph.</p>
 ```
 
-Will be converted into:
+If want paragraphs to be wrapped with a different tag than `p` then would do so like this
+
+```php
+$html = Html::fromText($text,['tag'=>'div']);
+```
+
+## To Text
+
+You can also convert a HTML string to formatted text
+
+```php
+$text = Html::toText($html);
+```
+
+For example
+
+```php
+$html = <<< EOF
+<h1>Search Engines</h1>
+<h2>Google</h2><h3>About</h3>
+<blockquote>Google is not a conventional company. We do not intend to become one.</blockquote>
+<p>Google LLC is an American        multinational technology 
+company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware.<br>It is considered one of the Big Four technology companies, alongside Amazon, Apple and Facebook.</p>
+<p>Benefits of using Google:</p>
+<ol>
+    <li>Good quality search results</li>
+    <li>Relevent advertising</li>
+</ol>
+<p>Important links:</p>
+<ul>
+    <li><a href="https://en.wikipedia.org/wiki/Google">Google's Wikipedia Page</a></li>
+    <li><a href="https://abc.xyz/">Alphabet</a></li>
+</ul>
+<h3>Financial Results</h3>
+<p>Below are the <span>financial</span> results for the last <em>3 years</em>.</p>
+<table>
+<tr>
+        <th>Revenue</th>
+        <th>31/12/2018</th>
+        <th>31/12/2017</th>
+        <th>31/12/2016</th>
+</tr>
+<tr>
+        <td>Total revenue</td>
+        <td>136,819,000</td>
+        <td>110,855,000</td>
+        <td>90,272,000</td>
+</tr>
+<tr>
+        <td>Cost of revenue</td>
+        <td>59,549,000</td>
+        <td>45,583,000</td>
+        <td>35,138,000</td>
+</tr>
+<tr>
+        <td>Gross profit</td>
+        <td><strong>77,270,000</strong></td>
+        <td><strong>65,272,000</strong></td>
+        <td><strong>55,134,000</strong></td>
+</tr>
+</table>
+<h3>Using Google API</h3>
+<p>You can use the <a href="https://github.com/googleapis/google-api-php-client/tree/master/examples">Google API</a> to access various Google services.</p>
+<p>To install the library:</p>
+<pre>
+<code>composer require google/apiclient:^2.0</code>
+</pre>
+<p>Create a file called <code>quickstart.php</code> and add the following contents</p>
+<pre><code>require __DIR__ . '/vendor/autoload.php';
+
+if (php_sapi_name() != 'cli') {
+    throw new Exception('This application must be run on the command line.');
+}
+... truncated
+</code></pre>
+EOF;
+```
+
+Will output
 
 ```text
-Hello, World!
+Search Engines
+==============
 
-This is some e-mail content. Even though it has whitespace and newlines, the e-mail converter will handle it correctly.
+Google
+------
 
-Even mismatched tags.
+About
+-----
 
-A div
-Another div
-A div
-within a div
+"Google is not a conventional company. We do not intend to become one."
 
-[A link](http://foo.com)
+Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware.
+It is considered one of the Big Four technology companies, alongside Amazon, Apple and Facebook.
+
+Benefits of using Google:
+
+1. Good quality search results
+2. Relevent advertising
+
+Important links:
+
+- Google's Wikipedia Page [https://en.wikipedia.org/wiki/Google]
+- Alphabet [https://abc.xyz/]
+
+Financial Results
+-----------------
+
+Below are the financial results for the last 3 years.
+
++------------------+--------------+--------------+-------------+
+| Revenue          | 31/12/2018   | 31/12/2017   | 31/12/2016  |
++------------------+--------------+--------------+-------------+
+| Total revenue    | 136,819,000  | 110,855,000  | 90,272,000  |
+| Cost of revenue  | 59,549,000   | 45,583,000   | 35,138,000  |
+| Gross profit     | 77,270,000   | 65,272,000   | 55,134,000  |
++------------------+--------------+--------------+-------------+
+
+Using Google API
+----------------
+
+You can use the [Google API](https://github.com/googleapis/google-api-php-client/tree/master/examples) to access various Google services.
+
+To install the library:
+
+composer require google/apiclient:^2.0
+
+Create a file called quickstart.php and add the following contents
+
+     require __DIR__ . '/vendor/autoload.php';
+     
+     if (php_sapi_name() != 'cli') {
+         throw new Exception('This application must be run on the command line.');
+     }
+     ... truncated
+     
 ```
 
-See the [original blog post](http://journals.jevon.org/users/jevon-phd/entry/19818) or the related [StackOverflow answer](http://stackoverflow.com/a/2564472/39531).
-
-## Installing
-
-You can use [Composer](http://getcomposer.org/) to add the [package](https://packagist.org/packages/soundasleep/html2text) to your project:
-
-```json
-{
-  "require": {
-    "simtabi/html2text": "~1.1"
-  }
-}
-```
-
-And then use it quite simply:
+To create text version without formatting:
 
 ```php
-$text = \Simtabi\Html2Text::convert($html);
+$text = Html::toText($html,['format'=>false]);
 ```
 
-You can also include the supplied `html2text.php` and use `$text = convert_html_to_text($html);` instead.
+The main difference is headings, tables, code etc are not formatted. The HTML is cleaned up, line breaks are added, and lists are converted. If a list has a sublist then indentation will be added.
 
-### Options
+## Minify
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| **ignore_errors** | `false` | Set to `true` to ignore any XML parsing errors. |
-| **drop_links** | `false` | Set to `true` to not render links as `[http://foo.com](My Link)`, but rather just `My Link`. |
-| **drop_images** | `false` | Set to `true` to not render img tags as `[alt or title text]`, but skip them |
-
-Pass along options as a second argument to `convert`, for example:
+Minify cleans up the spacing, removes comments and thus minifies a HTML string.
 
 ```php
-$options = array(
-  'ignore_errors' => true,
-  // other options go here
-);
-$text = \Simtabi\Html2Text::convert($html, $options);
+$minified = Html::minify($html);
 ```
 
-## Tests
+The following options are supported
 
-Some very basic tests are provided in the `tests/` directory. Run them with `composer install && vendor/bin/phpunit`.
+- collapseWhitespace: default:true. Collapse whitespace in the text nodes
+- conservativeCollapse: default:false. Always collapse whitespace to at least 1 space
+- collapseInlineTagWhitespace: default:false. Don't leave any spaces between inline elements.
+- minifyJs: default:false minifies inline Javascript (beta)
+- minifyCss: default:false minifies inline CSS (beta)
 
-## Troubleshooting
+## Sanitize
 
-### Class 'DOMDocument' not found
+Sanitize enables to only allow certain tags and attributes in a HTML string.
 
-You need to [install the PHP XML extension](https://github.com/soundasleep/html2text/issues/55) for your PHP version. e.g. `apt-get install php7.1-xml`
+```php
+$html = Html::sanitize($html,[
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'p',
+    'i', 'em', 'strong', 'b', 'blockquote', 'del',
+    'a' => ['href'],
+    'ul', 'li', 'ol', 'br',
+    'code', 'pre',
+    'img' => ['src','alt']]
+    );
+```
 
-## License
 
-`html2text` is [licensed under MIT](LICENSE.md), making it suitable for both Eclipse and GPL projects.
+## Strip Tags
 
-## Other versions
+To strip selected tags and their content from a HTML string, in other words strip tags that are in a blacklist
 
-Also see [html2text_ruby](https://github.com/soundasleep/html2text_ruby), a Ruby implementation.
+```php
+$html = Html::stripTags($html,['script','iframe','img']);
+```
+
+## Escape
+
+It is important when displaying user inputted HTML that it is escaped properly for security reasons, see [Cross-site scripting](https://www.google.com/about/appsecurity/learning/xss/) for more information.
+
+```php
+$escaped = Html::escape($html);
+```

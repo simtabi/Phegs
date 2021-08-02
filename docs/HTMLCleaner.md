@@ -1,3 +1,5 @@
+https://github.com/mehr-it/html-cleaner
+
 # HTML cleaner for PHP
 This library aims to offer an easy API for removing unwanted elements from a given HTML fragment.
 This is required when outputting HTML from an untrusted source such as browsers, API clients or
