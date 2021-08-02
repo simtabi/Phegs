@@ -37,7 +37,7 @@ use Simtabi\Pheg\Phegs\Ensue\Ensue;
 use Simtabi\Pheg\Phegs\Navigation\Breadcrumbs;
 use Respect\Validation\Validator as Respect;
 use Simtabi\Pheg\Phegs\Security\Base64Handler;
-
+use Simtabi\Pheg\Phegs\Helpers\Components\PhegUuid;
 
 class Pheg
 {
