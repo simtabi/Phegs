@@ -387,6 +387,7 @@ return [
     ],
 
     'content_statuses' => [
+        'retracted' => 'Retracted',
         'published' => 'Published',
         'archived'  => 'Archived',
         'review'    => 'Review',
@@ -398,6 +399,7 @@ return [
         'completed'    => 'Completed',
         'starting'     => 'Starting',
         'started'      => 'Started',
+        'paused'       => 'Paused!',
         'stalled'      => 'Stalled!',
         'overdue'      => 'Overdue',
         'almost'       => 'Almost',
@@ -903,12 +905,20 @@ return [
                 'name'  => 'Locked',
                 'color' => '#111827',
             ],
-            'resolved'               => [
+            'resolved'             => [
                 'name'  => 'Resolved',
                 'color' => '#10B981',
             ],
             'solved'               => [
                 'name'  => 'Solved',
+                'color' => '#10B981',
+            ],
+            'merged'               => [
+                'name'  => 'Merged',
+                'color' => '#10B981',
+            ],
+            'spam'                 => [
+                'name'  => 'Spam',
                 'color' => '#10B981',
             ],
         ],
