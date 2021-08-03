@@ -377,6 +377,7 @@ return [
     ],
 
     'priority_types' => [
+        'blocker'     => 'Blocker',
         'critical'    => 'Critical',
         'medium'      => 'Medium',
         'normal'      => 'Normal',
@@ -934,6 +935,10 @@ return [
             ],
             'critical'  => [
                 'name'  => 'Critical',
+                'color' => '#991B1B',
+            ],
+            'blocker'  => [
+                'name'  => 'Blocker',
                 'color' => '#991B1B',
             ],
         ],
