@@ -2,7 +2,6 @@
 
 namespace Simtabi\Pheg\Base;
 
-use Simtabi\Pheg\Pheg;
 use Simtabi\Pheg\Phegs\DataTools\TypeConverter;
 
 class Loader
@@ -14,8 +13,6 @@ class Loader
 
     public function __construct(){
         $this->reset();
-
-        Pheg::uuid()::validateUuidVersion();
     }
 
     /**
