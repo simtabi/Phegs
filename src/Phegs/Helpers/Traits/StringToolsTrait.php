@@ -587,6 +587,10 @@ trait StringToolsTrait
         return $output;
     }
 
+    public static function substr($string, $start, $length = null)
+    {
+        return mb_substr($string, $start, $length, 'UTF-8');
+    }
 
 
     public static function fromCamelCase($string) {

@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
 use Simtabi\Pheg\Base\Exceptions\InvalidUuidVersionException;
+use Simtabi\Pheg\Pheg;
 
 class PhegUuid
 {
@@ -68,6 +69,22 @@ class PhegUuid
     }
 
     /**
+     * Generates a test UUID with the model name as a prefix for easy distinction when testing
+     *
+     * @param $model
+     *
+     * @return string
+     */
+    public function generateReadableUuidForTesting($model): string
+    {
+        $className   = strtolower(class_basename($model)) . '_';
+        $numToRemove = strlen($className);
+        $remaining   = (36 - (int) $numToRemove);
+
+        return $className . Pheg::substr($this->generateUuid(), $numToRemove, $remaining);
+    }
+
+    /**
      * Set the callable that will be used to generate UUIDs.
      *
      * @param  callable|null  $factory
@@ -101,17 +118,12 @@ class PhegUuid
     }
 
     private static $instance = null;
-    private static function Instance()
+    public static function getInstance(): self
     {
         if(empty(self::$instance)){
             self::$instance = new self();
         }
         return self::$instance;
-    }
-
-    public static function getUuidObj(): self
-    {
-        return self::Instance();
     }
 
 }

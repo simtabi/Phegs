@@ -144,7 +144,7 @@ class Pheg
 
     final public function uuid(): PhegUuid
     {
-        return PhegUuid::getUuidObj();
+        return PhegUuid::getInstance();
     }
 
 }
