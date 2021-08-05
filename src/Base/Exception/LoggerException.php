@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Base\Exception;
+namespace Simtabi\Pheg\Base\Exceptions;
 
 class LoggerException extends \Exception{
 

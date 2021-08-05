@@ -1,6 +1,6 @@
 <?php
 
-namespace Simtabi\Pheg\Base\Exception;
+namespace Simtabi\Pheg\Base\Exceptions;
 
 final class RuntimeException extends \RuntimeException implements Exception
 {

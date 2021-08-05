@@ -2,7 +2,7 @@
 
 namespace Simtabi\Pheg\Phegs\Helpers\Components\Logger;
 
-use Simtabi\Pheg\Base\Exception\LoggerException;
+use Simtabi\Pheg\Base\Exceptions\LoggerException;
 use ReflectionClass as Reflection;
 use Exception;
 

@@ -142,4 +142,9 @@ class Pheg
         return new HTMLCleaner();
     }
 
+    final public function uuid(): PhegUuid
+    {
+        return PhegUuid::getUuidObj();
+    }
+
 }
