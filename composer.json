@@ -68,6 +68,7 @@
             "helpers/classes.php",
             "helpers/constants.php",
             "helpers/form_helpers.php",
+            "helpers/functions.php",
             "helpers/support_data.php"
         ]
     },
