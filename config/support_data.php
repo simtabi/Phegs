@@ -399,8 +399,8 @@ return [
         'completed'    => 'Completed',
         'starting'     => 'Starting',
         'started'      => 'Started',
-        'paused'       => 'Paused!',
-        'stalled'      => 'Stalled!',
+        'paused'       => 'Paused',
+        'stalled'      => 'Stalled',
         'overdue'      => 'Overdue',
         'almost'       => 'Almost',
         'wip'          => 'Work In Progress',
@@ -860,97 +860,32 @@ return [
             'support'   => 'Support',
             'r_and_d'   => 'Research & Design',
         ],
-        'statuses' => [
-            'new'                  => [
-                'name'  => 'New',
-                'color' => '#F472B6',
-            ],
-            'assigned'             => [
-                'name'  => 'Assigned',
-                'color' => '#F472B6',
-            ],
-            'open'                 => [
-                'name'  => 'Open',
-                'color' => '#1E40AF',
-            ],
-            'pending'              => [
-                'name'  => 'Pending',
-                'color' => '#D97706',
-            ],
-            'on_hold'              => [
-                'name'  => 'On-hold',
-                'color' => '#FBBF24',
-            ],
-            'closed'               => [
-                'name'  => 'Closed',
-                'color' => '#A78BFA',
-            ],
-            'waiting_on_customer'  => [
-                'name'  => 'Waiting on customer',
-                'color' => '#374151',
-            ],
-            'waiting_on_support'   => [
-                'name'  => 'Waiting on support',
-                'color' => '#9CA3AF',
-            ],
-            'waiting_on_third_party'   => [
-                'name'  => 'Waiting on Third-party',
-                'color' => '#9CA3AF',
-            ],
-            'under_review'         => [
-                'name'  => 'Under review',
-                'color' => '#60A5FA',
-            ],
-            'locked'               => [
-                'name'  => 'Locked',
-                'color' => '#111827',
-            ],
-            'resolved'             => [
-                'name'  => 'Resolved',
-                'color' => '#10B981',
-            ],
-            'solved'               => [
-                'name'  => 'Solved',
-                'color' => '#10B981',
-            ],
-            'merged'               => [
-                'name'  => 'Merged',
-                'color' => '#10B981',
-            ],
-            'spam'                 => [
-                'name'  => 'Spam',
-                'color' => '#10B981',
-            ],
+        'statuses'    => [
+            'new'                    => 'New',
+            'open'                   => 'Open',
+            'assigned'               => 'Assigned',
+            'pending'                => 'Pending',
+            'on_hold'                => 'On-hold',
+            'closed'                 => 'Closed',
+            'waiting_on_customer'    => 'Waiting on customer',
+            'waiting_on_support'     => 'Waiting on support',
+            'waiting_on_third_party' => 'Waiting on Third-party',
+            'under_review'           => 'Under review',
+            'locked'                 => 'Locked',
+            'resolved'               => 'Resolved',
+            'solved'                 => 'Solved',
+            'merged'                 => 'Merged',
+            'spam'                   => 'Pending',
         ],
-        'priorities' => [
-            'low'       => [
-                'name'  => 'Low',
-                'color' => '#FEF2F2',
-            ],
-            'normal'    => [
-                'name'  => 'Normal',
-                'color' => '#FEE2E2',
-            ],
-            'medium'    => [
-                'name'  => 'Medium',
-                'color' => '#FECACA',
-            ],
-            'high'      => [
-                'name'  => 'High',
-                'color' => '#F87171',
-            ],
-            'urgent'    => [
-                'name'  => 'Urgent',
-                'color' => '#DC2626',
-            ],
-            'critical'  => [
-                'name'  => 'Critical',
-                'color' => '#991B1B',
-            ],
-            'blocker'  => [
-                'name'  => 'Blocker',
-                'color' => '#991B1B',
-            ],
+        'priorities'  => [
+            'low'      => 'Low',
+            'normal'   => 'Normal',
+            'medium'   => 'Medium',
+            'high'     => 'High',
+            'urgent'   => 'Urgent',
+            'critical' => 'Pending',
+            'blocker'  => 'blocker',
+
         ],
 
     ],
