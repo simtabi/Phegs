@@ -211,7 +211,7 @@ trait MathToolsTrait
         return ( ceil ( $pow * $value ) + ceil ( $pow * $value - ceil ( $pow * $value ) ) ) / $pow;
     }
 
-    public static function isAnEmptyNumber($number): bool
+    public static function isAnEmptyNumber(int $number): bool
     {
         $number = !empty($number) && (
             is_integer($number) || is_numeric($number) || is_float($number)
@@ -220,8 +220,14 @@ trait MathToolsTrait
         return ($number === 0) ? true : false;
     }
 
-    public static function ensureNumberIsFloat($value): float|int
+    public static function ensureNumberIsFloat(int $value): float|int
     {
         return !empty($value) && (is_integer($value) || is_numeric($value) || is_float($value)) ? (float) $value : 0;
     }
+
+    public static function toPercentage(int $value, bool $inverse = false): int
+    {
+        return  ($inverse ? 1 - $value : $value) * 100;
+    }
+
 }

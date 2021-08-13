@@ -766,5 +766,15 @@ trait DateTimeToolsTrait
         $dates = $this->indexedDatesInArray($from, $to, $step, $outputFormat);
         return array_fill_keys($dates, $default);
     }
+
+    public static function minutesToTime(int $minutes)
+    {
+        $minutes_per_day = (Carbon::HOURS_PER_DAY * Carbon::MINUTES_PER_HOUR);
+        $days            = floor($minutes / ($minutes_per_day));
+        $hours           = floor(($minutes - $days * ($minutes_per_day)) / Carbon::MINUTES_PER_HOUR);
+        $mins            = (int) ($minutes - ($days * ($minutes_per_day)) - ($hours * 60));
+
+        return "{$days} Days {$hours} Hours {$mins} Mins";
+    }
     
 }
