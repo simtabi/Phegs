@@ -529,67 +529,6 @@ trait DateTimeToolsTrait
         return $out;
     }
 
-
-    public function timeBasedGreetings($timezone = 'Africa/Nairobi'){
-
-        // output variables
-        $status      = false;
-        $errors      = null;
-        $currentTime = null;
-        $greetings   = null;
-        $format      = '24H';
-
-        try{
-
-            // validate timezone
-            if(empty($timezone)){
-                throw new PhegException(BasePhegTools::_e('TIMEZONE_IS_REQUIRED'));
-            }else{
-                $validateTimezone = Ensue::isTimezone($timezone);
-                if(TRUE !== $validateTimezone){
-                    throw new PhegException($validateTimezone);
-                }
-            }
-
-            // get current time in 24hrs
-            $objDateTime = new DateTime();
-            $objDateTime->setTimezone(new DateTimeZone($timezone));
-            $currentTime = $objDateTime->format('G');
-
-            // filter greeting
-            switch ($currentTime){
-                case ($currentTime >= 0 && $currentTime <= 11) :
-                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_MORNING') ; break;
-                case ($currentTime >= 12 && $currentTime <=17 ) :
-                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_AFTERNOON') ; break;
-                case ($currentTime >= 18 && $currentTime <=23) :
-                    $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING_GOOD_EVENING') ; break;
-                default : $greetings = BasePhegTools::_e('TIME_WELCOME_GREETING'); break;
-            }
-
-            // set status
-            $status = TRUE;
-
-        }catch (PhegException $e){
-            $errors = $e->getMessage();
-        }
-
-        $errors = Pheg::filterArray($errors);
-        return    TypeConverter::toObject(array(
-            'status' => $status,
-            'errors' => $errors,
-            'data'   => array(
-                'debug'     => array(
-                    'timezone' => empty($timezone) ? NULL : $timezone,
-                    'format'   => $format,
-                    'time'     => $currentTime,
-                ),
-                'greetings' => $greetings,
-            ),
-        ));
-    }
-
-
     public function dateOrdinalSuffix(){
         echo date('M j<\s\up>S</\s\up> Y'); // < PHP 5.2.2
         echo date('M j<\s\up>S</\s\up> Y'); // >= PHP 5.2.2
@@ -767,7 +706,7 @@ trait DateTimeToolsTrait
         return array_fill_keys($dates, $default);
     }
 
-    public static function minutesToTime(int $minutes)
+    public function minutesToTime(int $minutes)
     {
         $minutes_per_day = (Carbon::HOURS_PER_DAY * Carbon::MINUTES_PER_HOUR);
         $days            = floor($minutes / ($minutes_per_day));
@@ -775,6 +714,38 @@ trait DateTimeToolsTrait
         $mins            = (int) ($minutes - ($days * ($minutes_per_day)) - ($hours * 60));
 
         return "{$days} Days {$hours} Hours {$mins} Mins";
+    }
+
+    public function timeBasedGreeting($timezone = 'Europe/London'): string | bool
+    {
+
+        $time = (Carbon::now(new DateTimeZone($timezone)))->hour;
+
+        /* If the time is less than 1200 hours, show good morning */
+        if ($time < 12)
+        {
+            $greetings = "Good morning";
+        }
+
+        /* If the time is grater than or equal to 1200 hours, but less than 1700 hours, so good afternoon */
+        elseif ($time >= 12 && $time < 17)
+        {
+            $greetings = "Good afternoon";
+        }
+
+        /* Should the time be between or equal to 1700 and 1900 hours, show good evening */
+        elseif ($time >= 17 && $time < 19)
+        {
+            $greetings = "Good evening";
+        }
+
+        /* Finally, show good night if the time is greater than or equal to 1900 hours */
+        elseif ($time >= 19)
+        {
+            $greetings = "Good night";
+        }
+
+        return $greetings ?? false;
     }
     
 }
