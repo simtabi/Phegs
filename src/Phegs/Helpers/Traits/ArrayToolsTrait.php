@@ -524,13 +524,15 @@ trait ArrayToolsTrait
         return count( (array) $data);
     }
 
-    public function pushToArray($data, $array): array
+    public function pushToArray($new_data, $old_data): array
     {
-        if (is_array($data) && (count($data) >= 1)) {
-            return array_merge($array, $data);
+        if (is_array($old_data) && (count($old_data) >= 1)) {
+            $old_data = array_merge($old_data, $new_data);
         } else {
-            return $array;
+            $old_data = $new_data;
         }
+
+        return $old_data;
     }
 
 }
