@@ -527,7 +527,7 @@ trait ArrayToolsTrait
     public function pushToArray($data, $array): array
     {
         if (is_array($data) && (count($data) >= 1)) {
-            return array_merge($data, $array);
+            return array_merge($array, $data);
         } else {
             return $array;
         }
