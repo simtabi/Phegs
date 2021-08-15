@@ -523,4 +523,14 @@ trait ArrayToolsTrait
         $data = TypeConverter::fromAnyToArray($data, $associative);
         return count( (array) $data);
     }
+
+    public function pushToArray($values, $array): array
+    {
+        if (is_array($values) && (count($values) > 0)) {
+            $values = array_merge($values, $array);
+        } else {
+            $values = $array;
+        }
+        return $values;
+    }
 }
