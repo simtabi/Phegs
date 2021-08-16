@@ -875,7 +875,7 @@ return [
             'resolved'               => 'Resolved',
             'solved'                 => 'Solved',
             'merged'                 => 'Merged',
-            'spam'                   => 'Pending',
+            'spam'                   => 'Spam',
         ],
         'priorities'  => [
             'low'      => 'Low',
