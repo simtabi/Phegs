@@ -484,55 +484,42 @@ trait ArrayToolsTrait
         return $return;
     }
 
-    function objectToArray($object){
-        return json_decode(json_encode($object), true);
-    }
-
-
-    function arrayToJSONObj($array){
-        return json_decode(json_encode($array, JSON_FORCE_OBJECT), false);
-    }
-
-
-
-    function object2Array(object $object){
-        return json_decode(json_encode($object), true, 512, JSON_THROW_ON_ERROR);
-    }
-
-    function array2JSONObj($array){
-        return json_decode(json_encode($array, JSON_FORCE_OBJECT), false);
-    }
-
-    function array2Object(array $array): stdClass
+    public function fromAnyToStdObject(array $array): object
     {
-        $obj = new stdClass;
-        foreach($array as $k => $v) {
-            if(strlen($k)) {
-                if(is_array($v)) {
-                    $obj->{$k} = $this->array2Object($v); //RECURSION
-                } else {
-                    $obj->{$k} = $v;
-                }
+
+        // Create new stdClass object
+        $object = new stdClass();
+
+        // Use loop to convert array into
+        // stdClass object
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $value = $this->fromAnyToStdObject($value);
             }
+            $object->{$key} = $value;
         }
-        return $obj;
+        return $object;
+    }
+
+    public function fromObjectToArray($object, bool $assoc = true)
+    {
+        return json_decode(json_encode($object), $assoc);
     }
 
     public function count($data, $associative = false): int
     {
-        $data = TypeConverter::fromAnyToArray($data, $associative);
-        return count( (array) $data);
+        return count(TypeConverter::fromAnyToArray($data, $associative));
     }
 
-    public function pushToArray($new_data, $old_data): array
+    public function pushToArray($new_array, $old_array): array
     {
-        if (is_array($old_data) && (count($old_data) >= 1)) {
-            $old_data = array_merge($old_data, $new_data);
+        if (is_array($old_array) && (count($old_array) >= 1)) {
+            $old_array = array_merge($old_array, $new_array);
         } else {
-            $old_data = $new_data;
+            $old_array = $new_array;
         }
 
-        return $old_data;
+        return $old_array;
     }
 
 }
