@@ -885,7 +885,7 @@ return [
             'urgent'   => 'Urgent',
             'critical' => 'Critical',
             'pending'  => 'Pending',
-            'blocker'  => 'blocker',
+            'blocker'  => 'Blocker',
         ],
 
     ],
