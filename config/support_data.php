@@ -884,7 +884,7 @@ return [
             'assigned_pending_third_party'  => "Assigned pending 3rd party",
             'assigned_pending_customer'     => "Assigned pending customer",
             'assigned_pending_agent'        => "Assigned pending agent",
-            'resolved'                      => "Resolved awaiting feedback",
+            'resolved'                      => "Resolved",
             'closed'                        => "Closed",
         ],
         'priorities'  => [
