@@ -897,9 +897,9 @@ return [
             'blocker'  => 'Blocker',
         ],
         'priorities_short'  => [
-            'urgent' => "Priority 1",
-            'normal' => "Priority 2",
-            'low'    => "Priority 3",
+            'urgent_priority_1' => "Priority 1",
+            'normal_priority_2' => "Priority 2",
+            'low_priority_3'    => "Priority 3",
         ],
 
     ],
