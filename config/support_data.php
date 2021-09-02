@@ -873,7 +873,6 @@ return [
             'under_review'           => 'Under review',
             'locked'                 => 'Locked',
             'resolved'               => 'Resolved',
-            'solved'                 => 'Solved',
             'merged'                 => 'Merged',
             'spam'                   => 'Spam',
         ],
