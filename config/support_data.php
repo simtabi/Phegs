@@ -860,7 +860,7 @@ return [
             'support'   => 'Support',
             'r_and_d'   => 'Research & Design',
         ],
-        'statuses'    => [
+        'statuses'       => [
             'new'                    => 'New',
             'open'                   => 'Open',
             'assigned'               => 'Assigned',
@@ -877,6 +877,16 @@ return [
             'merged'                 => 'Merged',
             'spam'                   => 'Spam',
         ],
+        'statuses_short' => [
+            'new_unassigned'                => "New unassigned",
+            'new_escalated'                 => "New escalated",
+            'assigned_under_review'         => "Assigned under review",
+            'assigned_pending_third_party'  => "Assigned pending 3rd party",
+            'assigned_pending_customer'     => "Assigned pending customer",
+            'assigned_pending_agent'        => "Assigned pending agent",
+            'resolved'                      => "Resolved awaiting feedback",
+            'closed'                        => "Closed",
+        ],
         'priorities'  => [
             'low'      => 'Low',
             'normal'   => 'Normal',
@@ -886,6 +896,11 @@ return [
             'critical' => 'Critical',
             'pending'  => 'Pending',
             'blocker'  => 'Blocker',
+        ],
+        'priorities_short'  => [
+            'urgent' => "Priority 1",
+            'normal' => "Priority 2",
+            'low'    => "Priority 3",
         ],
 
     ],
